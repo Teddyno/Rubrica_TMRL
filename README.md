@@ -1,4 +1,4 @@
-# Rubrica_TMRL
+# 📔 Rubrica_TMRL
 Applicazione che implementa una rubrica per gestire i contatti telefonici e/o e-mail.
 
 # 👥 Membri del gruppo 
@@ -6,3 +6,4 @@ Applicazione che implementa una rubrica per gestire i contatti telefonici e/o e-
 - Carlo Longobardo - c.longobardo5@studenti.unisa.it 
 - Davide Ruocco - d.ruocco8@studenti.unisa.it 
 - Angela Monti - a.monti3@studenti.unisa.it
+  
