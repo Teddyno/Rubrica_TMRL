@@ -18,7 +18,7 @@ import javafx.stage.Stage;
  */
 public class Rubrica extends Application {
     
-    private String fileDefault;
+    public static String fileDefault;
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -38,10 +38,6 @@ public class Rubrica extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-    }
-    
-    public String getFileDefault(){
-        return fileDefault;
     }
     
 }
