@@ -182,6 +182,9 @@ public class RubricaMainController implements Initializable {
             homePane.setVisible(true);
             modificaContattoPane.setVisible(false);
             contattoPane.setVisible(false);
+            //per eliminare il problema della selezione della tabella(se aggiungi contatto, poi home e poi di nuovo il contatto, dovrebbe restare home)
+            //però non mi piace come posizionamento, commenta per notare il problema
+            cntTable.getSelectionModel().clearSelection();
         }
     }
 
@@ -232,6 +235,7 @@ public class RubricaMainController implements Initializable {
         emailDueLbl.setText(cnt.getEmail());
         emailTreLbl.setText(cnt.getEmail());
 
+        //per visualizzare il pane del contatto e disattivare quello della home
 	addcontattopane.setVisible(false); 
         homePane.setVisible(false);
         modificaContattoPane.setVisible(false);
