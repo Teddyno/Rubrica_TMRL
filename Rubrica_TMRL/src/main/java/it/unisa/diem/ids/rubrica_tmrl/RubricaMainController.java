@@ -160,7 +160,7 @@ public class RubricaMainController implements Initializable {
     }
 
     @FXML
-    private void switchForm(ActionEvent event) {
+    private void switchPane(ActionEvent event) {
         if(event.getSource() == btnaddcontatto){
             addcontattopane.setVisible(true); 
             homePane.setVisible(false);
@@ -202,9 +202,9 @@ public class RubricaMainController implements Initializable {
         
         ordinamento();
         
-        switchForm(event); //ritorno in home
+        switchPane(event); //ritorno in home
         
-        if (!contatti.isEmpty()) {
+        if (!contatti.isEmpty()) {  // è utile?
         cntTable.getSelectionModel().select(nuovoContatto);
         }
         
