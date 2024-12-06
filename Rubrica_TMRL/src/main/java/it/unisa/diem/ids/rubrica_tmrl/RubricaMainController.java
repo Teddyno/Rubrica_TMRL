@@ -152,7 +152,8 @@ public class RubricaMainController implements Initializable {
     private void aggiungiContatto(ActionEvent event) {
         
         String nome = nomeField.getText();
-        String cognome = cognomeField.getText();
+        String cognome = cognomeField.getText(); 
+        // creare metodo di validità
         if(nome.isEmpty() && cognome.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Dati Mancanti");
