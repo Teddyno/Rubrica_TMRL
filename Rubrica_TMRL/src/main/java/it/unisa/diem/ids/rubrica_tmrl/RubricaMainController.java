@@ -6,6 +6,8 @@
 package it.unisa.diem.ids.rubrica_tmrl;
 
 import java.net.URL;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -64,10 +66,6 @@ public class RubricaMainController implements Initializable {
     @FXML
     private Label datilbl;
     @FXML
-    private Label numero1lbl;
-    @FXML
-    private Label email1lbl;
-    @FXML
     private Button rimuovibtn;
     @FXML
     private TextField modNomeField;
@@ -95,6 +93,18 @@ public class RubricaMainController implements Initializable {
     
     
     private ObservableList<Contatto> contatti;
+    @FXML
+    private Label numeroUnoLbl;
+    @FXML
+    private Label numeroDueLbl;
+    @FXML
+    private Label numeroTreLbl;
+    @FXML
+    private Label emailUnoLbl;
+    @FXML
+    private Label emailFueLbl;
+    @FXML
+    private Label emailTreLbl;
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -153,6 +163,8 @@ public class RubricaMainController implements Initializable {
         Contatto nuovoContatto = new Contatto(nomeField.getText(), cognomeField.getText(), numeroUno.getText(), emailUno.getText());
         contatti.add(nuovoContatto);
         
+        ordinamento();
+        
         if(event.getSource() == submitBtn){
             addcontattopane.setVisible(false); 
             homePane.setVisible(true);
@@ -169,10 +181,18 @@ public class RubricaMainController implements Initializable {
     private void pulisci(){
         nomeField.clear();
         cognomeField.clear();
+        numeroUno.clear();
+        numeroDue.clear();
+        numeroTre.clear();
+        emailUno.clear();
+        emailDue.clear();
+        emailTre.clear();
     }
 
     private void showDetails(Contatto cnt) {
         datilbl.setText(cnt.getNome() + " " + cnt.getCognome());
+        numeroUnoLbl.setText(cnt.getNumeroTelefonico());
+        emailUnoLbl.setText(cnt.getEmail());
     }
 
     @FXML
@@ -236,9 +256,16 @@ public class RubricaMainController implements Initializable {
             modificaContattoPane.setVisible(false);
 
             cntTable.getSelectionModel().select(modContatto);
+            ordinamento();
         });
-        
-        
+    }
+    
+    private void ordinamento(){
+        Collections.sort(contatti, (c1, c2)->{
+            String nomeCompleto1 = (c1.getNome() + " " + c1.getCognome());
+            String nomeCompleto2 = (c2.getNome() + " " + c2.getCognome());
+            return nomeCompleto1.compareTo(nomeCompleto2);
+        });
     }
     
 }
