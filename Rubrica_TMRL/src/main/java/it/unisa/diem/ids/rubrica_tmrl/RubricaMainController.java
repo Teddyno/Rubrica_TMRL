@@ -230,7 +230,7 @@ public class RubricaMainController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Conferma Rimozione");
         alert.setHeaderText("Stai per rimuovere un contatto");
-        alert.setContentText("Sei sicuro di voler eliminare " + contattoSel.getNome() + " " + contattoSel.getCognome() + "?");
+        alert.setContentText("Sei sicuro di voler eliminare " + contattoSel.getCognome() + " " + contattoSel.getNome() + "?");
         
         alert.showAndWait().ifPresent(response -> {
             if(response == ButtonType.OK)
