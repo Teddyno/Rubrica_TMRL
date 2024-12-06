@@ -179,7 +179,7 @@ public class RubricaMainController implements Initializable {
         //UNA VOLTA INSERITI DEI CONTATTI E PREMUTO "aggiungi contatti" NON È POSSIBILE USCIRE DALLA SCHERMATA AGGIUNGI CONTATTO, ANCHE CLICCANDO I CONTATTI CREATI
         // creare metodo di validità
         
-        if(nomeField.getText().isEmpty() && cognomeField.getText().isEmpty()){
+        if(!isValido()){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Dati Mancanti");
             alert.setHeaderText("Devi inserire almeno uno tra Nome e Cognome");
@@ -293,6 +293,13 @@ public class RubricaMainController implements Initializable {
             String nomeCompleto2 = (c2.getCognome() + " " + c2.getNome());
             return nomeCompleto1.compareTo(nomeCompleto2);
         });
+    }
+    
+    private boolean isValido(){
+        if(nomeField.getText().isEmpty() && cognomeField.getText().isEmpty())
+            return false;
+        else
+            return true;
     }
     
 }
