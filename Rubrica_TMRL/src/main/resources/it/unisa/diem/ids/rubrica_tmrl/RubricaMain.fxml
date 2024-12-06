@@ -12,19 +12,11 @@
    <top>
       <HBox prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="50.0" prefWidth="180.0">
+            <AnchorPane prefHeight="50.0" prefWidth="692.0">
                <children>
-                  <Label layoutX="31.0" layoutY="7.0" text="Rubrica">
-                     <font>
-                        <Font name="System Font" size="29.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="50.0" prefWidth="420.0">
-               <children>
-                  <TextField fx:id="barraDiRicerca" layoutX="9.0" layoutY="12.0" onAction="#cerca" prefHeight="27.0" prefWidth="271.0" promptText="Cerca" />
-                  <Button fx:id="btnaddcontatto" layoutX="293.0" layoutY="11.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="27.0" prefWidth="121.0" text="Aggiungi Contatto" textAlignment="CENTER" />
+                  <TextField fx:id="barraDiRicerca" layoutX="92.0" layoutY="12.0" onAction="#cerca" prefHeight="27.0" prefWidth="417.0" promptText="Cerca" />
+                  <Button fx:id="btnHome" layoutX="522.0" layoutY="12.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="27.0" prefWidth="68.0" text="Home" />
+                  <Label layoutX="37.0" layoutY="17.0" text="Logo" />
                </children>
             </AnchorPane>
          </children>
@@ -76,7 +68,7 @@
                   <Button fx:id="submitBtn" layoutX="138.0" layoutY="299.0" mnemonicParsing="false" onAction="#aggiungiContatto" prefHeight="27.0" prefWidth="149.0" text="Aggiungi" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="homePane" prefHeight="350.0" prefWidth="420.0" style="-fx-background-color: BCBCBC;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="contattoPane" prefHeight="350.0" prefWidth="420.0" style="-fx-background-color: BCBCBC;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label fx:id="datilbl" alignment="TOP_CENTER" layoutY="129.0" prefHeight="37.0" prefWidth="420.0" text="Nome Contatto">
                      <font>
@@ -144,6 +136,18 @@
                   <Label layoutX="14.0" layoutY="229.0" text="2°" />
                   <Label layoutX="15.0" layoutY="197.0" text="1°" />
                   <Button fx:id="sumbitModifiche" layoutX="138.0" layoutY="299.0" mnemonicParsing="false" onAction="#setModificaContatto" prefHeight="27.0" prefWidth="149.0" text="Conferma Modifiche" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="homePane" prefHeight="350.0" prefWidth="420.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button fx:id="btnaddcontatto" layoutX="73.0" layoutY="144.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="280.0" text="Aggiungi Contatto" textAlignment="CENTER" />
+                  <Label layoutX="112.0" layoutY="66.0" text="Rubrica TMRL">
+                     <font>
+                        <Font size="34.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="73.0" layoutY="194.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Importa Dati" textAlignment="CENTER" />
+                  <Button layoutX="233.0" layoutY="194.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Esporta Dati" textAlignment="CENTER" />
                </children>
             </AnchorPane>
          </children>

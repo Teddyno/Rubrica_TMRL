@@ -88,10 +88,6 @@ public class RubricaMainController implements Initializable {
     private AnchorPane modificaContattoPane;
     @FXML
     private Button sumbitModifiche;
-    
-    
-    
-    private ObservableList<Contatto> contatti;
     @FXML
     private Label numeroUnoLbl;
     @FXML
@@ -106,7 +102,15 @@ public class RubricaMainController implements Initializable {
     private Label emailTreLbl;
     @FXML
     private TextField barraDiRicerca;
+    @FXML
+    private Button btnHome;
+    @FXML
+    private AnchorPane contattoPane;
         
+    
+    private ObservableList<Contatto> contatti;
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -158,18 +162,21 @@ public class RubricaMainController implements Initializable {
             addcontattopane.setVisible(true); 
             homePane.setVisible(false);
             modificaContattoPane.setVisible(false);
+            contattoPane.setVisible(false);
         }
         
-        else if(event.getSource() == homeBtn){
+        else if(event.getSource() == btnHome){
             addcontattopane.setVisible(false); 
             homePane.setVisible(true);
             modificaContattoPane.setVisible(false);
+            contattoPane.setVisible(false);
         }
         
         else{
             addcontattopane.setVisible(false); 
-            homePane.setVisible(false);
+            homePane.setVisible(true);
             modificaContattoPane.setVisible(false);
+            contattoPane.setVisible(false);
         }
     }
 
@@ -177,7 +184,6 @@ public class RubricaMainController implements Initializable {
     private void aggiungiContatto(ActionEvent event) {
         
         //UNA VOLTA INSERITI DEI CONTATTI E PREMUTO "aggiungi contatti" NON È POSSIBILE USCIRE DALLA SCHERMATA AGGIUNGI CONTATTO, ANCHE CLICCANDO I CONTATTI CREATI
-        // creare metodo di validità
         
         if(!isValido()){
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -194,8 +200,9 @@ public class RubricaMainController implements Initializable {
         
         if(event.getSource() == submitBtn){
             addcontattopane.setVisible(false); 
-            homePane.setVisible(true);
+            homePane.setVisible(false);
             modificaContattoPane.setVisible(false);
+            contattoPane.setVisible(true);
         }
         
         if (!contatti.isEmpty()) {
@@ -237,9 +244,10 @@ public class RubricaMainController implements Initializable {
                 contatti.remove(contattoSel);
             
             if(contatti.isEmpty()){
-                addcontattopane.setVisible(true); 
-                homePane.setVisible(false);
+                addcontattopane.setVisible(false); 
+                homePane.setVisible(true);
                 modificaContattoPane.setVisible(false);
+                contattoPane.setVisible(false);
             }
         });
 
@@ -254,6 +262,7 @@ public class RubricaMainController implements Initializable {
             addcontattopane.setVisible(false); 
             homePane.setVisible(false);
             modificaContattoPane.setVisible(true);
+            contattoPane.setVisible(false);
         }   
         
         int contattoSelID = cntTable.getSelectionModel().getSelectedIndex();
@@ -281,6 +290,7 @@ public class RubricaMainController implements Initializable {
             addcontattopane.setVisible(false); 
             homePane.setVisible(true);
             modificaContattoPane.setVisible(false);
+            contattoPane.setVisible(false);
 
             cntTable.getSelectionModel().select(modContatto);
             ordinamento();
@@ -301,5 +311,6 @@ public class RubricaMainController implements Initializable {
         else
             return true;
     }
+
     
 }
