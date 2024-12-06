@@ -30,27 +30,27 @@ import javafx.scene.layout.AnchorPane;
 public class RubricaMainController implements Initializable {
 
     @FXML
-    private TextField barradiricerca;
+    private TextField barradiricerca;                                           // Barra di ricerca
     @FXML
-    private Button btnaddcontatto;
+    private Button btnaddcontatto;                                              // Bottone aggingi contatto
     @FXML
-    private AnchorPane addcontattopane;
+    private AnchorPane addcontattopane;                                         // Pane per aggiungere contatti
     @FXML
-    private TextField nomeField;
+    private TextField nomeField;                                                // Box per il nome del cpntatto
     @FXML
-    private TextField emailTre;
+    private TextField numeroTre;                                                // Box per il terzo numero telefonico del contatto
     @FXML
-    private TextField numeroTre;
+    private TextField cognomeField;                                             // Box per il Cognome del contatto
     @FXML
-    private TextField cognomeField;
+    private TextField numeroUno;                                                // Box per il Primo numero telefonico del contatto
     @FXML
-    private TextField numeroUno;
+    private TextField numeroDue;                                                // Box per il Secondo numero telefonico del contatto
     @FXML
-    private TextField numeroDue;
+    private TextField emailTre;                                                 // Box per la terza mail del contatto
     @FXML
-    private TextField emailDue;
+    private TextField emailDue;                                                 // Box per la seconda mail del contatto
     @FXML
-    private TextField emailUno;
+    private TextField emailUno;                                                 // Box per la prima mail del contatto
     @FXML
     private Button submitBtn;
     @FXML
