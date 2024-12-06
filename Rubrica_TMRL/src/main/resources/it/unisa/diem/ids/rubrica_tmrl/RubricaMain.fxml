@@ -23,9 +23,8 @@
             </AnchorPane>
             <AnchorPane prefHeight="50.0" prefWidth="420.0">
                <children>
-                  <TextField fx:id="barradiricerca" layoutX="9.0" layoutY="12.0" onAction="#cerca" prefHeight="27.0" prefWidth="271.0" promptText="Cerca" />
-                  <Button fx:id="btnaddcontatto" layoutX="293.0" layoutY="11.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="27.0" prefWidth="55.0" text="Aggiungi Contatto" textAlignment="CENTER" />
-                  <Button fx:id="homeBtn" layoutX="358.0" layoutY="11.0" mnemonicParsing="false" onAction="#switchForm" text="home" />
+                  <TextField fx:id="barraDiRicerca" layoutX="9.0" layoutY="12.0" onAction="#cerca" prefHeight="27.0" prefWidth="271.0" promptText="Cerca" />
+                  <Button fx:id="btnaddcontatto" layoutX="293.0" layoutY="11.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="27.0" prefWidth="121.0" text="Aggiungi Contatto" textAlignment="CENTER" />
                </children>
             </AnchorPane>
          </children>

@@ -12,6 +12,8 @@ import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -31,8 +33,6 @@ import javafx.scene.layout.AnchorPane;
  */
 public class RubricaMainController implements Initializable {
 
-    @FXML
-    private TextField barradiricerca;                                           // Barra di ricerca
     @FXML
     private Button btnaddcontatto;                                              // Bottone aggingi contatto
     @FXML
@@ -59,7 +59,6 @@ public class RubricaMainController implements Initializable {
     private TableView<Contatto> cntTable;
         @FXML
         private TableColumn<Contatto, String> cntClmNome;
-    @FXML
     private Button homeBtn;
     @FXML
     private AnchorPane homePane;
@@ -105,13 +104,15 @@ public class RubricaMainController implements Initializable {
     private Label emailFueLbl;
     @FXML
     private Label emailTreLbl;
+    @FXML
+    private TextField barraDiRicerca;
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
         contatti = FXCollections.observableArrayList();
-        
-        cntClmNome.setCellValueFactory(s -> { return new SimpleStringProperty(s.getValue().getNome() + " " + s.getValue().getCognome());});
+
+        cntClmNome.setCellValueFactory(s -> { return new SimpleStringProperty(s.getValue().getCognome() + " " + s.getValue().getNome());});
         
         
         cntTable.getSelectionModel().selectedItemProperty().addListener(
@@ -124,7 +125,31 @@ public class RubricaMainController implements Initializable {
 
     @FXML
     private void cerca(ActionEvent event) {
+        
+        //DA SISTEMARE (LA PRIMA VOLTA CHE SI CERCA IL CONTATTO NON FUNZIONA)
+        
+        FilteredList<Contatto> cerca = new FilteredList<>(contatti, e->true);
+        
+        barraDiRicerca.setOnKeyPressed(e->{
+            cntTable.getSelectionModel().clearSelection();
+        });
+        
+        barraDiRicerca.textProperty().addListener((observable, oldValue, newValue) ->{
+            cerca.setPredicate(cnt->{
+                if(newValue == null || newValue.isEmpty())
+                    return true;
+                String app = newValue.toLowerCase();                    //testo inserito nella barra di ricerca
+                if(cnt.getNome().toLowerCase().contains(app))
+                    return true;
+                else if(cnt.getCognome().toLowerCase().contains(app))
+                    return true;
+                return false;
+            });
+        });
             
+        SortedList<Contatto> ordina = new SortedList<>(cerca);
+        ordina.comparatorProperty().bind(cntTable.comparatorProperty());
+        cntTable.setItems(ordina);
     }
 
     @FXML
@@ -151,15 +176,16 @@ public class RubricaMainController implements Initializable {
     @FXML
     private void aggiungiContatto(ActionEvent event) {
         
-        String nome = nomeField.getText();
-        String cognome = cognomeField.getText();
-        if(nome.isEmpty() && cognome.isEmpty()){
+        //UNA VOLTA INSERITI DEI CONTATTI E PREMUTO "aggiungi contatti" NON È POSSIBILE USCIRE DALLA SCHERMATA AGGIUNGI CONTATTO, ANCHE CLICCANDO I CONTATTI CREATI
+        
+        if(nomeField.getText().isEmpty() && cognomeField.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Dati Mancanti");
             alert.setHeaderText("Devi inserire almeno uno tra Nome e Cognome");
             alert.showAndWait();
             return;
         }
+        
         Contatto nuovoContatto = new Contatto(nomeField.getText(), cognomeField.getText(), numeroUno.getText(), emailUno.getText());
         contatti.add(nuovoContatto);
         
@@ -190,7 +216,7 @@ public class RubricaMainController implements Initializable {
     }
 
     private void showDetails(Contatto cnt) {
-        datilbl.setText(cnt.getNome() + " " + cnt.getCognome());
+        datilbl.setText(cnt.getCognome() + " " + cnt.getNome());
         numeroUnoLbl.setText(cnt.getNumeroTelefonico());
         emailUnoLbl.setText(cnt.getEmail());
     }
@@ -238,7 +264,7 @@ public class RubricaMainController implements Initializable {
     @FXML
     private void setModificaContatto(ActionEvent event) {
         
-        //possibilmente una volta cliccato su annulla riporta sulla pagina delle modifiche e non sul contatto non modificato
+        //UNA VOLTA CLICCATO ANNULLA DEVE RESTARE NELLA PAGINA DI MODIFICA E NON ANDARE IN VISUALIZZA CONTATTO
         
         int contattoSelID = cntTable.getSelectionModel().getSelectedIndex();
         Contatto modContatto = new Contatto(modNomeField.getText(), modCognomeField.getText(), modNumeroUno.getText(), modEmailUno.getText());
@@ -262,8 +288,8 @@ public class RubricaMainController implements Initializable {
     
     private void ordinamento(){
         Collections.sort(contatti, (c1, c2)->{
-            String nomeCompleto1 = (c1.getNome() + " " + c1.getCognome());
-            String nomeCompleto2 = (c2.getNome() + " " + c2.getCognome());
+            String nomeCompleto1 = (c1.getCognome() + " " + c1.getNome());
+            String nomeCompleto2 = (c2.getCognome() + " " + c2.getNome());
             return nomeCompleto1.compareTo(nomeCompleto2);
         });
     }
