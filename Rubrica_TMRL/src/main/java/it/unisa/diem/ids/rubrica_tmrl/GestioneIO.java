@@ -23,11 +23,9 @@ public class GestioneIO {
     private String numTel;
     private String email;
     
-    public static ObservableList<Contatto> loadContactsFromVcf(String filePath) {
-        
-        
-        
-        ObservableList<Contatto> contacts = FXCollections.observableArrayList();/*
+    public static ObservableList<Contatto> initContatti(String fileDefault) {
+       
+        ObservableList<Contatto> contatti = FXCollections.observableArrayList();/*
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             Contatto contact = null;
@@ -52,7 +50,7 @@ public class GestioneIO {
         } catch (IOException e) {
             System.err.println("Errore durante il caricamento dei contatti" );
         }*/
-        return contacts;
+        return contatti;
     }
     
 }
