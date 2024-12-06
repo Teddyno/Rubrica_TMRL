@@ -241,7 +241,7 @@ public class RubricaMainController implements Initializable {
         emailTreLbl.setText(cnt.getEmail());
 
         //per visualizzare il pane del contatto e disattivare quello della home
-	addcontattopane.setVisible(false); 
+        addcontattopane.setVisible(false); 
         homePane.setVisible(false);
         modificaContattoPane.setVisible(false);
         contattoPane.setVisible(true);
