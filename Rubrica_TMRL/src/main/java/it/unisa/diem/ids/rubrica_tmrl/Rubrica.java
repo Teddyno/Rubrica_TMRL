@@ -1,6 +1,6 @@
 /*
  * prova commit PC_angela
- * dgdgd
+ * 
  * and open the template in the editor.
  */
 package it.unisa.diem.ids.rubrica_tmrl;
