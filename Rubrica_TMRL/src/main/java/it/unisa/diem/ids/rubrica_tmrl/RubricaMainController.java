@@ -37,6 +37,7 @@ public class RubricaMainController implements Initializable {
     private Button btnaddcontatto;                                              // Bottone aggingi contatto
     @FXML
     private AnchorPane addcontattopane;                                         // Pane per aggiungere contatti
+    
     @FXML
     private TextField nomeField;                                                // Box per il nome del cpntatto
     @FXML
@@ -53,6 +54,7 @@ public class RubricaMainController implements Initializable {
     private TextField emailDue;                                                 // Box per la seconda mail del contatto
     @FXML
     private TextField emailUno;                                                 // Box per la prima mail del contatto
+    
     @FXML
     private Button submitBtn;
     @FXML
@@ -165,15 +167,16 @@ public class RubricaMainController implements Initializable {
             modificaContattoPane.setVisible(false);
             contattoPane.setVisible(false);
         }
+       
         
-        else if(event.getSource() == btnHome){
+        else if(event.getSource() == submitBtn){
             addcontattopane.setVisible(false); 
-            homePane.setVisible(true);
+            homePane.setVisible(false);
             modificaContattoPane.setVisible(false);
-            contattoPane.setVisible(false);
+            contattoPane.setVisible(true);
         }
         
-        else{
+        else{ //btnHome
             addcontattopane.setVisible(false); 
             homePane.setVisible(true);
             modificaContattoPane.setVisible(false);
@@ -199,12 +202,7 @@ public class RubricaMainController implements Initializable {
         
         ordinamento();
         
-        if(event.getSource() == submitBtn){
-            addcontattopane.setVisible(false); 
-            homePane.setVisible(false);
-            modificaContattoPane.setVisible(false);
-            contattoPane.setVisible(true);
-        }
+        switchForm(event); //ritorno in home
         
         if (!contatti.isEmpty()) {
         cntTable.getSelectionModel().select(nuovoContatto);
