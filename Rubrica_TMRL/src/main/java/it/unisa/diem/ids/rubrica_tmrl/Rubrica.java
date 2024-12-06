@@ -1,38 +1,38 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package it.unisa.diem.ids.rubrica_tmrl;
 
 import javafx.application.Application;
+import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 /**
- * JavaFX App
+ *
+ * @author diducc
  */
 public class Rubrica extends Application {
-
-    private static Scene scene;
-
+    
     @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("RubricaMain.fxml"));
+        
+        Scene scene = new Scene(root);
+        
         stage.setScene(scene);
         stage.show();
     }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Rubrica.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
-
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
-
+    
 }

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.diem.ids.rubrica_tmrl.RubricaMainController">
+   <top>
+      <HBox prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="50.0" prefWidth="180.0">
+               <children>
+                  <Label layoutX="31.0" layoutY="7.0" text="Rubrica">
+                     <font>
+                        <Font name="System Font" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="50.0" prefWidth="420.0">
+               <children>
+                  <TextField fx:id="barradiricerca" layoutX="9.0" layoutY="12.0" onAction="#cerca" prefHeight="27.0" prefWidth="271.0" promptText="Cerca" />
+                  <Button fx:id="btnaddcontatto" layoutX="293.0" layoutY="11.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="27.0" prefWidth="55.0" text="Aggiungi Contatto" textAlignment="CENTER" />
+                  <Button fx:id="homeBtn" layoutX="358.0" layoutY="11.0" mnemonicParsing="false" onAction="#switchForm" text="home" />
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <VBox prefHeight="350.0" prefWidth="180.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="350.0" prefWidth="182.0">
+               <children>
+                  <TableView fx:id="cntTable" prefHeight="350.0" prefWidth="180.0">
+                    <columns>
+                      <TableColumn fx:id="cntClmNome" prefWidth="180.0" text="Contatto" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <AnchorPane fx:id="addcontattopane" prefHeight="200.0" prefWidth="420.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane fx:id="addcontattopane" prefHeight="350.0" prefWidth="420.0" visible="false">
+               <children>
+                  <Label layoutX="99.0" layoutY="37.0" text="Nuovo Contatto">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="92.0" text="Nome" />
+                  <TextField fx:id="nomeField" layoutX="28.0" layoutY="111.0" prefHeight="27.0" prefWidth="153.0" />
+                  <TextField fx:id="emailTre" layoutX="216.0" layoutY="257.0" prefHeight="27.0" prefWidth="153.0" promptText="Inserisci Email" />
+                  <Label layoutX="220.0" layoutY="171.0" text="E-Mail" />
+                  <TextField fx:id="numeroTre" layoutX="30.0" layoutY="257.0" prefHeight="27.0" prefWidth="153.0" promptText="Inserisci Numero" />
+                  <Label layoutX="30.0" layoutY="170.0" text="Numero Telefonico" />
+                  <TextField fx:id="cognomeField" layoutX="217.0" layoutY="111.0" prefHeight="27.0" prefWidth="153.0" />
+                  <Label layoutX="220.0" layoutY="92.0" text="Cognome" />
+                  <TextField fx:id="numeroUno" layoutX="30.0" layoutY="191.0" prefHeight="27.0" prefWidth="153.0" promptText="Inserisci Numero" />
+                  <TextField fx:id="numeroDue" layoutX="30.0" layoutY="224.0" prefHeight="27.0" prefWidth="153.0" promptText="Inserisci Numero" />
+                  <TextField fx:id="emailDue" layoutX="216.0" layoutY="224.0" prefHeight="27.0" prefWidth="153.0" promptText="Inserisci Email" />
+                  <TextField fx:id="emailUno" layoutX="216.0" layoutY="191.0" prefHeight="27.0" prefWidth="153.0" promptText="Inserisci Email" />
+                  <Label layoutX="201.0" layoutY="197.0" text="1°" />
+                  <Label layoutX="200.0" layoutY="229.0" text="2°" />
+                  <Label layoutX="200.0" layoutY="262.0" text="3°" />
+                  <Label layoutX="14.0" layoutY="262.0" text="3°" />
+                  <Label layoutX="14.0" layoutY="229.0" text="2°" />
+                  <Label layoutX="15.0" layoutY="197.0" text="1°" />
+                  <Button fx:id="submitBtn" layoutX="138.0" layoutY="299.0" mnemonicParsing="false" onAction="#aggiungiContatto" prefHeight="27.0" prefWidth="149.0" text="Aggiungi" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="homePane" prefHeight="350.0" prefWidth="420.0" style="-fx-background-color: BCBCBC;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label fx:id="datilbl" alignment="TOP_CENTER" layoutY="129.0" prefHeight="37.0" prefWidth="420.0" text="Nome Contatto">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="numero1lbl" layoutX="28.0" layoutY="201.0" text="Numero Telefonico 1">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="28.0" layoutY="230.0" text="Numero Telefonico 2">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="28.0" layoutY="259.0" text="Numero Telefonico 3">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <AnchorPane layoutX="166.0" layoutY="14.0" prefHeight="107.0" prefWidth="88.0" style="-fx-background-color: white;" />
+                  <Label fx:id="email1lbl" layoutX="231.0" layoutY="201.0" text="Email 1">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="231.0" layoutY="230.0" text="Email 2">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="231.0" layoutY="259.0" text="Email 3">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="rimuovibtn" layoutX="140.0" layoutY="299.0" mnemonicParsing="false" onAction="#rimuoviContatto" text="Rimuovi" textFill="RED" />
+                  <Button fx:id="modificaBtn" layoutX="223.0" layoutY="299.0" mnemonicParsing="false" onAction="#modificaContatto" text="Modifica" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="modificaContattoPane" prefHeight="350.0" prefWidth="420.0" visible="false">
+               <children>
+                  <Label layoutX="99.0" layoutY="37.0" text="Modifica Contatto">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="92.0" text="Nome" />
+                  <TextField fx:id="modNomeField" layoutX="28.0" layoutY="111.0" prefHeight="27.0" prefWidth="153.0" />
+                  <TextField fx:id="modEmailTre" layoutX="216.0" layoutY="257.0" prefHeight="27.0" prefWidth="153.0" promptText="Inserisci Email" />
+                  <Label layoutX="220.0" layoutY="171.0" text="E-Mail" />
+                  <TextField fx:id="modNumeroTre" layoutX="30.0" layoutY="257.0" prefHeight="27.0" prefWidth="153.0" promptText="Inserisci Numero" />
+                  <Label layoutX="30.0" layoutY="170.0" text="Numero Telefonico" />
+                  <TextField fx:id="modCognomeField" layoutX="217.0" layoutY="111.0" prefHeight="27.0" prefWidth="153.0" />
+                  <Label layoutX="220.0" layoutY="92.0" text="Cognome" />
+                  <TextField fx:id="modNumeroUno" layoutX="30.0" layoutY="191.0" prefHeight="27.0" prefWidth="153.0" promptText="Inserisci Numero" />
+                  <TextField fx:id="modNumeroDue" layoutX="30.0" layoutY="224.0" prefHeight="27.0" prefWidth="153.0" promptText="Inserisci Numero" />
+                  <TextField fx:id="modEmailDue" layoutX="216.0" layoutY="224.0" prefHeight="27.0" prefWidth="153.0" promptText="Inserisci Email" />
+                  <TextField fx:id="modEmailUno" layoutX="216.0" layoutY="191.0" prefHeight="27.0" prefWidth="153.0" promptText="Inserisci Email" />
+                  <Label layoutX="201.0" layoutY="197.0" text="1°" />
+                  <Label layoutX="200.0" layoutY="229.0" text="2°" />
+                  <Label layoutX="200.0" layoutY="262.0" text="3°" />
+                  <Label layoutX="14.0" layoutY="262.0" text="3°" />
+                  <Label layoutX="14.0" layoutY="229.0" text="2°" />
+                  <Label layoutX="15.0" layoutY="197.0" text="1°" />
+                  <Button fx:id="sumbitModifiche" layoutX="138.0" layoutY="299.0" mnemonicParsing="false" onAction="#setModificaContatto" prefHeight="27.0" prefWidth="149.0" text="Conferma Modifiche" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
