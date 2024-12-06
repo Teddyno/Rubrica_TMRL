@@ -72,6 +72,7 @@ public class RubricaMainController implements Initializable {
     private TextField modNomeField;
     @FXML
     private TextField modCognomeField;
+    
     @FXML
     private TextField modNumeroTre;
     @FXML
@@ -84,12 +85,14 @@ public class RubricaMainController implements Initializable {
     private TextField modEmailDue;
     @FXML
     private TextField modEmailUno;
+    
     @FXML
     private Button modificaBtn;
     @FXML
     private AnchorPane modificaContattoPane;
     @FXML
     private Button sumbitModifiche;
+    
     @FXML
     private Label numeroUnoLbl;
     @FXML
@@ -102,6 +105,7 @@ public class RubricaMainController implements Initializable {
     private Label emailDueLbl;
     @FXML
     private Label emailTreLbl;
+    
     @FXML
     private TextField barraDiRicerca;
     @FXML
@@ -157,6 +161,7 @@ public class RubricaMainController implements Initializable {
             
         SortedList<Contatto> ordina = new SortedList<>(cerca);
         ordina.comparatorProperty().bind(cntTable.comparatorProperty());
+        
         cntTable.setItems(ordina);
     }
 
