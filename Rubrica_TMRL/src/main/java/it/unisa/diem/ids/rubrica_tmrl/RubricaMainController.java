@@ -108,7 +108,8 @@ public class RubricaMainController implements Initializable {
     private Button btnHome;
     @FXML
     private AnchorPane contattoPane;
-        
+    @FXML
+    private AnchorPane pane;
     
     private ObservableList<Contatto> contatti;
     
@@ -230,6 +231,11 @@ public class RubricaMainController implements Initializable {
         emailUnoLbl.setText(cnt.getEmail());
         emailDueLbl.setText(cnt.getEmail());
         emailTreLbl.setText(cnt.getEmail());
+
+	addcontattopane.setVisible(false); 
+        homePane.setVisible(false);
+        modificaContattoPane.setVisible(false);
+        contattoPane.setVisible(true);
     }
 
     @FXML
