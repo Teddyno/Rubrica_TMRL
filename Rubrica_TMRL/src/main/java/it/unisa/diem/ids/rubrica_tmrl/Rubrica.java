@@ -18,8 +18,13 @@ import javafx.stage.Stage;
  */
 public class Rubrica extends Application {
     
+    private String fileDefault;
+    
     @Override
     public void start(Stage stage) throws Exception {
+        
+        fileDefault = "Rubrica.vcf";
+        
         Parent root = FXMLLoader.load(getClass().getResource("RubricaMain.fxml"));
         
         Scene scene = new Scene(root);
@@ -33,6 +38,10 @@ public class Rubrica extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+    }
+    
+    public String getFileDefault(){
+        return fileDefault;
     }
     
 }
