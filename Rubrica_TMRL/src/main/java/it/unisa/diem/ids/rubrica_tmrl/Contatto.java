@@ -1,6 +1,3 @@
-/*                  
-        Contatto.java
-*/
 package it.unisa.diem.ids.rubrica_tmrl;
 
 /**

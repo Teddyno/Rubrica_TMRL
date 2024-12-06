@@ -77,40 +77,40 @@
                   <Button fx:id="submitBtn" layoutX="138.0" layoutY="299.0" mnemonicParsing="false" onAction="#aggiungiContatto" prefHeight="27.0" prefWidth="149.0" text="Aggiungi" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="homePane" prefHeight="350.0" prefWidth="420.0" style="-fx-background-color: BCBCBC;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="homePane" prefHeight="350.0" prefWidth="420.0" style="-fx-background-color: BCBCBC;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label fx:id="datilbl" alignment="TOP_CENTER" layoutY="129.0" prefHeight="37.0" prefWidth="420.0" text="Nome Contatto">
                      <font>
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <Label fx:id="numero1lbl" layoutX="28.0" layoutY="201.0" text="Numero Telefonico 1">
+                  <Label fx:id="numeroUnoLbl" layoutX="28.0" layoutY="201.0" text="Numero Telefonico 1">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="28.0" layoutY="230.0" text="Numero Telefonico 2">
+                  <Label fx:id="numeroDueLbl" layoutX="28.0" layoutY="230.0" text="Numero Telefonico 2">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="28.0" layoutY="259.0" text="Numero Telefonico 3">
+                  <Label fx:id="numeroTreLbl" layoutX="28.0" layoutY="259.0" text="Numero Telefonico 3">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
                   <AnchorPane layoutX="166.0" layoutY="14.0" prefHeight="107.0" prefWidth="88.0" style="-fx-background-color: white;" />
-                  <Label fx:id="email1lbl" layoutX="231.0" layoutY="201.0" text="Email 1">
+                  <Label fx:id="emailUnoLbl" layoutX="231.0" layoutY="201.0" text="Email 1">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="231.0" layoutY="230.0" text="Email 2">
+                  <Label fx:id="emailFueLbl" layoutX="231.0" layoutY="230.0" text="Email 2">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="231.0" layoutY="259.0" text="Email 3">
+                  <Label fx:id="emailTreLbl" layoutX="231.0" layoutY="259.0" text="Email 3">
                      <font>
                         <Font size="16.0" />
                      </font>
