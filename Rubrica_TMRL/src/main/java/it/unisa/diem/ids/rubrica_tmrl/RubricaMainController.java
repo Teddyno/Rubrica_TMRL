@@ -177,6 +177,7 @@ public class RubricaMainController implements Initializable {
     private void aggiungiContatto(ActionEvent event) {
         
         //UNA VOLTA INSERITI DEI CONTATTI E PREMUTO "aggiungi contatti" NON È POSSIBILE USCIRE DALLA SCHERMATA AGGIUNGI CONTATTO, ANCHE CLICCANDO I CONTATTI CREATI
+        // creare metodo di validità
         
         if(nomeField.getText().isEmpty() && cognomeField.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.WARNING);
