@@ -116,8 +116,9 @@ public class RubricaMainController implements Initializable {
         
         contatti = FXCollections.observableArrayList();
 
-        cntClmNome.setCellValueFactory(s -> { return new SimpleStringProperty(s.getValue().getCognome() + " " + s.getValue().getNome());});
-        
+        cntClmNome.setCellValueFactory(s -> { 
+            return new SimpleStringProperty(s.getValue().getCognome() + " " + s.getValue().getNome());
+        });
         
         cntTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
