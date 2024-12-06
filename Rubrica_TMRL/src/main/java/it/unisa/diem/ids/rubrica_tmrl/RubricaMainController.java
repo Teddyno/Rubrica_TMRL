@@ -69,15 +69,15 @@ public class RubricaMainController implements Initializable {
     @FXML
     private TextField modNomeField;
     @FXML
-    private TextField modEmailTre;
+    private TextField modCognomeField;
     @FXML
     private TextField modNumeroTre;
     @FXML
-    private TextField modCognomeField;
+    private TextField modNumeroDue;
     @FXML
     private TextField modNumeroUno;
     @FXML
-    private TextField modNumeroDue;
+    private TextField modEmailTre;
     @FXML
     private TextField modEmailDue;
     @FXML
@@ -97,7 +97,7 @@ public class RubricaMainController implements Initializable {
     @FXML
     private Label emailUnoLbl;
     @FXML
-    private Label emailFueLbl;
+    private Label emailDueLbl;
     @FXML
     private Label emailTreLbl;
     @FXML
