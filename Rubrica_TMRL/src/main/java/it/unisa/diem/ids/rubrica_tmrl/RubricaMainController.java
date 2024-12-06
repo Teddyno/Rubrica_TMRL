@@ -182,6 +182,13 @@ public class RubricaMainController implements Initializable {
             contattoPane.setVisible(true);
         }
         
+        else if(event.getSource() == modificaBtn){
+            addcontattopane.setVisible(false); 
+            homePane.setVisible(false);
+            modificaContattoPane.setVisible(true);
+            contattoPane.setVisible(false);
+        }   
+        
         else{ //btnHome
             addcontattopane.setVisible(false); 
             homePane.setVisible(true);
@@ -275,12 +282,7 @@ public class RubricaMainController implements Initializable {
     @FXML
     private void modificaContatto(ActionEvent event) {
         
-        if(event.getSource() == modificaBtn){
-            addcontattopane.setVisible(false); 
-            homePane.setVisible(false);
-            modificaContattoPane.setVisible(true);
-            contattoPane.setVisible(false);
-        }   
+        switchPane(event);
 
         Contatto contattoSel = cntTable.getSelectionModel().getSelectedItem();
         modNomeField.setText(contattoSel.getNome());
