@@ -310,10 +310,7 @@ public class RubricaMainController implements Initializable {
     }
     
     private boolean isValido(){
-        if(nomeField.getText().isEmpty() && cognomeField.getText().isEmpty())
-            return false;
-        else
-            return true;
+        return !(nomeField.getText().isEmpty() && cognomeField.getText().isEmpty());
     }
 
     
