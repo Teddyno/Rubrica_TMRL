@@ -227,7 +227,11 @@ public class RubricaMainController implements Initializable {
     private void showDetails(Contatto cnt) {
         datilbl.setText(cnt.getCognome() + " " + cnt.getNome());
         numeroUnoLbl.setText(cnt.getNumeroTelefonico());
+        numeroDueLbl.setText(cnt.getNumeroTelefonico());
+        numeroTreLbl.setText(cnt.getNumeroTelefonico());
         emailUnoLbl.setText(cnt.getEmail());
+        emailDueLbl.setText(cnt.getEmail());
+        emailTreLbl.setText(cnt.getEmail());
     }
 
     @FXML
@@ -257,7 +261,6 @@ public class RubricaMainController implements Initializable {
 
     @FXML
     private void modificaContatto(ActionEvent event) {
-        Contatto contattoSel = cntTable.getSelectionModel().getSelectedItem();
         
         if(event.getSource() == modificaBtn){
             addcontattopane.setVisible(false); 
@@ -265,8 +268,8 @@ public class RubricaMainController implements Initializable {
             modificaContattoPane.setVisible(true);
             contattoPane.setVisible(false);
         }   
-        
-        int contattoSelID = cntTable.getSelectionModel().getSelectedIndex();
+
+        Contatto contattoSel = cntTable.getSelectionModel().getSelectedItem();
         modNomeField.setText(contattoSel.getNome());
         modCognomeField.setText(contattoSel.getCognome());
         
