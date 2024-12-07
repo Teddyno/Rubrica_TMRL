@@ -14,5 +14,9 @@ import javafx.collections.ObservableList;
 public class Elenco {
     
     private ObservableList<Contatto> contatti;
+
+    public ObservableList<Contatto> getContatti() {
+        return contatti;
+    }
     
 }

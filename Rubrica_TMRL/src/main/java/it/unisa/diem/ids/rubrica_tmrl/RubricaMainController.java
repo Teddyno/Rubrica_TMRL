@@ -238,6 +238,8 @@ public class RubricaMainController implements Initializable {
         
         ordinamento();
         
+        GestioneIO.salvaVCF(Rubrica.fileDefault,contatti);
+        
         switchPane(event); //ritorno in home
         cntTable.getSelectionModel().select(nuovoContatto);
         
@@ -257,9 +259,9 @@ public class RubricaMainController implements Initializable {
 
     private void showDetails(Contatto cnt) {
         datilbl.setText(cnt.getCognome() + " " + cnt.getNome());
-        numeroUnoLbl.setText(cnt.getNumeroTelefonico());
-        numeroDueLbl.setText(cnt.getNumeroTelefonico());
-        numeroTreLbl.setText(cnt.getNumeroTelefonico());
+        numeroUnoLbl.setText(cnt.getNumTel());
+        numeroDueLbl.setText(cnt.getNumTel());
+        numeroTreLbl.setText(cnt.getNumTel());
         emailUnoLbl.setText(cnt.getEmail());
         emailDueLbl.setText(cnt.getEmail());
         emailTreLbl.setText(cnt.getEmail());
@@ -283,9 +285,12 @@ public class RubricaMainController implements Initializable {
         alert.setContentText("Sei sicuro di voler eliminare " + contattoSel.getCognome() + " " + contattoSel.getNome() + "?");
         
         alert.showAndWait().ifPresent(response -> {
-            if(response == ButtonType.OK)
+            if(response == ButtonType.OK){
                 contatti.remove(contattoSel);
             
+                GestioneIO.salvaVCF(Rubrica.fileDefault,contatti);
+            }
+                
             if(contatti.isEmpty()){
                 switchPane(event);
             }
@@ -318,6 +323,7 @@ public class RubricaMainController implements Initializable {
             if(response == ButtonType.OK){
                 contatti.set(contattoSelID, modContatto);
                 cntTable.getSelectionModel().select(modContatto);
+                GestioneIO.salvaVCF(Rubrica.fileDefault,contatti);
             }
             else{
                 addcontattopane.setVisible(false); 

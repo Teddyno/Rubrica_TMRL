@@ -11,6 +11,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Iterator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -48,6 +49,31 @@ public class GestioneIO {
             }
         } catch (IOException e) {
             System.err.println("Errore durante il caricamento dei contatti" );
+        }
+    }
+    
+    public static void salvaVCF(String fileDefault,ObservableList<Contatto> contatti) {
+       
+        //il blocco try con le risorse, se c'è un eccezione fa di base il close del pw
+        try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(fileDefault)))){
+
+            Iterator<Contatto> i = contatti.iterator();
+            
+            while(i.hasNext()){
+
+                Contatto c = i.next();
+                
+                pw.println("BEGIN:VCARD");
+                pw.println("VERSION:3.0");
+                pw.println("FN;CHARSET=UTF-8:"+c.getNome()+" "+c.getCognome());
+                pw.println("N;CHARSET=UTF-8:"+c.getCognome()+";"+c.getNome());
+                pw.println("EMAIL;CHARSET=UTF-8;type=HOME,INTERNET:"+c.getEmail());
+                pw.println("TEL;TYPE=CELL:"+c.getNumTel());
+                pw.println("END:VCARD");
+
+            }
+        
+        } catch(IOException e){
         }
     }
     
