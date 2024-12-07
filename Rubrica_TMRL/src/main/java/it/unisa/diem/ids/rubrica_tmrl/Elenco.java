@@ -5,10 +5,14 @@
  */
 package it.unisa.diem.ids.rubrica_tmrl;
 
+import javafx.collections.ObservableList;
+
 /**
  *
  * @author carlo
  */
 public class Elenco {
+    
+    private ObservableList<Contatto> contatti;
     
 }

@@ -43,8 +43,7 @@ public class GestioneIO {
                 } else if (line.startsWith("TEL;")) {
                     numTel = line.substring(14).trim();
                 } else if (line.startsWith("END:VCARD")) {
-                    Contatto contatto = new Contatto(nome,cognome,numTel,email);
-                    contatti.add(contatto);
+                    contatti.add(new Contatto(nome,cognome,numTel,email));
                 }
             }
         } catch (IOException e) {
