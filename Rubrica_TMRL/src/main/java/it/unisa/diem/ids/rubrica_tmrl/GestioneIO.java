@@ -29,7 +29,7 @@ public class GestioneIO {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             Contatto contact = null;
-
+            // ciao
             while ((line = reader.readLine()) != null) {
                 if (line.startsWith("BEGIN:VCARD")) {
                     
