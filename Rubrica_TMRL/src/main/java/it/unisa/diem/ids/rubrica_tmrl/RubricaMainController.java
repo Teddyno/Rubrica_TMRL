@@ -124,6 +124,10 @@ public class RubricaMainController implements Initializable {
     private TextField emailTre;                                                 // Box per la terza mail del contatto
     @FXML
     private Button submitBtn;                                                   // Button "Aggiungi" dell'anchorPane "Nuovo Contatto" 
+    @FXML
+    private Button gruppiBtn;
+    @FXML
+    private Button predefinitoBtn;
 
     /**********   ***************************  ***********/
     
@@ -153,21 +157,21 @@ public class RubricaMainController implements Initializable {
         
         FilteredList<Contatto> cerca = new FilteredList<>(contatti, e->true);   // e->true ti manda tutti i contatti, e->false non ti manda nulla
         
-        barraDiRicerca.setOnKeyPressed(e->{
-            cntTable.getSelectionModel().clearSelection();                      // ogni volta che l'utente preme un tasto nella casella di ricerca la selezione della tablewiew viene cancellata
-        });
-        
         barraDiRicerca.textProperty().addListener((observable, oldValue, newValue) ->{
             cerca.setPredicate(cnt->{                                           // setPredicate definisce il filtro da applicare agli elementi della lista
                 if(newValue == null || newValue.isEmpty())
                     return true;
-                String app = newValue.toLowerCase();                            // testo inserito nella barra di ricerca
-                if(cnt.getNome().toLowerCase().contains(app))
+                String filtro = newValue.toLowerCase();                            // testo inserito nella barra di ricerca
+                if(cnt.getNome().toLowerCase().contains(filtro))
                     return true;
-                else if(cnt.getCognome().toLowerCase().contains(app))           // toLowerCase() utilizzata per convertire tutte le lettere di una stringa in caratteri minuscoli
+                else if(cnt.getCognome().toLowerCase().contains(filtro))           // toLowerCase() utilizzata per convertire tutte le lettere di una stringa in caratteri minuscoli
                     return true;
                 return false;
             });
+        });
+        
+        barraDiRicerca.setOnKeyPressed(e->{
+        cntTable.getSelectionModel().clearSelection();                      // ogni volta che l'utente preme un tasto nella casella di ricerca la selezione della tablewiew viene cancellata
         });
             
         SortedList<Contatto> ordina = new SortedList<>(cerca);
@@ -218,8 +222,6 @@ public class RubricaMainController implements Initializable {
     @FXML
     private void aggiungiContatto(ActionEvent event) {
         
-        //UNA VOLTA INSERITI DEI CONTATTI E PREMUTO "aggiungi contatti" NON È POSSIBILE USCIRE DALLA SCHERMATA AGGIUNGI CONTATTO, ANCHE CLICCANDO I CONTATTI CREATI
-        
         if(!isValido()){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Dati Mancanti");
@@ -234,10 +236,7 @@ public class RubricaMainController implements Initializable {
         ordinamento();
         
         switchPane(event); //ritorno in home
-        
-        if (!contatti.isEmpty()) {  // è utile?
         cntTable.getSelectionModel().select(nuovoContatto);
-        }
         
         pulisci();
     }
@@ -285,10 +284,7 @@ public class RubricaMainController implements Initializable {
                 contatti.remove(contattoSel);
             
             if(contatti.isEmpty()){
-                addcontattopane.setVisible(false); 
-                homePane.setVisible(true);
-                modificaContattoPane.setVisible(false);
-                contattoPane.setVisible(false);
+                switchPane(event);
             }
         });
 
@@ -296,8 +292,7 @@ public class RubricaMainController implements Initializable {
     
 
     @FXML
-    private void modificaContatto(ActionEvent event) {      // modificare il nome
-        
+    private void modificaPane(ActionEvent event) { 
         switchPane(event);
 
         Contatto contattoSel = cntTable.getSelectionModel().getSelectedItem();
@@ -307,10 +302,7 @@ public class RubricaMainController implements Initializable {
     }
 
     @FXML
-    private void setModificaContatto(ActionEvent event) {
-        
-        //UNA VOLTA CLICCATO ANNULLA DEVE RESTARE NELLA PAGINA DI MODIFICA E NON ANDARE IN VISUALIZZA CONTATTO
-        
+    private void modificaContatto(ActionEvent event) {
         int contattoSelID = cntTable.getSelectionModel().getSelectedIndex();
         Contatto modContatto = new Contatto(modNomeField.getText(), modCognomeField.getText(), modNumeroUno.getText(), modEmailUno.getText());
         
@@ -320,28 +312,40 @@ public class RubricaMainController implements Initializable {
         alert.setContentText("Sei sicuro di voler modificare in: " + modContatto.getCognome() + " " + modContatto.getNome() + "?");
         
         alert.showAndWait().ifPresent(response -> {
-            contatti.set(contattoSelID, modContatto);
-
-            addcontattopane.setVisible(false); 
-            homePane.setVisible(true);
-            modificaContattoPane.setVisible(false);
-            contattoPane.setVisible(false);
-
-            cntTable.getSelectionModel().select(modContatto);
-            ordinamento();
+            if(response == ButtonType.OK){
+                contatti.set(contattoSelID, modContatto);
+                cntTable.getSelectionModel().select(modContatto);
+            }
+            else{
+                addcontattopane.setVisible(false); 
+                homePane.setVisible(false);
+                modificaContattoPane.setVisible(true);
+                contattoPane.setVisible(false);
+            }
+            
         });
+        ordinamento();
     }
     
     private void ordinamento(){
         Collections.sort(contatti, (c1, c2)->{
             String nomeCompleto1 = (c1.getCognome() + " " + c1.getNome());
             String nomeCompleto2 = (c2.getCognome() + " " + c2.getNome());
-            return nomeCompleto1.compareTo(nomeCompleto2);
+            return nomeCompleto1.compareToIgnoreCase(nomeCompleto2);
         });
     }
-    
-    
 
+    @FXML
+    private void aggiungiPredefiniti(ActionEvent event) {               
+        
+        //METODO DA TOGLIERE. SERVE SOLO PER COMODITÀ NEI TEST (CREA IN AUTOMATICO 4 CONTATTI)
+        
+        Contatto contatto1 = new Contatto("Mario", "Rossi", "1234567890", "mario.rossi@example.com");
+        Contatto contatto2 = new Contatto("Luigi", "Verdi", "1234567890", "luigi.verdi@example.com");
+        Contatto contatto3 = new Contatto("Anna", "Bianchi", "1234567890", "anna.bianchi@example.com");
+        Contatto contatto4 = new Contatto("Sara", "Neri", "1234567890", "sara.neri@example.com");
 
-    
+        contatti.addAll(contatto1, contatto2, contatto3, contatto4);
+        ordinamento();
+    }
 }

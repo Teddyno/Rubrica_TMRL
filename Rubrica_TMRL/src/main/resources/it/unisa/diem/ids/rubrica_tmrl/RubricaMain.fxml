@@ -14,9 +14,10 @@
          <children>
             <AnchorPane prefHeight="50.0" prefWidth="692.0">
                <children>
-                  <TextField fx:id="barraDiRicerca" layoutX="92.0" layoutY="12.0" onAction="#cerca" prefHeight="27.0" prefWidth="417.0" promptText="Cerca" />
+                  <TextField fx:id="barraDiRicerca" layoutX="55.0" layoutY="12.0" onAction="#cerca" prefHeight="27.0" prefWidth="369.0" promptText="Cerca" />
                   <Button fx:id="btnHome" layoutX="522.0" layoutY="12.0" mnemonicParsing="false" onAction="#switchPane" prefHeight="27.0" prefWidth="68.0" text="Home" />
-                  <Label layoutX="37.0" layoutY="17.0" text="Logo" />
+                  <Label layoutX="14.0" layoutY="17.0" text="Logo" />
+                  <Button fx:id="gruppiBtn" layoutX="438.0" layoutY="12.0" mnemonicParsing="false" onAction="#switchPane" prefHeight="27.0" prefWidth="68.0" text="Gruppi" />
                </children>
             </AnchorPane>
          </children>
@@ -107,7 +108,7 @@
                      </font>
                   </Label>
                   <Button fx:id="rimuovibtn" layoutX="140.0" layoutY="299.0" mnemonicParsing="false" onAction="#rimuoviContatto" text="Rimuovi" textFill="RED" />
-                  <Button fx:id="modificaBtn" layoutX="223.0" layoutY="299.0" mnemonicParsing="false" onAction="#modificaContatto" text="Modifica" />
+                  <Button fx:id="modificaBtn" layoutX="223.0" layoutY="299.0" mnemonicParsing="false" onAction="#modificaPane" text="Modifica" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="modificaContattoPane" prefHeight="350.0" prefWidth="420.0" visible="false">
@@ -135,7 +136,7 @@
                   <Label layoutX="14.0" layoutY="262.0" text="3°" />
                   <Label layoutX="14.0" layoutY="229.0" text="2°" />
                   <Label layoutX="15.0" layoutY="197.0" text="1°" />
-                  <Button fx:id="sumbitModifiche" layoutX="138.0" layoutY="299.0" mnemonicParsing="false" onAction="#setModificaContatto" prefHeight="27.0" prefWidth="149.0" text="Conferma Modifiche" />
+                  <Button fx:id="sumbitModifiche" layoutX="138.0" layoutY="299.0" mnemonicParsing="false" onAction="#modificaContatto" prefHeight="27.0" prefWidth="149.0" text="Conferma Modifiche" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="homePane" prefHeight="350.0" prefWidth="420.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -148,6 +149,18 @@
                   <Button layoutX="73.0" layoutY="194.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Importa Dati" textAlignment="CENTER" />
                   <Button layoutX="233.0" layoutY="194.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Esporta Dati" textAlignment="CENTER" />
                   <Button fx:id="btnaddcontatto" layoutX="73.0" layoutY="150.0" mnemonicParsing="false" onAction="#switchPane" prefHeight="31.0" prefWidth="279.0" text="Aggiungi Contatto" />
+                  <Button fx:id="predefinitoBtn" layoutX="74.0" layoutY="235.0" mnemonicParsing="false" onAction="#aggiungiPredefiniti" prefHeight="31.0" prefWidth="279.0" text="Predefinito" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="350.0" prefWidth="420.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="159.0" layoutY="73.0" prefHeight="42.0" prefWidth="104.0" text="Gruppi">
+                     <font>
+                        <Font size="34.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="92.0" layoutY="148.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="236.0" text="Crea Nuovo Gruppo" />
+                  <Button layoutX="93.0" layoutY="183.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="236.0" text="I Miei Gruppi" />
                </children>
             </AnchorPane>
          </children>
