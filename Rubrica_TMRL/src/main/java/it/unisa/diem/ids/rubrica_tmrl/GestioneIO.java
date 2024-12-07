@@ -16,40 +16,39 @@ import javafx.collections.ObservableList;
  * @author alext
  */
 public class GestioneIO {
-    
-    private String nomeCompleto;
-    private String nome;
-    private String cognome;
-    private String numTel;
-    private String email;
-    
+   
     public static ObservableList<Contatto> initContatti(String fileDefault) {
        
-        ObservableList<Contatto> contatti = FXCollections.observableArrayList();/*
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+        String nomeCompleto = null;
+        String nome = null;
+        String cognome = null;
+        String numTel = null;
+        String email = null;
+        
+        ObservableList<Contatto> contatti = FXCollections.observableArrayList();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader("Rubrica.vcf"))) {
             String line;
-            Contatto contact = null;
 
             while ((line = reader.readLine()) != null) {
                 if (line.startsWith("BEGIN:VCARD")) {
-                    
-                } else if (line.startsWith("FN:") && contact != null) {
-                    nomeCompleto= line.substring(3).trim();
+                } else if (line.startsWith("FN:")) {
+                    nomeCompleto= line.substring(17).trim();
                     String[] campi = nomeCompleto.split(" ", 2);
                     nome = campi[0];
                     cognome = campi[1];
-                } else if (line.startsWith("TEL:") && contact != null) {
-                    numTel = line.substring(19).trim();
-                } else if (line.startsWith("EMAIL:") && contact != null) {
-                    email = line.substring(14).trim();
-                } else if (line.startsWith("END:VCARD") && contact != null) {
+                } else if (line.startsWith("EMAIL:")) {
+                    email = line.substring(39).trim();
+                } else if (line.startsWith("TEL:")) {
+                    numTel = line.substring(14).trim();
+                } else if (line.startsWith("END:VCARD")) {
                     Contatto contatto = new Contatto(nome,cognome,numTel,email);
-                    contacts.add(contact);
+                    contatti.add(contatto);
                 }
             }
         } catch (IOException e) {
             System.err.println("Errore durante il caricamento dei contatti" );
-        }*/
+        }
         return contatti;
     }
     
