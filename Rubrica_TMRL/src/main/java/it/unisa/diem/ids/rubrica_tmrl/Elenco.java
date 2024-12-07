@@ -5,6 +5,7 @@
  */
 package it.unisa.diem.ids.rubrica_tmrl;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
@@ -15,6 +16,10 @@ public class Elenco {
     
     private ObservableList<Contatto> contatti;
 
+    public Elenco() {
+        contatti = FXCollections.observableArrayList();
+    }
+    
     public ObservableList<Contatto> getContatti() {
         return contatti;
     }
