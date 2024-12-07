@@ -32,14 +32,82 @@ import javafx.scene.layout.AnchorPane;
  * @author diducc
  */
 public class RubricaMainController implements Initializable {
-
     @FXML
-    private Button btnaddcontatto;                                              // Bottone aggingi contatto
-    @FXML
-    private AnchorPane addcontattopane;                                         // Pane per aggiungere contatti
+    private AnchorPane pane;                                                    // AnchorPane " Principale"
     
     @FXML
-    private TextField nomeField;                                                // Box per il nome del cpntatto
+    private TextField barraDiRicerca;
+    
+    @FXML
+    private Button btnHome;                                                     // Button Home in HBox all'interno dell' AnchorPane "Principale"
+    
+    @FXML
+    private TableView<Contatto> cntTable;                                       // Tabella contatti in VBox all'interno dell' AnchorPane "Principale"
+        @FXML
+        private TableColumn<Contatto, String> cntClmNome;                           // Tabella contatti (colonna)
+    
+    private ObservableList<Contatto> contatti;
+        
+    /**********  AnchorPane HOMEPAGE  ***********/
+    @FXML
+    private AnchorPane homePane;                                                // AnchorPane HOMEPAGE
+    @FXML
+    private Button btnaddcontatto;                                              // Button "Aggiungi Contatto" nell'anchorPane "Home Page"
+  
+    /**********  *******************  ***********/
+    
+    /**********  AnchorPane MODIFICA CONTATTO  *************/
+    @FXML
+    private AnchorPane modificaContattoPane;                                    // AnchorPane "Modifica Contatto"
+    @FXML
+    private Button sumbitModifiche;                                             // Button "Conferma Modifiche" nell'anchorPane "Modifica Contatto"
+    @FXML
+    private TextField modNomeField;                                             // Box/TextField nell'anchor Pane "Modifica Contatto" per modificare il Nome del Contatto
+    @FXML
+    private TextField modCognomeField;                                          // Box/TextField nell'anchor Pane "Modifica Contatto" per modificare il Cognome del Contatto
+    @FXML
+    private TextField modNumeroTre;                                             // Box/TextField nell'anchor Pane "Modifica Contatto" per modificare il Terzo Numero del Contatto
+    @FXML
+    private TextField modNumeroDue;                                             // Box/TextField nell'anchor Pane "Modifica Contatto" per modificare il secondo Numero del Contatto
+    @FXML
+    private TextField modNumeroUno;                                             // Box/TextField nell'anchor Pane "Modifica Contatto" per modificare il primo Numero del Contatto
+    @FXML
+    private TextField modEmailTre;                                              // Box/TextField nell'anchor Pane "Modifica Contatto" per modificare la Terzo Email del Contatto
+    @FXML
+    private TextField modEmailDue;                                              // Box/TextField nell'anchor Pane "Modifica Contatto" per modificare la seconda Email del Contatto
+    @FXML
+    private TextField modEmailUno;                                              // Box/TextField nell'anchor Pane "Modifica Contatto" per modificare la prima Email del Contatto
+    /**********  *****************************  *************/
+            
+    /**********   AnchorPane VISUALIZZA CONTATTO  ***********/
+    @FXML
+    private AnchorPane contattoPane;                                            // AnchorPane "VISUALIZZA CONTATTO"                                    
+    @FXML
+    private Label datilbl;                                                      // Label per visualizzare il NOME e Cognome del contatto nell'AnchorPane per visualizzare il contatto
+    @FXML
+    private Button rimuovibtn;                                                  // Button "Rimuovi" nell'AnchorPane per visualizzare il contatto
+    @FXML
+    private Button modificaBtn;                                                 // Button "Conferma Modifiche" nell'anchorPane "Nome Contatto"
+    @FXML
+    private Label numeroUnoLbl;                                                 // Label nell'anchor Pane "Visualizza Contatto" per visualizzare il primo Numero del Contatto
+    @FXML
+    private Label numeroDueLbl;                                                 // Label nell'anchor Pane "Visualizza Contatto" per visualizzare il secondo Numero del Contatto
+    @FXML
+    private Label numeroTreLbl;                                                 // Label nell'anchor Pane "Visualizza Contatto" per visualizzare il Terzo Numero del Contatto
+    @FXML
+    private Label emailUnoLbl;                                                  // Label  nell'anchor Pane "Visualizza Contatto" per visualizzare la prima email del Contatto
+    @FXML
+    private Label emailDueLbl;                                                  // Label  nell'anchor Pane "Visualizza Contatto" per visualizzare la seconda email del Contatto
+    @FXML
+    private Label emailTreLbl;                                                  // Label  nell'anchor Pane "Visualizza Contatto" per visualizzare la terza email del Contatto
+    /********** ********************************  ***********/
+    
+   
+    /**********   AnchorPane Aggiungi CONTATTO  ***********/
+    @FXML
+    private AnchorPane addcontattopane;                                         // Pane per aggiungere contatti 
+    @FXML
+    private TextField nomeField;                                                // Box per il nome del contatto
     @FXML
     private TextField numeroTre;                                                // Box per il terzo numero telefonico del contatto
     @FXML
@@ -49,74 +117,15 @@ public class RubricaMainController implements Initializable {
     @FXML
     private TextField numeroDue;                                                // Box per il Secondo numero telefonico del contatto
     @FXML
-    private TextField emailTre;                                                 // Box per la terza mail del contatto
+    private TextField emailUno;                                                 // Box per la prima mail del contatto
     @FXML
     private TextField emailDue;                                                 // Box per la seconda mail del contatto
     @FXML
-    private TextField emailUno;                                                 // Box per la prima mail del contatto
-    
+    private TextField emailTre;                                                 // Box per la terza mail del contatto
     @FXML
-    private Button submitBtn;
-    @FXML
-    private TableView<Contatto> cntTable;
-        @FXML
-        private TableColumn<Contatto, String> cntClmNome;
-    private Button homeBtn;
-    @FXML
-    private AnchorPane homePane;
-    @FXML
-    private Label datilbl;
-    @FXML
-    private Button rimuovibtn;
-    @FXML
-    private TextField modNomeField;
-    @FXML
-    private TextField modCognomeField;
-    
-    @FXML
-    private TextField modNumeroTre;
-    @FXML
-    private TextField modNumeroDue;
-    @FXML
-    private TextField modNumeroUno;
-    @FXML
-    private TextField modEmailTre;
-    @FXML
-    private TextField modEmailDue;
-    @FXML
-    private TextField modEmailUno;
-    
-    @FXML
-    private Button modificaBtn;
-    @FXML
-    private AnchorPane modificaContattoPane;
-    @FXML
-    private Button sumbitModifiche;
-    
-    @FXML
-    private Label numeroUnoLbl;
-    @FXML
-    private Label numeroDueLbl;
-    @FXML
-    private Label numeroTreLbl;
-    @FXML
-    private Label emailUnoLbl;
-    @FXML
-    private Label emailDueLbl;
-    @FXML
-    private Label emailTreLbl;
-    
-    @FXML
-    private TextField barraDiRicerca;
-    @FXML
-    private Button btnHome;
-    @FXML
-    private AnchorPane contattoPane;
-    @FXML
-    private AnchorPane pane;
-    
-    private ObservableList<Contatto> contatti;
-    
+    private Button submitBtn;                                                   // Button "Aggiungi" dell'anchorPane "Nuovo Contatto" 
+
+    /**********   ***************************  ***********/
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -142,30 +151,31 @@ public class RubricaMainController implements Initializable {
         
         //DA SISTEMARE (LA PRIMA VOLTA CHE SI CERCA IL CONTATTO NON FUNZIONA)
         
-        FilteredList<Contatto> cerca = new FilteredList<>(contatti, e->true);
+        FilteredList<Contatto> cerca = new FilteredList<>(contatti, e->true);   // e->true ti manda tutti i contatti, e->false non ti manda nulla
         
         barraDiRicerca.setOnKeyPressed(e->{
-            cntTable.getSelectionModel().clearSelection();
+            cntTable.getSelectionModel().clearSelection();                      // ogni volta che l'utente preme un tasto nella casella di ricerca la selezione della tablewiew viene cancellata
         });
         
         barraDiRicerca.textProperty().addListener((observable, oldValue, newValue) ->{
-            cerca.setPredicate(cnt->{
+            cerca.setPredicate(cnt->{                                           // setPredicate definisce il filtro da applicare agli elementi della lista
                 if(newValue == null || newValue.isEmpty())
                     return true;
-                String app = newValue.toLowerCase();                    //testo inserito nella barra di ricerca
+                String app = newValue.toLowerCase();                            // testo inserito nella barra di ricerca
                 if(cnt.getNome().toLowerCase().contains(app))
                     return true;
-                else if(cnt.getCognome().toLowerCase().contains(app))
+                else if(cnt.getCognome().toLowerCase().contains(app))           // toLowerCase() utilizzata per convertire tutte le lettere di una stringa in caratteri minuscoli
                     return true;
                 return false;
             });
         });
             
         SortedList<Contatto> ordina = new SortedList<>(cerca);
-        ordina.comparatorProperty().bind(cntTable.comparatorProperty());
-        
-        cntTable.setItems(ordina);
+        ordina.comparatorProperty().bind(cntTable.comparatorProperty());        // comparatorProperty() è utilizzato nelle SortedList per determinare l'ordine di ordinamento degli elementi
+                                                                                // .bind() è usato per creare una nuova funzione con un contesto (this) specificato.
+        cntTable.setItems(ordina);                                              // .setItems() per impostare gli elementi di ordina in cntTable
     }
+    
 
     @FXML
     private void switchPane(ActionEvent event) {
@@ -176,7 +186,6 @@ public class RubricaMainController implements Initializable {
             contattoPane.setVisible(false);
         }
        
-        
         else if(event.getSource() == submitBtn){
             addcontattopane.setVisible(false); 
             homePane.setVisible(false);
@@ -200,6 +209,10 @@ public class RubricaMainController implements Initializable {
             //però non mi piace come posizionamento, commenta per notare il problema
             cntTable.getSelectionModel().clearSelection();
         }
+    }
+    
+    private boolean isValido(){
+        return !(nomeField.getText().isEmpty() && cognomeField.getText().isEmpty());  // controlla se i campi sono vuoti in aggiungi contatto
     }
 
     @FXML
@@ -250,6 +263,7 @@ public class RubricaMainController implements Initializable {
         emailTreLbl.setText(cnt.getEmail());
 
         //per visualizzare il pane del contatto e disattivare quello della home
+        // da implementare nello switchPane ??
         addcontattopane.setVisible(false); 
         homePane.setVisible(false);
         modificaContattoPane.setVisible(false);
@@ -282,7 +296,7 @@ public class RubricaMainController implements Initializable {
     
 
     @FXML
-    private void modificaContatto(ActionEvent event) {
+    private void modificaContatto(ActionEvent event) {      // modificare il nome
         
         switchPane(event);
 
@@ -326,9 +340,8 @@ public class RubricaMainController implements Initializable {
         });
     }
     
-    private boolean isValido(){
-        return !(nomeField.getText().isEmpty() && cognomeField.getText().isEmpty());
-    }
+    
+
 
     
 }
