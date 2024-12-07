@@ -141,7 +141,7 @@ public class RubricaMainController implements Initializable {
                     showDetails(newValue);
                 });
         
-        contatti = GestioneIO.initContatti(Rubrica.fileDefault);
+        GestioneIO.initContatti(Rubrica.fileDefault,contatti);
         
         cntTable.setItems(contatti);
     }    
