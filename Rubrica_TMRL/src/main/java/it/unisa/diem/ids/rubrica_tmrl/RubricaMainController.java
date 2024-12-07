@@ -5,10 +5,13 @@
  */
 package it.unisa.diem.ids.rubrica_tmrl;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -144,7 +147,7 @@ public class RubricaMainController implements Initializable {
                 (observable, oldValue, newValue) -> {
                     showDetails(newValue);
                 });
-        
+
         GestioneIO.initContatti(Rubrica.fileDefault,contatti);
         
         cntTable.setItems(contatti);
