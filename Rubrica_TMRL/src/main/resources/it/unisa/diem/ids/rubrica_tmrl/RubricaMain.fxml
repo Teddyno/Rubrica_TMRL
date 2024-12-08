@@ -136,38 +136,38 @@
             </AnchorPane>
             <AnchorPane fx:id="contattoPane" prefHeight="350.0" prefWidth="420.0" style="-fx-background-color: BCBCBC;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label fx:id="datilbl" alignment="TOP_CENTER" layoutX="128.0" layoutY="161.0" prefHeight="37.0" prefWidth="420.0" text="Nome Contatto">
+                  <Label fx:id="datilbl" alignment="TOP_CENTER" layoutX="110.0" layoutY="181.0" prefHeight="37.0" prefWidth="420.0" text="Nome Contatto">
                      <font>
                         <Font size="45.0" />
                      </font>
                   </Label>
-                  <Label fx:id="numeroUnoLbl" layoutX="133.0" layoutY="252.0" text="Numero Telefonico 1">
+                  <Label fx:id="numeroUnoLbl" layoutX="60.0" layoutY="256.0" text="Numero Telefonico 1">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="numeroDueLbl" layoutX="133.0" layoutY="284.0" text="Numero Telefonico 2">
+                  <Label fx:id="numeroDueLbl" layoutX="60.0" layoutY="288.0" text="Numero Telefonico 2">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="numeroTreLbl" layoutX="133.0" layoutY="316.0" text="Numero Telefonico 3">
+                  <Label fx:id="numeroTreLbl" layoutX="60.0" layoutY="320.0" text="Numero Telefonico 3">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <AnchorPane layoutX="279.0" layoutY="25.0" prefHeight="128.0" prefWidth="106.0" style="-fx-background-color: white;" />
-                  <Label fx:id="emailUnoLbl" layoutX="417.0" layoutY="252.0" text="Email 1">
+                  <AnchorPane layoutX="246.0" layoutY="34.0" prefHeight="128.0" prefWidth="106.0" style="-fx-background-color: white;" />
+                  <Label fx:id="emailUnoLbl" layoutX="345.0" layoutY="256.0" text="nome.cognome@example.it">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="emailDueLbl" layoutX="417.0" layoutY="284.0" text="Email 2">
+                  <Label fx:id="emailDueLbl" layoutX="345.0" layoutY="288.0" text="nome.cognome@example.it">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="emailTreLbl" layoutX="417.0" layoutY="316.0" text="Email 3">
+                  <Label fx:id="emailTreLbl" layoutX="345.0" layoutY="320.0" text="nome.cognome@example.it">
                      <font>
                         <Font size="22.0" />
                      </font>
