@@ -182,7 +182,7 @@
                      </font></Button>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="modificaContattoPane" prefHeight="550.0" prefWidth="720.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="modificaContattoPane" prefHeight="550.0" prefWidth="720.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label layoutX="184.0" layoutY="43.0" text="Modifica Contatto">
                      <font>
@@ -286,7 +286,7 @@
                   </Button>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="homePane" prefHeight="550.0" prefWidth="720.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="homePane" prefHeight="550.0" prefWidth="720.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label layoutX="210.0" layoutY="86.0" text="Rubrica TMRL">
                      <font>
