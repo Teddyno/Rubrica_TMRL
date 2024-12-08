@@ -19,7 +19,7 @@ import javafx.stage.Stage;
  */
 public class Rubrica extends Application {
     
-    public static String fileDefault;
+    public static String fileDefault; ///< l'indirizzo di default del file .vcf
     
     
     /**

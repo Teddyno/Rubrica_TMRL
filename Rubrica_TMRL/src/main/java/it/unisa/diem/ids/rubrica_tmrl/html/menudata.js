@@ -30,6 +30,7 @@ var menudata={children:[
 {text:"Gerarchia delle classi",url:"hierarchy.html"},
 {text:"Membri dei composti",url:"functions.html",children:[
 {text:"Tutto",url:"functions.html"},
-{text:"Funzioni",url:"functions_func.html"}]}]},
+{text:"Funzioni",url:"functions_func.html"},
+{text:"Variabili",url:"functions_vars.html"}]}]},
 {text:"File",url:"files.html",children:[
 {text:"Elenco dei file",url:"files.html"}]}]}
