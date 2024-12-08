@@ -38,7 +38,7 @@
                <children>
                   <TableView fx:id="cntTable" fixedCellSize="0.0" layoutY="-1.0" prefHeight="525.0" prefWidth="180.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
                     <columns>
-                      <TableColumn fx:id="cntClmNome" prefWidth="223.00001394748688" text="Contatti" />
+                        <TableColumn fx:id="cntClmNome" prefWidth="223.00001394748688" text="Contatti" style="-fx-font-size: 16px;"/>
                     </columns>
                   </TableView>
                </children>
