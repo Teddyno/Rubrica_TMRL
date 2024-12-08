@@ -1,7 +1,9 @@
-/*
- * prova commit PC_angela
+/**
+ * @file Rubrica.java
+ * @brief Classe iniziale per la rubrica, carica la scena
  * 
- * and open the template in the editor.
+ * @author TMRL
+ * @version 1.0
  */
 package it.unisa.diem.ids.rubrica_tmrl;
 
@@ -13,13 +15,19 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *
- * @author diducc
+ * @brief Classe Rubrica
  */
 public class Rubrica extends Application {
     
     public static String fileDefault;
     
+    
+    /**
+     * @brief start della scena
+     * 
+     * @param stage scena principale
+     * @throws Exception 
+     */
     @Override
     public void start(Stage stage) throws Exception {
         
@@ -34,7 +42,9 @@ public class Rubrica extends Application {
     }
 
     /**
-     * @param args the command line arguments
+     * @brief classe main
+     * 
+     * @param args 
      */
     public static void main(String[] args) {
         launch(args);

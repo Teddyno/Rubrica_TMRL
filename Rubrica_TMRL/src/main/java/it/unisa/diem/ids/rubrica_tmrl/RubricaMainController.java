@@ -1,7 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @file RubricaMainController.java
+ * @brief Classe controller scena principale
+ * 
+ * @author TMRL
+ * @version 1.0
  */
 package it.unisa.diem.ids.rubrica_tmrl;
 
@@ -29,10 +31,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-/*
- * FXML Controller class
- *
- * @author diducc
+/**
+ * @brief Classe RubricaController
  */
 public class RubricaMainController implements Initializable {
     @FXML
@@ -134,6 +134,14 @@ public class RubricaMainController implements Initializable {
 
     /**********   ***************************  ***********/
     
+    /**
+     * @brief Inizializza il programma
+     * 
+     * Inizializza l'elenco, carica i contatti dal file e crea/setta la tabella dei contatti
+     * 
+     * @param[in] url 
+     * @param[in] rb 
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -153,6 +161,19 @@ public class RubricaMainController implements Initializable {
         cntTable.setItems(e.getContatti());
     }    
 
+    
+    /**
+     * @brief Gestione barra di ricerca
+     * 
+     * Questo metodo va a collegare l'input della barra di ricerca
+     * con la tabella dei contatti, andando a far visualizzare in essa 
+     * i contatti che corrispondono all'input dell'utente
+     * 
+     * @pre numero di contatti maggiore di 0
+     * @post tabella dei contatti aggiornata con i contatti richiesti
+     * 
+     * @param[in] event evento scaturito dal click di un pulsante 
+     */
     @FXML
     private void cerca(ActionEvent event) {
         
@@ -184,6 +205,14 @@ public class RubricaMainController implements Initializable {
     }
     
 
+    /**
+     * @brief Switch tra le varie interfacce
+     * 
+     * In seguito al click di un pulsante, si cambia l'interfaccia visiva 
+     * in base al pulsante cliccato
+     * 
+     * @param[in] event evento scaturito dal click di un pulsante 
+     */
     @FXML
     private void switchPane(ActionEvent event) {
         if(event.getSource() == btnaddcontatto){
@@ -218,10 +247,28 @@ public class RubricaMainController implements Initializable {
         }
     }
     
+    /**
+     * @brief Controlla validità Input
+     * 
+     * @return True se gli input dell'utente sono validi
+     */
     private boolean isValido(){
         return !(nomeField.getText().isEmpty() && cognomeField.getText().isEmpty());  // controlla se i campi sono vuoti in aggiungi contatto
     }
 
+    /**
+     * @brief Aggiungi contatto all'elenco
+     * 
+     * @pre il contatto da aggiungere è valido
+     * 
+     * Aggiunge il contatto all'elenco, richiama i metodi ordinamento e pulisci 
+     * e salva il nuovo contatto nel file VCF
+     * 
+     * @param[in] event evento scaturito dal click di un pulsante 
+     * 
+     * @see pulisci()
+     * @see ordinamento()
+     */
     @FXML
     private void aggiungiContatto(ActionEvent event) {
         
@@ -246,6 +293,10 @@ public class RubricaMainController implements Initializable {
         pulisci();
     }
     
+    /**
+     * @brief Pulisce i TextField
+     * 
+     */
     private void pulisci(){
         nomeField.clear();
         cognomeField.clear();
@@ -257,6 +308,11 @@ public class RubricaMainController implements Initializable {
         emailTre.clear();
     }
 
+    /**
+     * @brief Imposta i dati del contatto nell'interfaccia
+     * 
+     * @param[in] cnt contatto da visualizzare 
+     */
     private void showDetails(Contatto cnt) {
         datilbl.setText(cnt.getCognome() + " " + cnt.getNome());
         numeroUnoLbl.setText(cnt.getNumTel());
@@ -274,6 +330,15 @@ public class RubricaMainController implements Initializable {
         contattoPane.setVisible(true);
     }
 
+    /**
+     * @brief Rimuove un contatto dall'elenco
+     * 
+     * Preleva il contatto selezionato, richiede la conferma della rimozione
+     * in caso affermativo rimuove il contatto dall'elenco e salva l'elenco
+     * aggiornato nel file
+     * 
+     * @param[in] event evento scaturito dal click di un pulsante 
+     */
     @FXML
     private void rimuoviContatto(ActionEvent event) {
         
@@ -298,7 +363,14 @@ public class RubricaMainController implements Initializable {
 
     }
     
-
+    /**
+     * @brief Imposta Interfaccia modifica
+     * 
+     * Cambia l'interfaccia in quella per la modifica e 
+     * imposta i textfield con i dati modificabili
+     * 
+     * @param[in] event evento scaturito dal click di un pulsante 
+     */
     @FXML
     private void modificaPane(ActionEvent event) { 
         switchPane(event);
@@ -309,6 +381,17 @@ public class RubricaMainController implements Initializable {
         
     }
 
+    /**
+     * @brief modifica del contatto
+     * 
+     * preleva contatto da modificare, richiede conferma modifica
+     * cambia i dati modificati nell'elenco e salva i dati aggiornati nel file
+     * richiama infine metodo ordinamento
+     * 
+     * @param[in] event evento scaturito dal click di un pulsante 
+     * 
+     * @see ordinamento()
+     */
     @FXML
     private void modificaContatto(ActionEvent event) {
         int contattoSelID = cntTable.getSelectionModel().getSelectedIndex();
@@ -336,6 +419,11 @@ public class RubricaMainController implements Initializable {
         ordinamento();
     }
     
+    /**
+     * @brief Ordina l'elenco
+     * 
+     * Imposta l'elenco in ordine alfabetico 
+     */
     private void ordinamento(){
         Collections.sort(e.getContatti(), (c1, c2)->{
             String nomeCompleto1 = (c1.getCognome() + " " + c1.getNome());
@@ -344,6 +432,7 @@ public class RubricaMainController implements Initializable {
         });
     }
 
+    
     @FXML
     private void aggiungiPredefiniti(ActionEvent event) {               
         
@@ -357,4 +446,5 @@ public class RubricaMainController implements Initializable {
         e.getContatti().addAll(contatto1, contatto2, contatto3, contatto4);
         ordinamento();
     }
+    
 }

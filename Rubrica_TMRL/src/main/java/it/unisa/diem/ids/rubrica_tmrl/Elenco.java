@@ -1,7 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @file Elenco.java
+ * @brief Classe gestione Elenco
+ * 
+ * @author TMRL
+ * @version 1.0
  */
 package it.unisa.diem.ids.rubrica_tmrl;
 
@@ -9,17 +11,26 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
- *
- * @author carlo
+ * @brief Classe Elenco contatti
  */
 public class Elenco {
     
     private ObservableList<Contatto> contatti;
 
+    /**
+     * @brief costruttore Elenco
+     * 
+     * Inizializza la collezione contenente i contatti
+     */
     public Elenco() {
         contatti = FXCollections.observableArrayList();
     }
     
+    /**
+     * @brief get lista contatti
+     * 
+     * @return ObservableList del contatti 
+     */
     public ObservableList<Contatto> getContatti() {
         return contatti;
     }

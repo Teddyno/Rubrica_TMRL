@@ -1,7 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @file GestioneIO.java
+ * @brief Classe per la gestione Import/Output
+ * 
+ * @author TMRL
+ * @version 1.0
  */
 package it.unisa.diem.ids.rubrica_tmrl;
 
@@ -16,11 +18,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
- *
- * @author alext
+ * @brief Classe Gestione Import/Output
  */
 public class GestioneIO {
    
+    /**
+     * @brief Inizializza l'elenco dei contatti
+     * 
+     * Inizializza l'elenco dei contatti andando a leggere i dati 
+     * di essi dal file default .vcf 
+     * 
+     * @param[in] fileDefault indirizzo del file di default della rubrica
+     * @param[in] contatti collezione contenente i contatti dell'elenco
+     */
     public static void initContatti(String fileDefault,ObservableList<Contatto> contatti) {
        
         String nomeCompleto = null;
@@ -53,6 +63,15 @@ public class GestioneIO {
         }
     }
     
+    /**
+     * @brief Salva elenco nel file
+     * 
+     * Scrive l'elenco dei contatti all'interno del file di default,
+     * seguendo il formato .vcf
+     * 
+     * @param[in] fileDefault indirizzo del file di default della rubrica
+     * @param[in] contatti collezione contenente i contatti dell'elenco
+     */
     public static void salvaVCF(String fileDefault,ObservableList<Contatto> contatti) {
        
         //il blocco try con le risorse, se c'è un eccezione fa di base il close del pw
@@ -77,30 +96,5 @@ public class GestioneIO {
         } catch(IOException e){
         }
     }
-    
-    /*
-    public static void salvaCSV(String nomefile) throws IOException{
-
-        //il blocco try con le risorse, se c'è un eccezione fa di base il close del pw
-        try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(nomefile)))){
-
-            pw.println("NOME;COGNOME;CODICE FISCALE;MATRICOLA;VOTO MEDIO");
-
-                pw.append("Bestione");
-                pw.append(";");
-                pw.append("Bestione");
-                pw.append(";");
-                pw.append("Bestione");
-                pw.append(";");
-                pw.append("Bestione");
-                pw.append(";");
-                pw.append("Bestione"); //l'append si aspetta dei caratteri, quindi dobbiamo concatenarlo con una stringa vuota
-                pw.append("\n");
-
-        
-        } catch(IOException e){
-        }
-    }
-    */
 
 }
