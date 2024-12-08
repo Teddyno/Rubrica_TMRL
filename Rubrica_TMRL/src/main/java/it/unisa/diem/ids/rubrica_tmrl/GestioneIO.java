@@ -35,7 +35,8 @@ public class GestioneIO {
             while ((line = reader.readLine()) != null) {
                 if (line.startsWith("BEGIN:VCARD")) {
                 } else if (line.startsWith("FN;")) {
-                    nomeCompleto= line.substring(17).trim();
+                    nomeCompleto= line.substring(17).trim();                    // Estrae una sottostringa a partire dall'indice 17 (compreso) fino alla fine della stringa.
+                                                                                // .trim Rimuove gli spazi bianchi
                     String[] campi = nomeCompleto.split(" ", 2);
                     nome = campi[0];
                     cognome = campi[1];

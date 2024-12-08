@@ -49,7 +49,7 @@ public class RubricaMainController implements Initializable {
         @FXML
         private TableColumn<Contatto, String> cntClmNome;                           // Tabella contatti (colonna)
     
-    private ObservableList<Contatto> contatti;
+    private Elenco e;
         
     /**********  AnchorPane HOMEPAGE  ***********/
     @FXML
@@ -137,7 +137,7 @@ public class RubricaMainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        contatti = FXCollections.observableArrayList();
+        e = new Elenco();
 
         cntClmNome.setCellValueFactory(s -> { 
             return new SimpleStringProperty(s.getValue().getCognome() + " " + s.getValue().getNome());
@@ -148,9 +148,9 @@ public class RubricaMainController implements Initializable {
                     showDetails(newValue);
                 });
 
-        GestioneIO.initContatti(Rubrica.fileDefault,contatti);
+        GestioneIO.initContatti(Rubrica.fileDefault,e.getContatti());
         
-        cntTable.setItems(contatti);
+        cntTable.setItems(e.getContatti());
     }    
 
     @FXML
@@ -158,7 +158,7 @@ public class RubricaMainController implements Initializable {
         
         //DA SISTEMARE (LA PRIMA VOLTA CHE SI CERCA IL CONTATTO NON FUNZIONA)
         
-        FilteredList<Contatto> cerca = new FilteredList<>(contatti, e->true);   // e->true ti manda tutti i contatti, e->false non ti manda nulla
+        FilteredList<Contatto> cerca = new FilteredList<>(e.getContatti(), e->true);   // e->true ti manda tutti i contatti, e->false non ti manda nulla
         
         barraDiRicerca.textProperty().addListener((observable, oldValue, newValue) ->{
             cerca.setPredicate(cnt->{                                           // setPredicate definisce il filtro da applicare agli elementi della lista
@@ -234,11 +234,11 @@ public class RubricaMainController implements Initializable {
         }
         
         Contatto nuovoContatto = new Contatto(nomeField.getText(), cognomeField.getText(), numeroUno.getText(), emailUno.getText());
-        contatti.add(nuovoContatto);
+        e.getContatti().add(nuovoContatto);
         
         ordinamento();
         
-        GestioneIO.salvaVCF(Rubrica.fileDefault,contatti);
+        GestioneIO.salvaVCF(Rubrica.fileDefault,e.getContatti());
         
         switchPane(event); //ritorno in home
         cntTable.getSelectionModel().select(nuovoContatto);
@@ -286,12 +286,12 @@ public class RubricaMainController implements Initializable {
         
         alert.showAndWait().ifPresent(response -> {
             if(response == ButtonType.OK){
-                contatti.remove(contattoSel);
+                e.getContatti().remove(contattoSel);
             
-                GestioneIO.salvaVCF(Rubrica.fileDefault,contatti);
+                GestioneIO.salvaVCF(Rubrica.fileDefault,e.getContatti());
             }
                 
-            if(contatti.isEmpty()){
+            if(e.getContatti().isEmpty()){
                 switchPane(event);
             }
         });
@@ -321,9 +321,9 @@ public class RubricaMainController implements Initializable {
         
         alert.showAndWait().ifPresent(response -> {
             if(response == ButtonType.OK){
-                contatti.set(contattoSelID, modContatto);
+                e.getContatti().set(contattoSelID, modContatto);
                 cntTable.getSelectionModel().select(modContatto);
-                GestioneIO.salvaVCF(Rubrica.fileDefault,contatti);
+                GestioneIO.salvaVCF(Rubrica.fileDefault,e.getContatti());
             }
             else{
                 addcontattopane.setVisible(false); 
@@ -337,7 +337,7 @@ public class RubricaMainController implements Initializable {
     }
     
     private void ordinamento(){
-        Collections.sort(contatti, (c1, c2)->{
+        Collections.sort(e.getContatti(), (c1, c2)->{
             String nomeCompleto1 = (c1.getCognome() + " " + c1.getNome());
             String nomeCompleto2 = (c2.getCognome() + " " + c2.getNome());
             return nomeCompleto1.compareToIgnoreCase(nomeCompleto2);
@@ -354,7 +354,7 @@ public class RubricaMainController implements Initializable {
         Contatto contatto3 = new Contatto("Anna", "Bianchi", "1234567890", "anna.bianchi@example.com");
         Contatto contatto4 = new Contatto("Sara", "Neri", "1234567890", "sara.neri@example.com");
 
-        contatti.addAll(contatto1, contatto2, contatto3, contatto4);
+        e.getContatti().addAll(contatto1, contatto2, contatto3, contatto4);
         ordinamento();
     }
 }
