@@ -63,8 +63,6 @@ public class RubricaMainController implements Initializable {
     @FXML
     private AnchorPane modificaContattoPane;                                    // AnchorPane "Modifica Contatto"
     @FXML
-    private Button sumbitModifiche;                                             // Button "Conferma Modifiche" nell'anchorPane "Modifica Contatto"
-    @FXML
     private TextField modNomeField;                                             // Box/TextField nell'anchor Pane "Modifica Contatto" per modificare il Nome del Contatto
     @FXML
     private TextField modCognomeField;                                          // Box/TextField nell'anchor Pane "Modifica Contatto" per modificare il Cognome del Contatto
@@ -131,6 +129,8 @@ public class RubricaMainController implements Initializable {
     private Button gruppiBtn;
     @FXML
     private Button predefinitoBtn;
+    @FXML
+    private Button submitModifiche;
 
     /**********   ***************************  ***********/
     
