@@ -12,6 +12,7 @@ import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -31,9 +32,12 @@ public class Rubrica extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         
-        fileDefault = "Rubrica.vcf";
+        fileDefault = "src\\main\\resources\\it\\unisa\\diem\\ids\\rubrica_tmrl\\Rubrica.vcf";
         
         Parent root = FXMLLoader.load(getClass().getResource("RubricaMain.fxml"));
+        
+        Image icona = new Image("src\\main\\resources\\it\\unisa\\diem\\ids\\rubrica_tmrl\\icona.png");
+        stage.getIcons().add(icona);
         
         Scene scene = new Scene(root);
         
