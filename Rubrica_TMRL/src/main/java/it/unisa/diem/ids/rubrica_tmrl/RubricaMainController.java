@@ -268,7 +268,11 @@ public class RubricaMainController implements Initializable {
         // Verifica con il pattern
         return Pattern.compile(emailRegex).matcher(email).matches();
     }
-    
+    /**
+     * @brief Controlla validità Input Email
+     * 
+     * @return True se il numero passato è valido
+     */
     private static boolean isValidPhoneNumber(String phoneNumber) {
         // Controllo di null o stringa vuota
         if (phoneNumber == null || phoneNumber.isEmpty()) {
