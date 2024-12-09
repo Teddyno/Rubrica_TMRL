@@ -389,6 +389,17 @@ public class RubricaMainController implements Initializable {
         emailDueLbl.setText("");
         emailTreLbl.setText("");
     }
+    
+    private void pulisciMod(){
+        modNomeField.clear();
+        modCognomeField.clear();
+        modNumeroUno.clear();
+        modNumeroDue.clear();
+        modNumeroTre.clear();
+        modEmailUno.clear();
+        modEmailDue.clear();
+        modEmailTre.clear();
+    }
 
     /**
      * @brief Imposta i dati del contatto nell'interfaccia
@@ -473,7 +484,11 @@ public class RubricaMainController implements Initializable {
     private void modificaPane(ActionEvent event) { 
         switchPane(event);
 
+        pulisciMod();
+        
         Contatto contattoSel = cntTable.getSelectionModel().getSelectedItem();
+        
+        
         modNomeField.setText(contattoSel.getNome());
         modCognomeField.setText(contattoSel.getCognome());
         
