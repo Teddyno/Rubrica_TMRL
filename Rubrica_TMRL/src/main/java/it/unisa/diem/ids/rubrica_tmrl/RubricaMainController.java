@@ -557,7 +557,7 @@ public class RubricaMainController implements Initializable {
     }
     
     @FXML
-    private void handleImport(ActionEvent event){
+    private void handleImport(ActionEvent event){ //da spostare in GestioneIO
         
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new ExtensionFilter("VCF", "*.vcf"));
@@ -570,7 +570,7 @@ public class RubricaMainController implements Initializable {
     }
     
     @FXML
-    private void handleExport(ActionEvent event){
+    private void handleExport(ActionEvent event){ //da spostare in GestioneIO
         
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new ExtensionFilter("VCF", "*.vcf"));
