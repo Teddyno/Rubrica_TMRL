@@ -7,6 +7,7 @@
  */
 package it.unisa.diem.ids.rubrica_tmrl;
 
+import java.util.Collections;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -39,6 +40,8 @@ public class Elenco {
         
         contatti.add(contatto);
         
+        sort();
+        
         GestioneIO.salvaVCF(Rubrica.fileDefault,contatti);
     }
     
@@ -47,6 +50,14 @@ public class Elenco {
         contatti.remove(contatto);
         
         GestioneIO.salvaVCF(Rubrica.fileDefault,contatti);
+    }
+    
+    public void sort(){
+        Collections.sort(contatti, (c1, c2)->{
+            String nomeCompleto1 = (c1.getCognome() + " " + c1.getNome());
+            String nomeCompleto2 = (c2.getCognome() + " " + c2.getNome());
+            return nomeCompleto1.compareToIgnoreCase(nomeCompleto2);
+        });
     }
     
 }
