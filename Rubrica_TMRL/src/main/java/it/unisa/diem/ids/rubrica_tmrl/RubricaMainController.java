@@ -128,8 +128,6 @@ public class RubricaMainController implements Initializable {
     @FXML
     private Button gruppiBtn;
     @FXML
-    private Button predefinitoBtn;
-    @FXML
     private Button submitModifiche;
     @FXML
     private Button importBtn;
@@ -319,7 +317,7 @@ public class RubricaMainController implements Initializable {
             alert.showAndWait();
             return;
         }
-        
+        /*
         if(!isValidEmail(emailUno.getText())){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Email");
@@ -335,8 +333,8 @@ public class RubricaMainController implements Initializable {
             alert.showAndWait();
             return;
         }
-        
-        Contatto nuovoContatto = new Contatto(nomeField.getText(), cognomeField.getText(), numeroUno.getText(), emailUno.getText());
+        */
+        Contatto nuovoContatto = new Contatto(nomeField.getText(), cognomeField.getText());
         e.getContatti().add(nuovoContatto);
         
         ordinamento();
@@ -363,6 +361,16 @@ public class RubricaMainController implements Initializable {
         emailDue.clear();
         emailTre.clear();
     }
+    
+    private void pulisciContatto(){
+        datilbl.setText("");
+        numeroUnoLbl.setText("");
+        numeroDueLbl.setText("");
+        numeroTreLbl.setText("");
+        emailUnoLbl.setText("");
+        emailDueLbl.setText("");
+        emailTreLbl.setText("");
+    }
 
     /**
      * @brief Imposta i dati del contatto nell'interfaccia
@@ -370,13 +378,29 @@ public class RubricaMainController implements Initializable {
      * @param[in] cnt contatto da visualizzare 
      */
     private void showDetails(Contatto cnt) {
+        pulisciContatto();
+        
         datilbl.setText(cnt.getCognome() + " " + cnt.getNome());
-        numeroUnoLbl.setText(cnt.getNumTel());
-        numeroDueLbl.setText(cnt.getNumTel());
-        numeroTreLbl.setText(cnt.getNumTel());
-        emailUnoLbl.setText(cnt.getEmail());
-        emailDueLbl.setText(cnt.getEmail());
-        emailTreLbl.setText(cnt.getEmail());
+        for(int i=0;i<cnt.getSizeNumTel();i++){
+            if(i == 0){
+                numeroUnoLbl.setText(cnt.getNumTel(0));
+            } else if(i == 1){
+                numeroDueLbl.setText(cnt.getNumTel(1));
+            } else if(i == 2){
+                numeroTreLbl.setText(cnt.getNumTel(2));
+            }
+        }
+        
+        for(int i=0;i<cnt.getSizeEmail();i++){
+            if(i == 0){
+                System.out.println("dio" + cnt.getSizeEmail());
+                emailUnoLbl.setText(cnt.getEmail(0));
+            } else if(i == 1){
+                emailDueLbl.setText(cnt.getEmail(1));
+            } else if(i == 2){
+                emailTreLbl.setText(cnt.getEmail(2));
+            }
+        }
 
         //per visualizzare il pane del contatto e disattivare quello della home
         // da implementare nello switchPane ??
@@ -451,7 +475,7 @@ public class RubricaMainController implements Initializable {
     @FXML
     private void modificaContatto(ActionEvent event) {
         int contattoSelID = cntTable.getSelectionModel().getSelectedIndex();
-        Contatto modContatto = new Contatto(modNomeField.getText(), modCognomeField.getText(), modNumeroUno.getText(), modEmailUno.getText());
+        Contatto modContatto = new Contatto(modNomeField.getText(), modCognomeField.getText());
         
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Conferma Modifiche");
@@ -487,21 +511,6 @@ public class RubricaMainController implements Initializable {
             String nomeCompleto2 = (c2.getCognome() + " " + c2.getNome());
             return nomeCompleto1.compareToIgnoreCase(nomeCompleto2);
         });
-    }
-
-    
-    @FXML
-    private void aggiungiPredefiniti(ActionEvent event) {               
-        
-        //METODO DA TOGLIERE. SERVE SOLO PER COMODITÀ NEI TEST (CREA IN AUTOMATICO 4 CONTATTI)
-        
-        Contatto contatto1 = new Contatto("Mario", "Rossi", "1234567890", "mario.rossi@example.com");
-        Contatto contatto2 = new Contatto("Luigi", "Verdi", "1234567890", "luigi.verdi@example.com");
-        Contatto contatto3 = new Contatto("Anna", "Bianchi", "1234567890", "anna.bianchi@example.com");
-        Contatto contatto4 = new Contatto("Sara", "Neri", "1234567890", "sara.neri@example.com");
-
-        e.getContatti().addAll(contatto1, contatto2, contatto3, contatto4);
-        ordinamento();
     }
     
     @FXML
