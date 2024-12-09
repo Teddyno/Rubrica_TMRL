@@ -251,7 +251,11 @@ public class RubricaMainController implements Initializable {
         return !(nomeField.getText().isEmpty() && cognomeField.getText().isEmpty());  // controlla se i campi sono vuoti in aggiungi contatto
     }
     
-    
+     /**
+     * @brief Controlla validità Input Email
+     * 
+     * @return True se l'email passata è valida
+     */
     private static boolean isValidEmail(String email) {
         // Espressione regolare per email valida
         String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
@@ -264,6 +268,20 @@ public class RubricaMainController implements Initializable {
         // Verifica con il pattern
         return Pattern.compile(emailRegex).matcher(email).matches();
     }
+    
+    private static boolean isValidPhoneNumber(String phoneNumber) {
+        // Controllo di null o stringa vuota
+        if (phoneNumber == null || phoneNumber.isEmpty()) {
+            return false;
+        }
+
+        // Espressione regolare semplice
+        String phoneRegex = "^\\+?\\d{10,15}$";
+
+        // Verifica se il numero rispetta il pattern
+        return phoneNumber.matches(phoneRegex);
+    }
+
 
     /**
      * @brief Aggiungi contatto all'elenco
@@ -291,8 +309,16 @@ public class RubricaMainController implements Initializable {
         
         if(!isValidEmail(emailUno.getText())){
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Email Non VALIDA");
-            alert.setHeaderText("Devi inserire una mail");
+            alert.setTitle("Email");
+            alert.setHeaderText("Devi inserire una mail valida");
+            alert.showAndWait();
+            return;
+        }
+        
+        if(!isValidPhoneNumber(numeroUno.getText())){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Numero Telefonico");
+            alert.setHeaderText("Devi inserire un numero telefonico valido");
             alert.showAndWait();
             return;
         }
