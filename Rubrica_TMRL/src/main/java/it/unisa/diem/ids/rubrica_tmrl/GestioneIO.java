@@ -101,7 +101,6 @@ public class GestioneIO {
                         contatto.addNumTel(numTel3);
                         numTel3 = null;
                     }
-                    System.out.println(contatto.getSizeEmail());
                     contatti.add(contatto);
                 }
                 

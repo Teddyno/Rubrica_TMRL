@@ -335,6 +335,25 @@ public class RubricaMainController implements Initializable {
         }
         */
         Contatto nuovoContatto = new Contatto(nomeField.getText(), cognomeField.getText());
+        if(!emailUno.getText().contains("")){
+
+            nuovoContatto.addEmail(emailUno.getText());
+        }
+        if(!emailDue.getText().contains("")){
+            nuovoContatto.addEmail(emailDue.getText());
+        }
+        if(!emailTre.getText().contains("")){
+            nuovoContatto.addEmail(emailTre.getText());
+        }
+        if(!numeroUno.getText().contains("")){
+            nuovoContatto.addNumTel(numeroUno.getText());
+        }
+        if(!numeroDue.getText().contains("")){
+            nuovoContatto.addNumTel(numeroDue.getText());
+        }
+        if(!numeroTre.getText().contains("")){
+            nuovoContatto.addNumTel(numeroTre.getText());
+        }
         e.getContatti().add(nuovoContatto);
         
         ordinamento();
@@ -381,6 +400,7 @@ public class RubricaMainController implements Initializable {
         pulisciContatto();
         
         datilbl.setText(cnt.getCognome() + " " + cnt.getNome());
+        
         for(int i=0;i<cnt.getSizeNumTel();i++){
             if(i == 0){
                 numeroUnoLbl.setText(cnt.getNumTel(0));
@@ -393,7 +413,6 @@ public class RubricaMainController implements Initializable {
         
         for(int i=0;i<cnt.getSizeEmail();i++){
             if(i == 0){
-                System.out.println("dio" + cnt.getSizeEmail());
                 emailUnoLbl.setText(cnt.getEmail(0));
             } else if(i == 1){
                 emailDueLbl.setText(cnt.getEmail(1));
@@ -459,6 +478,28 @@ public class RubricaMainController implements Initializable {
         modNomeField.setText(contattoSel.getNome());
         modCognomeField.setText(contattoSel.getCognome());
         
+        
+        for(int i=0;i<contattoSel.getSizeNumTel();i++){
+            if(i == 0){
+                modNumeroUno.setText(contattoSel.getNumTel(0));
+            } else if(i == 1){
+                modNumeroDue.setText(contattoSel.getNumTel(1));
+            } else if(i == 2){
+                modNumeroTre.setText(contattoSel.getNumTel(2));
+            }
+        }
+        
+        for(int i=0;i<contattoSel.getSizeEmail();i++){
+            if(i == 0){
+                modEmailUno.setText(contattoSel.getEmail(0));
+            } else if(i == 1){
+                modEmailDue.setText(contattoSel.getEmail(1));
+            } else if(i == 2){
+                modEmailTre.setText(contattoSel.getEmail(2));
+            }
+        }
+        
+        
     }
 
     /**
@@ -475,7 +516,27 @@ public class RubricaMainController implements Initializable {
     @FXML
     private void modificaContatto(ActionEvent event) {
         int contattoSelID = cntTable.getSelectionModel().getSelectedIndex();
+        
         Contatto modContatto = new Contatto(modNomeField.getText(), modCognomeField.getText());
+ 
+        if(modEmailUno.getText() != ""){
+            modContatto.addEmail(modEmailUno.getText());
+        }
+        if(modEmailDue.getText() != ""){
+            modContatto.addEmail(modEmailDue.getText());
+        }
+        if(modEmailTre.getText() != ""){
+            modContatto.addEmail(modEmailTre.getText());
+        }
+        if(modNumeroUno.getText() != ""){
+            modContatto.addNumTel(modNumeroUno.getText());
+        }
+        if(modNumeroDue.getText() != ""){
+            modContatto.addNumTel(modNumeroDue.getText());
+        }
+        if(modNumeroTre.getText() != ""){
+            modContatto.addNumTel(modNumeroTre.getText());
+        }
         
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Conferma Modifiche");
