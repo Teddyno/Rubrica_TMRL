@@ -279,7 +279,7 @@ public class RubricaMainController implements Initializable {
      * @see ordinamento()
      */
     @FXML
-    private void aggiungiContatto(ActionEvent event) {                          
+    private void aggiungiContatto(ActionEvent event) {      
         
         if(!isValido()){
             Alert alert = new Alert(Alert.AlertType.WARNING);
