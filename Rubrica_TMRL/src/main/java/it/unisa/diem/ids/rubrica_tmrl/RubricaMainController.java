@@ -26,7 +26,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
@@ -80,7 +79,7 @@ public class RubricaMainController implements Initializable {
     private TextField modEmailUno;                                              // Box/TextField nell'anchor Pane "Modifica Contatto" per modificare la prima Email del Contatto
     /**********  *****************************  *************/
             
-    /**********   AnchorPane VISUALIZZA CONTATTO  ***********/
+    /**********  AnchorPane VISUALIZZA CONTATTO  ***********/
     @FXML
     private AnchorPane contattoPane;                                            // AnchorPane "VISUALIZZA CONTATTO"                                    
     @FXML
@@ -101,7 +100,7 @@ public class RubricaMainController implements Initializable {
     private Label emailDueLbl;                                                  // Label  nell'anchor Pane "Visualizza Contatto" per visualizzare la seconda email del Contatto
     @FXML
     private Label emailTreLbl;                                                  // Label  nell'anchor Pane "Visualizza Contatto" per visualizzare la terza email del Contatto
-    /********** ********************************  ***********/
+    /********** ******************************** ***********/
     
    
     /**********   AnchorPane Aggiungi CONTATTO  ***********/
@@ -134,7 +133,7 @@ public class RubricaMainController implements Initializable {
     @FXML
     private Button exportBtn;
 
-    /**********   ***************************  ***********/
+    /**********  ***************************  ***********/
     
     /**
      * @brief Inizializza il programma
@@ -276,45 +275,6 @@ public class RubricaMainController implements Initializable {
         return true;  
     }
     
-     /**
-     * @brief Controlla validità Input Email
-     * 
-     * Verifica l'email con il pattern
-     * 
-     * @return True se l'email passata è valida
-     */
-    private static boolean isValidEmail(String email) {
-
-        String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
-
-
-        if (email == null) {
-            return false;
-        }
-
-        // 
-        return Pattern.compile(emailRegex).matcher(email).matches();
-    }
-    /**
-     * @brief Controlla validità Input Email
-     * 
-     * Controllo di null o stringa vuota
-     * Verifica se il numero rispetta il pattern
-     * 
-     * @return True se il numero passato è valido
-     */
-    private static boolean isValidNumTel(String NumTel) {
-  
-        if (NumTel == null || NumTel.isEmpty()) {
-            return false;
-        }
-
-        String phoneRegex = "^\\+?\\d{10,15}$";
-
-        return NumTel.matches(phoneRegex);
-    }
-
-
     /**
      * @brief Aggiungi contatto all'elenco
      * 
@@ -331,8 +291,8 @@ public class RubricaMainController implements Initializable {
     @FXML
     private void aggiungiContatto(ActionEvent event) {      
         
-        
         Contatto nuovoContatto = new Contatto(nomeField.getText(), cognomeField.getText());
+        
         if(!emailUno.getText().equals("")){
             nuovoContatto.addEmail(emailUno.getText());
         }
@@ -361,8 +321,6 @@ public class RubricaMainController implements Initializable {
         }
         
         e.addContatto(nuovoContatto);
-        
-        ordinamento();
         
         switchPane(event); //ritorno in home
         cntTable.getSelectionModel().select(nuovoContatto);
