@@ -8,21 +8,21 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.diem.ids.rubrica_tmrl.RubricaMainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1059.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.diem.ids.rubrica_tmrl.RubricaMainController">
    <top>
       <HBox prefHeight="75.0" prefWidth="800.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER">
          <children>
             <AnchorPane prefHeight="75.0" prefWidth="1058.0" style="-fx-background-color: #1d84ef;">
                <children>
-                  <TextField fx:id="barraDiRicerca" layoutX="20.0" layoutY="15.0" onAction="#cerca" prefHeight="45.0" prefWidth="609.0" promptText="Cerca" style="-fx-border-radius:10px ;">
+                  <TextField fx:id="barraDiRicerca" layoutX="225.0" layoutY="16.0" onAction="#cerca" prefHeight="45.0" prefWidth="609.0" promptText="Cerca" style="-fx-border-radius:10px ;">
                      <font>
                         <Font size="17.0" />
                      </font></TextField>
-                  <Button fx:id="gruppiBtn" layoutX="650.0" layoutY="12.0" mnemonicParsing="false" onAction="#switchPane" prefHeight="50.0" prefWidth="100.0" text="Gruppi">
+                  <Button fx:id="gruppiBtn" layoutX="912.0" layoutY="13.0" mnemonicParsing="false" onAction="#switchPane" prefHeight="50.0" prefWidth="100.0" text="Gruppi">
                      <font>
                         <Font size="17.0" />
                      </font></Button>
-                  <Button fx:id="btnHome" layoutX="772.0" layoutY="12.0" mnemonicParsing="false" onAction="#switchPane" prefHeight="50.0" prefWidth="100.0" text="Home">
+                  <Button fx:id="btnHome" layoutX="50.0" layoutY="13.0" mnemonicParsing="false" onAction="#switchPane" prefHeight="50.0" prefWidth="100.0" text="Home">
                      <font>
                         <Font size="17.0" />
                      </font></Button>
@@ -331,4 +331,19 @@
          </children>
       </AnchorPane>
    </center>
+   <right>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <TableView prefHeight="524.0" prefWidth="200.0">
+                    <columns>
+                        <TableColumn prefWidth="199.0" text="Preferiti" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </right>
 </BorderPane>
