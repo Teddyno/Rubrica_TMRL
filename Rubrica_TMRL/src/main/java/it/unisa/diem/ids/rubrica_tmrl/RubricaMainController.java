@@ -7,16 +7,10 @@
  */
 package it.unisa.diem.ids.rubrica_tmrl;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
@@ -261,7 +255,7 @@ public class RubricaMainController implements Initializable {
      * 
      * @pre il contatto da aggiungere è valido
      * 
-     * Aggiunge il contatto all'elenco, richiama i metodi ordinamento e pulisci 
+     * Aggiunge il contatto all'elenco, richiama i metodi : ordinamento e pulisci 
      * e salva il nuovo contatto nel file VCF
      * 
      * @param[in] event evento scaturito dal click di un pulsante 
