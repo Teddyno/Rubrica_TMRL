@@ -31,12 +31,14 @@ public class Rubrica extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         
+        
         fileDefault = "src\\main\\resources\\it\\unisa\\diem\\ids\\rubrica_tmrl\\Rubrica.vcf";
         
-        Parent root = FXMLLoader.load(getClass().getResource("RubricaMain.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("src\\main\\resources\\it\\unisa\\diem\\ids\\rubrica_tmrl\\RubricaMain.fxml"));
         
         Image icona = new Image("src\\main\\resources\\it\\unisa\\diem\\ids\\rubrica_tmrl\\icona.png");
         stage.getIcons().add(icona);
+        
         
         Scene scene = new Scene(root);
         
