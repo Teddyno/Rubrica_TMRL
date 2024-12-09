@@ -49,18 +49,18 @@
    <center>
       <AnchorPane fx:id="pane" prefHeight="525.0" prefWidth="630.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="homePane" prefHeight="525.0" prefWidth="630.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="homePane" prefHeight="525.0" prefWidth="630.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label layoutX="181.0" layoutY="116.0" text="Rubrica TMRL">
                      <font>
                         <Font size="45.0" />
                      </font>
                   </Label>
-                  <Button layoutX="143.0" layoutY="311.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Importa Dati" textAlignment="CENTER">
+                  <Button fx:id="importBtn" layoutX="143.0" layoutY="311.0" mnemonicParsing="false" onAction="#handleImport" prefHeight="40.0" prefWidth="150.0" text="Importa Dati" textAlignment="CENTER">
                      <font>
                         <Font size="17.0" />
                      </font></Button>
-                  <Button layoutX="340.0" layoutY="310.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Esporta Dati" textAlignment="CENTER">
+                  <Button fx:id="exportBtn" layoutX="340.0" layoutY="310.0" mnemonicParsing="false" onAction="#handleExport" prefHeight="40.0" prefWidth="150.0" text="Esporta Dati" textAlignment="CENTER">
                      <font>
                         <Font size="17.0" />
                      </font></Button>
@@ -207,7 +207,7 @@
                      </font></Button>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="modificaContattoPane" prefHeight="525.0" prefWidth="630.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="modificaContattoPane" prefHeight="525.0" prefWidth="630.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label layoutX="136.0" layoutY="43.0" text="Modifica Contatto">
                      <font>
