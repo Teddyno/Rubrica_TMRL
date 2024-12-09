@@ -8,15 +8,24 @@
 
 package it.unisa.diem.ids.rubrica_tmrl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @brief Classe Contatto
  */
 public class Contatto {
     private String nome;
     private String cognome;
-    private String numTel;
-    private String email;
 
+    List<String> email;
+    List<String> numTel;
+    
+    public Contatto() {
+        email = new ArrayList<>();
+        numTel = new ArrayList<>();
+    }
+    
     /**
      * @brief costruttore Contatto
      * 
@@ -25,11 +34,12 @@ public class Contatto {
      * @param numTel numero di telefono del contatto
      * @param email email del contatto
      */
-    public Contatto(String nome, String cognome, String numTel, String email) {
+    public Contatto(String nome, String cognome) {
         this.nome = nome;
         this.cognome = cognome;
-        this.numTel = numTel;
-        this.email = email;
+        email = new ArrayList<>();
+        numTel = new ArrayList<>();
+        
     }
 
     /**
@@ -50,13 +60,12 @@ public class Contatto {
         return cognome;
     }
 
-    /**
-     * @brief get numTel contatto
-     * 
-     * @return numTel del contatto
-     */
-    public String getNumTel() {
-        return numTel;
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
     }
 
     /**
@@ -64,8 +73,34 @@ public class Contatto {
      * 
      * @return email del contatto
      */
-    public String getEmail() {
-        return email;
+    public void addEmail(String email) {
+        this.email.add(email);
     }
+    
+    /**
+     * @brief get numTel contatto
+     * 
+     * @return numTel del contatto
+     */
+    public void addNumTel(String numTel) {
+        this.numTel.add(numTel);
+    }
+
+    public int getSizeEmail(){
+        return email.size();
+    }
+    
+    public int getSizeNumTel(){
+        return numTel.size();
+    }
+    
+    public String getEmail(int index){
+        return email.get(index);
+    }
+    
+    public String getNumTel(int index){
+        return numTel.get(index);
+    }
+
     
 }
