@@ -335,23 +335,22 @@ public class RubricaMainController implements Initializable {
         }
         */
         Contatto nuovoContatto = new Contatto(nomeField.getText(), cognomeField.getText());
-        if(!emailUno.getText().contains("")){
-
+        if(!emailUno.getText().equals("")){
             nuovoContatto.addEmail(emailUno.getText());
         }
-        if(!emailDue.getText().contains("")){
+        if(!emailDue.getText().equals("")){
             nuovoContatto.addEmail(emailDue.getText());
         }
-        if(!emailTre.getText().contains("")){
+        if(!emailTre.getText().equals("")){
             nuovoContatto.addEmail(emailTre.getText());
         }
-        if(!numeroUno.getText().contains("")){
+        if(!numeroUno.getText().equals("")){
             nuovoContatto.addNumTel(numeroUno.getText());
         }
-        if(!numeroDue.getText().contains("")){
+        if(!numeroDue.getText().equals("")){
             nuovoContatto.addNumTel(numeroDue.getText());
         }
-        if(!numeroTre.getText().contains("")){
+        if(!numeroTre.getText().equals("")){
             nuovoContatto.addNumTel(numeroTre.getText());
         }
         e.getContatti().add(nuovoContatto);
@@ -519,22 +518,22 @@ public class RubricaMainController implements Initializable {
         
         Contatto modContatto = new Contatto(modNomeField.getText(), modCognomeField.getText());
  
-        if(modEmailUno.getText() != ""){
+        if(!modEmailUno.getText().equals("")){
             modContatto.addEmail(modEmailUno.getText());
         }
-        if(modEmailDue.getText() != ""){
+        if(!modEmailDue.getText().equals("")){
             modContatto.addEmail(modEmailDue.getText());
         }
-        if(modEmailTre.getText() != ""){
+        if(!modEmailTre.getText().equals("")){
             modContatto.addEmail(modEmailTre.getText());
         }
-        if(modNumeroUno.getText() != ""){
+        if(!modNumeroUno.getText().equals("")){
             modContatto.addNumTel(modNumeroUno.getText());
         }
-        if(modNumeroDue.getText() != ""){
+        if(!modNumeroDue.getText().equals("")){
             modContatto.addNumTel(modNumeroDue.getText());
         }
-        if(modNumeroTre.getText() != ""){
+        if(!modNumeroTre.getText().equals("")){
             modContatto.addNumTel(modNumeroTre.getText());
         }
         
