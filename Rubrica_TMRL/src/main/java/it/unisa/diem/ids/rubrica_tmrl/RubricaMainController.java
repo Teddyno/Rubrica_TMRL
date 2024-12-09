@@ -254,43 +254,64 @@ public class RubricaMainController implements Initializable {
      * 
      * @return True se gli input dell'utente sono validi
      */
-    private boolean isValido(){
-        return !(nomeField.getText().isEmpty() && cognomeField.getText().isEmpty());  // controlla se i campi sono vuoti in aggiungi contatto
+    private boolean isValido(Contatto contatto){
+        
+        String emailPattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+        String numTelPattern = "^\\+?\\d{10,15}$";
+        
+        if((contatto.getNome().isEmpty()) && (contatto.getCognome().isEmpty())) return false;
+        
+        for(int i=0;i<contatto.getSizeNumTel();i++){
+            if(i == 0 && !Pattern.matches(numTelPattern, contatto.getNumTel(0))) return false; 
+            else if(i == 1 && !Pattern.matches(numTelPattern, contatto.getNumTel(1))) return false; 
+            else if(i == 2 && !Pattern.matches(numTelPattern, contatto.getNumTel(2))) return false;
+        }
+        
+        for(int i=0;i<contatto.getSizeEmail();i++){
+            if(i == 0 && !Pattern.matches(emailPattern, contatto.getEmail(0))) return false;
+            else if(i == 1 && !Pattern.matches(emailPattern, contatto.getEmail(1))) return false;
+            else if(i == 2 && !Pattern.matches(emailPattern, contatto.getEmail(2))) return false;
+        }
+        
+        return true;  
     }
     
      /**
      * @brief Controlla validità Input Email
      * 
+     * Verifica l'email con il pattern
+     * 
      * @return True se l'email passata è valida
      */
     private static boolean isValidEmail(String email) {
-        // Espressione regolare per email valida
+
         String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
 
-        // Controllo di null
+
         if (email == null) {
             return false;
         }
 
-        // Verifica con il pattern
+        // 
         return Pattern.compile(emailRegex).matcher(email).matches();
     }
     /**
      * @brief Controlla validità Input Email
      * 
+     * Controllo di null o stringa vuota
+     * Verifica se il numero rispetta il pattern
+     * 
      * @return True se il numero passato è valido
      */
-    private static boolean isValidPhoneNumber(String phoneNumber) {
-        // Controllo di null o stringa vuota
-        if (phoneNumber == null || phoneNumber.isEmpty()) {
+    private static boolean isValidNumTel(String NumTel) {
+  
+        if (NumTel == null || NumTel.isEmpty()) {
             return false;
         }
 
-        // Espressione regolare semplice
         String phoneRegex = "^\\+?\\d{10,15}$";
 
-        // Verifica se il numero rispetta il pattern
-        return phoneNumber.matches(phoneRegex);
+        return NumTel.matches(phoneRegex);
     }
 
 
@@ -310,30 +331,7 @@ public class RubricaMainController implements Initializable {
     @FXML
     private void aggiungiContatto(ActionEvent event) {      
         
-        if(!isValido()){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Dati Mancanti");
-            alert.setHeaderText("Devi inserire almeno uno tra Nome e Cognome");
-            alert.showAndWait();
-            return;
-        }
-        /*
-        if(!isValidEmail(emailUno.getText())){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Email");
-            alert.setHeaderText("Devi inserire una mail valida");
-            alert.showAndWait();
-            return;
-        }
         
-        if(!isValidPhoneNumber(numeroUno.getText())){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Numero Telefonico");
-            alert.setHeaderText("Devi inserire un numero telefonico valido");
-            alert.showAndWait();
-            return;
-        }
-        */
         Contatto nuovoContatto = new Contatto(nomeField.getText(), cognomeField.getText());
         if(!emailUno.getText().equals("")){
             nuovoContatto.addEmail(emailUno.getText());
@@ -353,6 +351,15 @@ public class RubricaMainController implements Initializable {
         if(!numeroTre.getText().equals("")){
             nuovoContatto.addNumTel(numeroTre.getText());
         }
+        
+        if(!isValido(nuovoContatto)){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Dati non validi");
+            alert.setHeaderText("Ricontrolla i dati inseriti");
+            alert.showAndWait();
+            return;
+        }
+        
         e.getContatti().add(nuovoContatto);
         
         ordinamento();
@@ -550,6 +557,14 @@ public class RubricaMainController implements Initializable {
         }
         if(!modNumeroTre.getText().equals("")){
             modContatto.addNumTel(modNumeroTre.getText());
+        }
+        
+        if(!isValido(modContatto)){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Dati non validi");
+            alert.setHeaderText("Ricontrolla i dati inseriti");
+            alert.showAndWait();
+            return;
         }
         
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
