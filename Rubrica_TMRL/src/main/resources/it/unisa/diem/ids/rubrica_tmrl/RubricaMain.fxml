@@ -14,15 +14,15 @@
          <children>
             <AnchorPane prefHeight="75.0" prefWidth="1058.0" style="-fx-background-color: #1d84ef;">
                <children>
-                  <TextField fx:id="barraDiRicerca" layoutX="20.0" layoutY="15.0" onAction="#cerca" prefHeight="45.0" prefWidth="609.0" promptText="Cerca" style="-fx-border-radius:10px ;">
+                  <TextField fx:id="barraDiRicerca" layoutX="225.0" layoutY="16.0" onAction="#cerca" prefHeight="45.0" prefWidth="609.0" promptText="Cerca" style="-fx-border-radius:10px ;">
                      <font>
                         <Font size="17.0" />
                      </font></TextField>
-                  <Button fx:id="gruppiBtn" layoutX="650.0" layoutY="12.0" mnemonicParsing="false" onAction="#switchPane" prefHeight="50.0" prefWidth="100.0" text="Gruppi">
+                  <Button fx:id="gruppiBtn" layoutX="912.0" layoutY="13.0" mnemonicParsing="false" onAction="#switchPane" prefHeight="50.0" prefWidth="100.0" text="Gruppi">
                      <font>
                         <Font size="17.0" />
                      </font></Button>
-                  <Button fx:id="btnHome" layoutX="772.0" layoutY="12.0" mnemonicParsing="false" onAction="#switchPane" prefHeight="50.0" prefWidth="100.0" text="Home">
+                  <Button fx:id="btnHome" layoutX="50.0" layoutY="13.0" mnemonicParsing="false" onAction="#switchPane" prefHeight="50.0" prefWidth="100.0" text="Home">
                      <font>
                         <Font size="17.0" />
                      </font></Button>
