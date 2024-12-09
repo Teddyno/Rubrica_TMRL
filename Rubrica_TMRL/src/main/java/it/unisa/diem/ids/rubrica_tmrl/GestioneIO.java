@@ -23,7 +23,7 @@ import javafx.collections.ObservableList;
 public class GestioneIO {
    
     /**
-     * @brief Inizializza l'elenco dei contatti
+     * @brief Importa contatti
      * 
      * Inizializza l'elenco dei contatti andando a leggere i dati 
      * di essi dal file default .vcf 
@@ -31,7 +31,7 @@ public class GestioneIO {
      * @param[in] fileDefault indirizzo del file di default della rubrica
      * @param[in] contatti collezione contenente i contatti dell'elenco
      */
-    public static void initContatti(String fileDefault,ObservableList<Contatto> contatti) {
+    public static void importaVCF(String fileDefault,ObservableList<Contatto> contatti) {
        
         String nomeCompleto = null;
         String nome = null;

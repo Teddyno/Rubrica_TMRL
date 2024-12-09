@@ -7,6 +7,7 @@
  */
 package it.unisa.diem.ids.rubrica_tmrl;
 
+import java.io.File;
 import java.net.URL;
 import java.util.Collections;
 import java.util.ResourceBundle;
@@ -25,6 +26,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
 
 /**
  * @brief Classe RubricaController
@@ -126,6 +131,10 @@ public class RubricaMainController implements Initializable {
     private Button predefinitoBtn;
     @FXML
     private Button submitModifiche;
+    @FXML
+    private Button importBtn;
+    @FXML
+    private Button exportBtn;
 
     /**********   ***************************  ***********/
     
@@ -151,7 +160,7 @@ public class RubricaMainController implements Initializable {
                     showDetails(newValue);
                 });
 
-        GestioneIO.initContatti(Rubrica.fileDefault,e.getContatti());
+        GestioneIO.importaVCF(Rubrica.fileDefault,e.getContatti());
         
         cntTable.setItems(e.getContatti());
     }    
@@ -453,6 +462,7 @@ public class RubricaMainController implements Initializable {
             if(response == ButtonType.OK){
                 e.getContatti().set(contattoSelID, modContatto);
                 cntTable.getSelectionModel().select(modContatto);
+                
                 GestioneIO.salvaVCF(Rubrica.fileDefault,e.getContatti());
             }
             else{
@@ -492,6 +502,31 @@ public class RubricaMainController implements Initializable {
 
         e.getContatti().addAll(contatto1, contatto2, contatto3, contatto4);
         ordinamento();
+    }
+    
+    @FXML
+    private void handleImport(ActionEvent event){
+        
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new ExtensionFilter("VCF", "*.vcf"));
+        fileChooser.setTitle("Scegli file Vcard");
+        File file = fileChooser.showOpenDialog(new Stage());
+        
+        GestioneIO.importaVCF(file.getPath(), e.getContatti());
+        ordinamento();
+        GestioneIO.salvaVCF(Rubrica.fileDefault,e.getContatti());   
+    }
+    
+    @FXML
+    private void handleExport(ActionEvent event){
+        
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new ExtensionFilter("VCF", "*.vcf"));
+        fileChooser.setTitle("Scegli file Vcard");
+        File file = fileChooser.showSaveDialog(new Stage());
+        
+        GestioneIO.salvaVCF(file.getPath(),e.getContatti());
+  
     }
     
 }
