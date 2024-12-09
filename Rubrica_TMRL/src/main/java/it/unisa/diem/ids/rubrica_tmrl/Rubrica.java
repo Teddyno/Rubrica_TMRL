@@ -22,7 +22,6 @@ public class Rubrica extends Application {
     
     public static String fileDefault; ///< l'indirizzo di default del file .vcf
     
-    
     /**
      * @brief start della scena
      * 
@@ -52,6 +51,23 @@ public class Rubrica extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+    }
+    
+    /**
+     * @brief get Indirizzo file default
+     * 
+     * @return L'indirizzo del file di default per la persistenza dei dati
+     */
+    public static String getFileDefault() {
+        return fileDefault;
+    }
+
+    /**
+     * @brief Set Indirizzo file default
+     * 
+     */
+    public static void setFileDefault(String fileDefault) {
+        Rubrica.fileDefault = fileDefault;
     }
     
 }
