@@ -35,4 +35,18 @@ public class Elenco {
         return contatti;
     }
     
+    public void addContatto(Contatto contatto){
+        
+        contatti.add(contatto);
+        
+        GestioneIO.salvaVCF(Rubrica.fileDefault,contatti);
+    }
+    
+    public void removeContatto(Contatto contatto){
+        
+        contatti.remove(contatto);
+        
+        GestioneIO.salvaVCF(Rubrica.fileDefault,contatti);
+    }
+    
 }

@@ -360,11 +360,9 @@ public class RubricaMainController implements Initializable {
             return;
         }
         
-        e.getContatti().add(nuovoContatto);
+        e.addContatto(nuovoContatto);
         
         ordinamento();
-        
-        GestioneIO.salvaVCF(Rubrica.fileDefault,e.getContatti());
         
         switchPane(event); //ritorno in home
         cntTable.getSelectionModel().select(nuovoContatto);
@@ -467,11 +465,8 @@ public class RubricaMainController implements Initializable {
         
         alert.showAndWait().ifPresent(response -> {
             if(response == ButtonType.OK){
-                e.getContatti().remove(contattoSel);
-            
-                GestioneIO.salvaVCF(Rubrica.fileDefault,e.getContatti());
+                e.removeContatto(contattoSel);
             }
-                
             if(e.getContatti().isEmpty()){
                 switchPane(event);
             }
@@ -573,10 +568,10 @@ public class RubricaMainController implements Initializable {
         alert.setContentText("Sei sicuro di voler modificare in: " + modContatto.getCognome() + " " + modContatto.getNome() + "?");
         
         alert.showAndWait().ifPresent(response -> {
-            if(response == ButtonType.OK){
+            if(response == ButtonType.OK){                                      // se l'utente conferma le modifiche
                 e.getContatti().set(contattoSelID, modContatto);
                 cntTable.getSelectionModel().select(modContatto);
-                
+                ordinamento();
                 GestioneIO.salvaVCF(Rubrica.fileDefault,e.getContatti());
             }
             else{
@@ -587,7 +582,7 @@ public class RubricaMainController implements Initializable {
             }
             
         });
-        ordinamento();
+        
     }
     
     /**
