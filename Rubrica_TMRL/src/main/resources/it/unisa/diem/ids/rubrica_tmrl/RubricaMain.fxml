@@ -51,24 +51,24 @@
          <children>
             <AnchorPane fx:id="homePane" prefHeight="550.0" prefWidth="720.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label layoutX="210.0" layoutY="86.0" text="Rubrica TMRL">
+                  <Label layoutX="201.0" layoutY="97.0" text="Rubrica TMRL">
                      <font>
                         <Font size="45.0" />
                      </font>
                   </Label>
-                  <Button layoutX="174.0" layoutY="243.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Importa Dati" textAlignment="CENTER">
+                  <Button layoutX="163.0" layoutY="292.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Importa Dati" textAlignment="CENTER">
                      <font>
                         <Font size="17.0" />
                      </font></Button>
-                  <Button layoutX="371.0" layoutY="242.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Esporta Dati" textAlignment="CENTER">
+                  <Button layoutX="360.0" layoutY="291.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Esporta Dati" textAlignment="CENTER">
                      <font>
                         <Font size="17.0" />
                      </font></Button>
-                  <Button fx:id="btnaddcontatto" layoutX="174.0" layoutY="184.0" mnemonicParsing="false" onAction="#switchPane" prefHeight="40.0" prefWidth="350.0" text="Aggiungi Contatto">
+                  <Button fx:id="btnaddcontatto" layoutX="163.0" layoutY="233.0" mnemonicParsing="false" onAction="#switchPane" prefHeight="40.0" prefWidth="350.0" text="Aggiungi Contatto">
                      <font>
                         <Font size="17.0" />
                      </font></Button>
-                  <Button fx:id="predefinitoBtn" layoutX="174.0" layoutY="301.0" mnemonicParsing="false" onAction="#aggiungiPredefiniti" prefHeight="40.0" prefWidth="350.0" text="Predefinito">
+                  <Button fx:id="predefinitoBtn" layoutX="163.0" layoutY="350.0" mnemonicParsing="false" onAction="#aggiungiPredefiniti" prefHeight="40.0" prefWidth="350.0" text="Predefinito">
                      <font>
                         <Font size="17.0" />
                      </font></Button>
