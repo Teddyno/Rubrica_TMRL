@@ -10,6 +10,7 @@ package it.unisa.diem.ids.rubrica_tmrl;
 import java.net.URL;
 import java.util.Collections;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -249,6 +250,20 @@ public class RubricaMainController implements Initializable {
     private boolean isValido(){
         return !(nomeField.getText().isEmpty() && cognomeField.getText().isEmpty());  // controlla se i campi sono vuoti in aggiungi contatto
     }
+    
+    
+    private static boolean isValidEmail(String email) {
+        // Espressione regolare per email valida
+        String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+
+        // Controllo di null
+        if (email == null) {
+            return false;
+        }
+
+        // Verifica con il pattern
+        return Pattern.compile(emailRegex).matcher(email).matches();
+    }
 
     /**
      * @brief Aggiungi contatto all'elenco
@@ -264,12 +279,20 @@ public class RubricaMainController implements Initializable {
      * @see ordinamento()
      */
     @FXML
-    private void aggiungiContatto(ActionEvent event) {                          // creo comm
+    private void aggiungiContatto(ActionEvent event) {                          
         
         if(!isValido()){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Dati Mancanti");
             alert.setHeaderText("Devi inserire almeno uno tra Nome e Cognome");
+            alert.showAndWait();
+            return;
+        }
+        
+        if(!isValidEmail(emailUno.getText())){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Email Non VALIDA");
+            alert.setHeaderText("Devi inserire una mail");
             alert.showAndWait();
             return;
         }
