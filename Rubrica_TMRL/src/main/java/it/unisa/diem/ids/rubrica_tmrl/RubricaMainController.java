@@ -582,7 +582,7 @@ public class RubricaMainController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Conferma Modifiche");
         alert.setHeaderText("Stai per modificare un contatto");
-        alert.setContentText("Sei sicuro di voler modificare in: " + modContatto.getCognome() + " " + modContatto.getNome() + "?");
+        alert.setContentText("Sei sicuro di voler modificare questo contatto?");
         
         alert.showAndWait().ifPresent(response -> {
             if(response == ButtonType.OK){                                      // se l'utente conferma le modifiche
