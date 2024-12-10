@@ -50,7 +50,7 @@
    <center>
       <AnchorPane fx:id="pane" prefHeight="525.0" prefWidth="630.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="homePane" prefHeight="525.0" prefWidth="630.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="homePane" prefHeight="525.0" prefWidth="630.0" style="-fx-background-color: white;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label layoutX="181.0" layoutY="116.0" text="Rubrica TMRL">
                      <font>
@@ -150,13 +150,13 @@
                      <font>
                         <Font size="17.0" />
                      </font></Label>
-                  <Button fx:id="submitBtn" layoutX="189.0" layoutY="418.0" mnemonicParsing="false" onAction="#aggiungiContatto" prefHeight="47.0" prefWidth="271.0" text="Aggiungi">
+                  <Button fx:id="submitBtn" layoutX="189.0" layoutY="418.0" mnemonicParsing="false" onAction="#aggiungiContatto" prefHeight="47.0" prefWidth="271.0" style="-fx-background-color: #8597F9; -fx-background-radius: 12px;" text="Aggiungi">
                      <font>
                         <Font size="28.0" />
                      </font></Button>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="contattoPane" prefHeight="525.0" prefWidth="630.0" style="-fx-background-color: white;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="contattoPane" prefHeight="525.0" prefWidth="630.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label fx:id="datilbl" alignment="TOP_CENTER" layoutX="-51.0" layoutY="254.0" prefHeight="37.0" prefWidth="420.0" text="Nome Contatto">
                      <font>
@@ -194,11 +194,11 @@
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Button fx:id="rimuovibtn" layoutX="146.0" layoutY="414.0" mnemonicParsing="false" onAction="#rimuoviContatto" prefHeight="45.0" prefWidth="130.0" text="Rimuovi" textFill="RED">
+                  <Button fx:id="rimuovibtn" layoutX="146.0" layoutY="410.0" mnemonicParsing="false" onAction="#rimuoviContatto" prefHeight="45.0" prefWidth="130.0" style="-fx-background-color: #FC9494; -fx-background-radius: 12px;" text="Rimuovi" textFill="BLACK">
                      <font>
                         <Font size="17.0" />
                      </font></Button>
-                  <Button fx:id="modificaBtn" layoutX="361.0" layoutY="410.0" mnemonicParsing="false" onAction="#modificaPane" prefHeight="45.0" prefWidth="130.0" text="Modifica">
+                  <Button fx:id="modificaBtn" layoutX="361.0" layoutY="410.0" mnemonicParsing="false" onAction="#modificaPane" prefHeight="45.0" prefWidth="130.0" style="-fx-background-color: #8597F9; -fx-background-radius: 12px;" text="Modifica">
                      <font>
                         <Font size="17.0" />
                      </font></Button>
@@ -316,7 +316,7 @@
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <Button fx:id="submitModifiche" layoutX="165.0" layoutY="404.0" mnemonicParsing="false" onAction="#modificaContatto" prefHeight="54.0" prefWidth="301.0" text="Conferma Modifiche">
+                  <Button fx:id="submitModifiche" layoutX="165.0" layoutY="404.0" mnemonicParsing="false" onAction="#modificaContatto" prefHeight="54.0" prefWidth="301.0" style="-fx-background-color: #8597F9; -fx-background-radius: 12px;" text="Conferma Modifiche">
                      <font>
                         <Font size="28.0" />
                      </font>
