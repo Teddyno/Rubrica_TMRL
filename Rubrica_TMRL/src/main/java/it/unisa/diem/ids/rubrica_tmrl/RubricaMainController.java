@@ -154,7 +154,7 @@ public class RubricaMainController implements Initializable {
         e = new Elenco();
 
         cntClmNome.setCellValueFactory(s -> { 
-            return new SimpleStringProperty(s.getValue().getCognome() + " " + s.getValue().getNome());
+            return new SimpleStringProperty((s.getValue().getCognome().isEmpty() ? "" : s.getValue().getCognome() + " ") + s.getValue().getNome()) ;
         });
         
         cntTable.getSelectionModel().selectedItemProperty().addListener(
