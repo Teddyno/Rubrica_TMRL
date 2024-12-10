@@ -133,6 +133,10 @@ public class RubricaMainController implements Initializable {
     private Button importBtn;
     @FXML
     private Button exportBtn;
+    @FXML
+    private Label infoNumLbl;
+    @FXML
+    private Label infoEmailLbl;
 
     /**********   ***************************  ***********/
     

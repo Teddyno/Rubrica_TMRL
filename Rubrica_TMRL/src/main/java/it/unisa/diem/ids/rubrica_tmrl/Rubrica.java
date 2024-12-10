@@ -36,8 +36,8 @@ public class Rubrica extends Application {
         
         Parent root = FXMLLoader.load(getClass().getResource("RubricaMain.fxml"));
         
-        Image icona = new Image("src/main/resources/it/unisa/diem/ids/rubrica_tmrl/icona.png");
-        stage.getIcons().add(icona);
+        /*Image icona = new Image("src/main/resources/it/unisa/diem/ids/rubrica_tmrl/icona.png");
+        stage.getIcons().add(icona);*/
         
         Scene scene = new Scene(root);
         
