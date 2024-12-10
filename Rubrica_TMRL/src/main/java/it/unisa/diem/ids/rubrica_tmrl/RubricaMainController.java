@@ -317,6 +317,19 @@ public class RubricaMainController implements Initializable {
 
         return NumTel.matches(phoneRegex);
     }
+    
+    /**
+     * @brief Ordina l'elenco
+     * 
+     * Imposta l'elenco in ordine alfabetico 
+     */
+    private void ordinamento(){
+        Collections.sort(e.getContatti(), (c1, c2)->{
+            String nomeCompleto1 = (c1.getCognome() + " " + c1.getNome());
+            String nomeCompleto2 = (c2.getCognome() + " "  + c2.getNome());
+            return nomeCompleto1.trim().compareToIgnoreCase(nomeCompleto2.trim());
+        });
+    }
 
 
     /**
@@ -589,18 +602,6 @@ public class RubricaMainController implements Initializable {
         
     }
     
-    /**
-     * @brief Ordina l'elenco
-     * 
-     * Imposta l'elenco in ordine alfabetico 
-     */
-    private void ordinamento(){
-        Collections.sort(e.getContatti(), (c1, c2)->{
-            String nomeCompleto1 = (c1.getCognome() + " " + c1.getNome());
-            String nomeCompleto2 = (c2.getCognome() + " " + c2.getNome());
-            return nomeCompleto1.compareToIgnoreCase(nomeCompleto2);
-        });
-    }
     
     @FXML
     private void handleImport(ActionEvent event){
