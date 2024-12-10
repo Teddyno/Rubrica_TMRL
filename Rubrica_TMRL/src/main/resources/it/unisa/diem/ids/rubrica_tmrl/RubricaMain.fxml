@@ -163,33 +163,33 @@
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Label fx:id="numeroUnoLbl" layoutX="339.0" layoutY="102.0" text="Numero Telefonico 1">
+                  <Label fx:id="numeroUnoLbl" layoutX="339.0" layoutY="108.0" text="Numero Telefonico 1">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="numeroDueLbl" layoutX="339.0" layoutY="134.0" text="Numero Telefonico 2">
+                  <Label fx:id="numeroDueLbl" layoutX="339.0" layoutY="140.0" text="Numero Telefonico 2">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="numeroTreLbl" layoutX="339.0" layoutY="166.0" text="Numero Telefonico 3">
+                  <Label fx:id="numeroTreLbl" layoutX="339.0" layoutY="172.0" text="Numero Telefonico 3">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
                   <AnchorPane layoutX="105.0" layoutY="107.0" prefHeight="128.0" prefWidth="106.0" style="-fx-background-color: white;" />
-                  <Label fx:id="emailUnoLbl" layoutX="339.0" layoutY="257.0" text="nome.cognome@example.it">
+                  <Label fx:id="emailUnoLbl" layoutX="339.0" layoutY="269.0" text="nome.cognome@example.it">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="emailDueLbl" layoutX="339.0" layoutY="289.0" text="nome.cognome@example.it">
+                  <Label fx:id="emailDueLbl" layoutX="339.0" layoutY="301.0" text="nome.cognome@example.it">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="emailTreLbl" layoutX="339.0" layoutY="321.0" text="nome.cognome@example.it">
+                  <Label fx:id="emailTreLbl" layoutX="339.0" layoutY="333.0" text="nome.cognome@example.it">
                      <font>
                         <Font size="22.0" />
                      </font>
@@ -202,21 +202,21 @@
                      <font>
                         <Font size="17.0" />
                      </font></Button>
-                  <Label fx:id="infoNumLbl" layoutX="339.0" layoutY="60.0" style="-fxfont-weight: bold" text="Numeri Telefonici:">
+                  <Label fx:id="infoNumLbl" layoutX="339.0" layoutY="60.0" style="-fx-font-family:'Arial'; -fx-font-weight: bold" text="Numeri Telefonici:">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <Label fx:id="infoEmailLbl" layoutX="339.0" layoutY="223.0" text="Email:">
+                  <Label fx:id="infoEmailLbl" layoutX="339.0" layoutY="229.0" style="-fx-font-family:'Arial'; -fx-font-weight: bold" text="Email:">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <Line endX="100.0" layoutX="490.0" layoutY="210.0" startX="-150.0" stroke="#616060" />
-                  <Line endX="100.0" layoutX="459.0" layoutY="133.0" startX="-120.0" stroke="#9a9999" />
-                  <Line endX="100.0" layoutX="459.0" layoutY="165.0" startX="-120.0" stroke="#9a9999" />
-                  <Line endX="100.0" layoutX="459.0" layoutY="290.0" startX="-120.0" stroke="#9a9999" />
-                  <Line endX="100.0" layoutX="459.0" layoutY="323.0" startX="-120.0" stroke="#9a9999" />
+                  <Line endX="100.0" layoutX="490.0" layoutY="216.0" startX="-150.0" stroke="#616060" />
+                  <Line endX="100.0" layoutX="459.0" layoutY="139.0" startX="-120.0" stroke="#9a9999" />
+                  <Line endX="100.0" layoutX="459.0" layoutY="171.0" startX="-120.0" stroke="#9a9999" />
+                  <Line endX="100.0" layoutX="459.0" layoutY="302.0" startX="-120.0" stroke="#9a9999" />
+                  <Line endX="100.0" layoutX="459.0" layoutY="335.0" startX="-120.0" stroke="#9a9999" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="modificaContattoPane" prefHeight="525.0" prefWidth="630.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

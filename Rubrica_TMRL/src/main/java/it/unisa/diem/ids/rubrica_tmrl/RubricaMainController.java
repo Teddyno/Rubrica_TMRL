@@ -372,7 +372,7 @@ public class RubricaMainController implements Initializable {
         if(!isValido(nuovoContatto)){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Dati non validi");
-            alert.setHeaderText("Ricontrolla i dati inseriti");
+            alert.setHeaderText("Inserisci almeno uno tra Nome e Cognome");
             alert.showAndWait();
             return;
         }
@@ -574,7 +574,7 @@ public class RubricaMainController implements Initializable {
         if(!isValido(modContatto)){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Dati non validi");
-            alert.setHeaderText("Ricontrolla i dati inseriti");
+            alert.setHeaderText("Numero di Telefono o Email non validi");
             alert.showAndWait();
             return;
         }
