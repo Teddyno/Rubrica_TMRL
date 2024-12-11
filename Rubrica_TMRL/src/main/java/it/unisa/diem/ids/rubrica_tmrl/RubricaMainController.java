@@ -601,6 +601,15 @@ public class RubricaMainController implements Initializable {
 
     @FXML
     private void handlepreferiti(ActionEvent event) {
+        
+    Contatto contattoSel = cntTable.getSelectionModel().getSelectedItem();
+        
+        if (preferitiCb.isSelected()) {
+            contattoSel.setPreferiti(true);
+        } else {
+            contattoSel.setPreferiti(false);  
+        }
+        GestioneIO.salvaVCF(Rubrica.filePathDefault,elenco.getContatti());
     }
     
 }
