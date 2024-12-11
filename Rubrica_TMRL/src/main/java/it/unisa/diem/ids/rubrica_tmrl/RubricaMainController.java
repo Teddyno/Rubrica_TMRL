@@ -50,6 +50,8 @@ public class RubricaMainController implements Initializable {
         private TableColumn<Contatto, String> cntClmNome;                           // Tabella contatti (colonna)
     
     private Elenco elenco;
+    
+    private Preferiti preferiti;
         
     /**********  AnchorPane HOMEPAGE  ***********/
     @FXML
@@ -139,6 +141,10 @@ public class RubricaMainController implements Initializable {
     private Label infoEmailLbl;
     @FXML
     private CheckBox preferitiCb;
+    @FXML
+    private TableView<Contatto> prefTable;
+        @FXML
+        private TableColumn<Contatto, String> prefClm;
 
     /**********  ***************************  ***********/
     
@@ -165,6 +171,24 @@ public class RubricaMainController implements Initializable {
                 });
         
         cntTable.setItems(elenco.getContatti());
+        
+        preferiti = new Preferiti(elenco);
+        
+        
+            
+        
+        prefClm.setCellValueFactory(s -> { 
+            return new SimpleStringProperty((s.getValue().getCognome().isEmpty() ? "" : s.getValue().getCognome() + " ") + s.getValue().getNome()) ;
+        });
+        
+        prefTable.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> {
+                    cntTable.getSelectionModel().select(newValue);
+                });
+        
+        prefTable.setItems(preferiti.getContattiPreferiti());
+ 
+        
     }    
 
     
@@ -249,7 +273,11 @@ public class RubricaMainController implements Initializable {
                 emailTreLbl.setText(cnt.getEmail(2));
             }
         }
-
+        
+        if(cnt.isPreferiti()){
+            preferitiCb.setSelected(true);
+        }
+        
         //per visualizzare il pane del contatto e disattivare quello della home
         // da implementare nello switchPane ??
         addcontattopane.setVisible(false); 
@@ -299,6 +327,7 @@ public class RubricaMainController implements Initializable {
             //per eliminare il problema della selezione della tabella(se aggiungi contatto, poi home e poi di nuovo il contatto, dovrebbe restare home)
             //però non mi piace come posizionamento, commenta per notare il problema
             cntTable.getSelectionModel().clearSelection();
+            prefTable.getSelectionModel().clearSelection();
         }
     }
     
@@ -420,6 +449,7 @@ public class RubricaMainController implements Initializable {
         emailUnoLbl.setText("");
         emailDueLbl.setText("");
         emailTreLbl.setText("");
+        preferitiCb.setSelected(false);
     }
     
     private void pulisciMod(){
@@ -610,6 +640,8 @@ public class RubricaMainController implements Initializable {
             contattoSel.setPreferiti(false);  
         }
         GestioneIO.salvaVCF(Rubrica.filePathDefault,elenco.getContatti());
+        
+        preferiti.setPreferiti();
     }
     
 }

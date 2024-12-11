@@ -349,9 +349,9 @@
          <children>
             <AnchorPane prefHeight="525.0" prefWidth="210.0">
                <children>
-                  <TableView prefHeight="525.0" prefWidth="210.0">
+                  <TableView fx:id="prefTable" prefHeight="525.0" style="-fx-text-fill: black;" prefWidth="210.0">
                     <columns>
-                        <TableColumn prefWidth="210.0" text="Preferiti" />
+                        <TableColumn fx:id="prefClm" prefWidth="210.0" style="-fx-font-size: 16px; fx-background-color: #2B3A8C;" text="Preferiti" />
                     </columns>
                   </TableView>
                </children>
