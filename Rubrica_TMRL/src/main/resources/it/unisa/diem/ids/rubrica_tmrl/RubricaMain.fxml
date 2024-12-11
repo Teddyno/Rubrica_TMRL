@@ -33,7 +33,7 @@
       </HBox>
    </top>
    <left>
-      <VBox prefHeight="525.0" prefWidth="210.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="525.0" prefWidth="210.0" visible="false" BorderPane.alignment="CENTER">
          <children>
             <AnchorPane prefHeight="525.0" prefWidth="210.0">
                <children>
@@ -50,7 +50,7 @@
    <center>
       <AnchorPane fx:id="pane" prefHeight="525.0" prefWidth="630.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="homePane" prefHeight="525.0" prefWidth="630.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="homePane" prefHeight="525.0" prefWidth="630.0" style="-fx-background-color: white;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label layoutX="181.0" layoutY="116.0" text="Rubrica TMRL">
                      <font>
@@ -156,7 +156,7 @@
                      </font></Button>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="contattoPane" prefHeight="525.0" prefWidth="630.0" style="-fx-background-color: white;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="contattoPane" prefHeight="525.0" prefWidth="630.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label fx:id="datilbl" alignment="TOP_CENTER" layoutX="-51.0" layoutY="254.0" prefHeight="37.0" prefWidth="420.0" text="Nome Contatto">
                      <font>
@@ -217,6 +217,7 @@
                   <Line endX="100.0" layoutX="459.0" layoutY="171.0" startX="-120.0" stroke="#9a9999" />
                   <Line endX="100.0" layoutX="459.0" layoutY="302.0" startX="-120.0" stroke="#9a9999" />
                   <Line endX="100.0" layoutX="459.0" layoutY="335.0" startX="-120.0" stroke="#9a9999" />
+                  <CheckBox fx:id="preferitiCb" layoutX="130.0" layoutY="355.0" mnemonicParsing="false" onAction="#handlepreferiti" text="Preferiti" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="modificaContattoPane" prefHeight="525.0" prefWidth="630.0" style="-fx-background-color: white;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
