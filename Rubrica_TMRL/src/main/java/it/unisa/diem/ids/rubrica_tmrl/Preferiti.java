@@ -2,6 +2,7 @@
 
 package it.unisa.diem.ids.rubrica_tmrl;
 
+import java.util.Collections;
 import java.util.Iterator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -41,8 +42,8 @@ public class Preferiti {
                 if(contattiPreferiti.contains(c) && !elenco.getContatti().contains(c)){
                     contattiPreferiti.remove(c);    
                 }
-                
             }
+            sort();
     }
     
     public void removePreferiti(Contatto contatto){
@@ -51,5 +52,13 @@ public class Preferiti {
     
     public ObservableList<Contatto> getContattiPreferiti() {
         return contattiPreferiti;
+    }
+    
+    public void sort(){
+        Collections.sort(contattiPreferiti, (c1, c2)->{
+            String nomeCompleto1 = (c1.getCognome() + " " + c1.getNome()).trim();
+            String nomeCompleto2 = (c2.getCognome() + " " + c2.getNome()).trim();
+            return nomeCompleto1.compareToIgnoreCase(nomeCompleto2);
+        });
     }
 }
