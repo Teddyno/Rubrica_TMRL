@@ -21,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -136,6 +137,8 @@ public class RubricaMainController implements Initializable {
     private Label infoNumLbl;
     @FXML
     private Label infoEmailLbl;
+    @FXML
+    private CheckBox preferitiCb;
 
     /**********  ***************************  ***********/
     
@@ -594,6 +597,10 @@ public class RubricaMainController implements Initializable {
         
         GestioneIO.salvaVCF(file.getPath(),elenco.getContatti());
   
+    }
+
+    @FXML
+    private void handlepreferiti(ActionEvent event) {
     }
     
 }
