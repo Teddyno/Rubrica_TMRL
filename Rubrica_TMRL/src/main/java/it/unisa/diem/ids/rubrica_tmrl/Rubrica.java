@@ -20,7 +20,7 @@ import javafx.stage.Stage;
  */
 public class Rubrica extends Application {
     
-    public static String fileDefault; ///< l'indirizzo di default del file .vcf
+    public static String filePathDefault; ///< l'indirizzo di default del file .vcf
     
     /**
      * @brief start della scena
@@ -32,7 +32,7 @@ public class Rubrica extends Application {
     public void start(Stage stage) throws Exception {
         
         
-        fileDefault = "src/main/resources/it/unisa/diem/ids/rubrica_tmrl/Rubrica.vcf";
+        filePathDefault = "src/main/resources/it/unisa/diem/ids/rubrica_tmrl/Rubrica.vcf";
         
         Parent root = FXMLLoader.load(getClass().getResource("RubricaMain.fxml"));
         
@@ -60,15 +60,15 @@ public class Rubrica extends Application {
      * @return L'indirizzo del file di default per la persistenza dei dati
      */
     public static String getFileDefault() {
-        return fileDefault;
+        return filePathDefault;
     }
 
     /**
      * @brief Set Indirizzo file default
      * 
      */
-    public static void setFileDefault(String fileDefault) {
-        Rubrica.fileDefault = fileDefault;
+    public static void setFileDefault(String filePathDefault) {
+        Rubrica.filePathDefault = filePathDefault;
     }
     
 }

@@ -18,24 +18,25 @@ public class Elenco {
     
     private GestioneIO io;
     private ObservableList<Contatto> contatti;
+    private String filePathDefault;
 
     /**
      * @brief costruttore Elenco
      * 
      * Inizializza la collezione contenente i contatti
      * 
-     * @param filePath indirizzo file di default, persistenza dei dati
+     * @param filePathDefault indirizzo file di default, persistenza dei dati
      */
-    public Elenco(String filePath) {
+    public Elenco(String filePathDefault) {
+        this.filePathDefault = filePathDefault;
+        this.contatti = FXCollections.observableArrayList();
+        this.io = new GestioneIO(this);
         
-        contatti = FXCollections.observableArrayList();
-        io = new GestioneIO(this);
-        
-        initElenco(filePath);
+        initElenco();
     }
     
-    public void initElenco(String filePath){
-        io.caricaVCF(filePath,contatti);
+    private void initElenco(){
+        io.caricaVCF(filePathDefault,contatti);
     }
     
     /**
@@ -53,21 +54,21 @@ public class Elenco {
         
         sort();
         
-        GestioneIO.salvaVCF(Rubrica.fileDefault,contatti);
+        io.salvaVCF(filePathDefault,contatti);
     }
     
     public void removeContatto(Contatto contatto){
         
         contatti.remove(contatto);
         
-        GestioneIO.salvaVCF(Rubrica.fileDefault,contatti);
+        io.salvaVCF(filePathDefault,contatti);
     }
     
     public void modifyContatto(int id,Contatto contatto){
         
         contatti.set(id,contatto);
         
-        GestioneIO.salvaVCF(Rubrica.fileDefault,contatti);
+        io.salvaVCF(filePathDefault,contatti);
     }
     
     public void sort(){

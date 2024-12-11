@@ -21,6 +21,12 @@ import javafx.collections.ObservableList;
  * @brief Classe Gestione Import/Output
  */
 public class GestioneIO {
+    
+    private Elenco elenco;
+    
+    public GestioneIO(Elenco elenco){
+        this.elenco = elenco;
+    }
    
     /**
      * @brief Importa contatti
@@ -31,7 +37,7 @@ public class GestioneIO {
      * @param[in] fileDefault indirizzo del file di default della rubrica
      * @param[in] contatti collezione contenente i contatti dell'elenco
      */
-    public static void importaVCF(String fileDefault,ObservableList<Contatto> contatti) {
+    public static void caricaVCF(String filePath,ObservableList<Contatto> contatti) {
        
         String nomeCompleto= null;
         String nome= null;
@@ -43,7 +49,7 @@ public class GestioneIO {
         String email2= null;
         String email3= null;
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileDefault))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
 
             while ((line = reader.readLine()) != null) {
@@ -117,13 +123,13 @@ public class GestioneIO {
      * Scrive l'elenco dei contatti all'interno del file di default,
      * seguendo il formato .vcf
      * 
-     * @param[in] fileDefault indirizzo del file di default della rubrica
-     * @param[in] contatti collezione contenente i contatti dell'elenco
+     * @param fileDefault indirizzo del file di default della rubrica
+     * @param contatti collezione contenente i contatti dell'elenco
      */
-    public static void salvaVCF(String fileDefault,ObservableList<Contatto> contatti) {
+    public static void salvaVCF(String filePath,ObservableList<Contatto> contatti) {
        
         //il blocco try con le risorse, se c'è un eccezione fa di base il close del pw
-        try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(fileDefault)))){
+        try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(filePath)))){
 
             Iterator<Contatto> i = contatti.iterator();
             

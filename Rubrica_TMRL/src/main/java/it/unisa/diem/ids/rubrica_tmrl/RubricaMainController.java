@@ -150,7 +150,7 @@ public class RubricaMainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        elenco = new Elenco();
+        elenco = new Elenco(Rubrica.filePathDefault);
 
         cntClmNome.setCellValueFactory(s -> { 
             return new SimpleStringProperty((s.getValue().getCognome().isEmpty() ? "" : s.getValue().getCognome() + " ") + s.getValue().getNome()) ;
@@ -160,8 +160,6 @@ public class RubricaMainController implements Initializable {
                 (observable, oldValue, newValue) -> {
                     showDetails(newValue);
                 });
-
-        GestioneIO.caricaVCF(Rubrica.fileDefault,elenco.getContatti());
         
         cntTable.setItems(elenco.getContatti());
     }    
@@ -390,6 +388,7 @@ public class RubricaMainController implements Initializable {
     private void showDetails(Contatto cnt) {
         pulisciContatto();
         
+        //problema Exception showdetails, forse da eccezione perchè accede a getnome e getcognome e 1 dei due non esiste
         datilbl.setText(cnt.getCognome() + " " + cnt.getNome());
         
         for(int i=0;i<cnt.getSizeNumTel();i++){
@@ -467,7 +466,7 @@ public class RubricaMainController implements Initializable {
         
         Contatto contattoSel = cntTable.getSelectionModel().getSelectedItem();
         
-        
+        //problema Exception showdetails
         modNomeField.setText(contattoSel.getNome());
         modCognomeField.setText(contattoSel.getCognome());
         
@@ -550,7 +549,7 @@ public class RubricaMainController implements Initializable {
                 elenco.modifyContatto(contattoSelID, modContatto);
                 cntTable.getSelectionModel().select(modContatto);
                 ordinamento();
-                GestioneIO.salvaVCF(Rubrica.fileDefault,elenco.getContatti());
+                GestioneIO.salvaVCF(Rubrica.filePathDefault,elenco.getContatti());
             }
             else{
                 addcontattopane.setVisible(false); 
@@ -574,7 +573,7 @@ public class RubricaMainController implements Initializable {
         
         GestioneIO.caricaVCF(file.getPath(), elenco.getContatti());
         ordinamento();
-        GestioneIO.salvaVCF(Rubrica.fileDefault,elenco.getContatti());   
+        GestioneIO.salvaVCF(Rubrica.filePathDefault,elenco.getContatti());   
     }
     
     @FXML
