@@ -260,12 +260,36 @@ public class RubricaMainController implements Initializable {
         String emailPattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
         String numTelPattern = "^\\+?\\d{10,15}$";
         
-        if((contatto.getNome().isEmpty()) && (contatto.getCognome().isEmpty())) return false;
+        if((contatto.getNome().isEmpty()) && (contatto.getCognome().isEmpty())){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Dati non validi");
+            alert.setHeaderText("Inserisci almeno uno tra Nome e Cognome!");
+            alert.showAndWait();
+            return false;
+        }
         
         for(int i=0;i<contatto.getSizeNumTel();i++){
-            if(i == 0 && !Pattern.matches(numTelPattern, contatto.getNumTel(0))) return false; 
-            else if(i == 1 && !Pattern.matches(numTelPattern, contatto.getNumTel(1))) return false; 
-            else if(i == 2 && !Pattern.matches(numTelPattern, contatto.getNumTel(2))) return false;
+            if(i == 0 && !Pattern.matches(numTelPattern, contatto.getNumTel(0))){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Dati non validi");
+                alert.setHeaderText("Numero di Telefono non valido!");
+                alert.showAndWait();
+                return false;
+            } 
+            else if(i == 1 && !Pattern.matches(numTelPattern, contatto.getNumTel(1))) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Dati non validi");
+                alert.setHeaderText("Numero di Telefono non valido!");
+                alert.showAndWait();
+                return false;
+            } 
+            else if(i == 2 && !Pattern.matches(numTelPattern, contatto.getNumTel(2))) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Dati non validi");
+                alert.setHeaderText("Numero di Telefono non valido!");
+                alert.showAndWait();
+                return false;
+            }
         }
         
         for(int i=0;i<contatto.getSizeEmail();i++){
@@ -329,10 +353,6 @@ public class RubricaMainController implements Initializable {
         }
         
         if(!isValido(nuovoContatto)){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Dati non validi");
-            alert.setHeaderText("Inserisci almeno uno tra Nome e Cognome");
-            alert.showAndWait();
             return;
         }
         
