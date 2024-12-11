@@ -293,9 +293,27 @@ public class RubricaMainController implements Initializable {
         }
         
         for(int i=0;i<contatto.getSizeEmail();i++){
-            if(i == 0 && !Pattern.matches(emailPattern, contatto.getEmail(0))) return false;
-            else if(i == 1 && !Pattern.matches(emailPattern, contatto.getEmail(1))) return false;
-            else if(i == 2 && !Pattern.matches(emailPattern, contatto.getEmail(2))) return false;
+            if(i == 0 && !Pattern.matches(emailPattern, contatto.getEmail(0))) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Dati non validi");
+                alert.setHeaderText("Email non valida!");
+                alert.showAndWait();
+                return false;
+            }
+            else if(i == 1 && !Pattern.matches(emailPattern, contatto.getEmail(1))) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Dati non validi");
+                alert.setHeaderText("Email non valida!");
+                alert.showAndWait();
+                return false;
+            }
+            else if(i == 2 && !Pattern.matches(emailPattern, contatto.getEmail(2))) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Dati non validi");
+                alert.setHeaderText("Email non valida!");
+                alert.showAndWait();
+                return false;
+            }
         }
         
         return true;  
@@ -552,10 +570,6 @@ public class RubricaMainController implements Initializable {
         }
         
         if(!isValido(modContatto)){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Dati non validi");
-            alert.setHeaderText("Numero di Telefono o Email non validi");
-            alert.showAndWait();
             return;
         }
         
