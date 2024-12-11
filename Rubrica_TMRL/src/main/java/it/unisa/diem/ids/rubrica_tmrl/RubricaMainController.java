@@ -185,20 +185,21 @@ public class RubricaMainController implements Initializable {
         FilteredList<Contatto> cerca = new FilteredList<>(elenco.getContatti(), e->true);   // e->true ti manda tutti i contatti, e->false non ti manda nulla
         
         barraDiRicerca.textProperty().addListener((observable, oldValue, newValue) ->{
-            cerca.setPredicate(cnt->{                                           // setPredicate definisce il filtro da applicare agli elementi della lista
+            cerca.setPredicate(cnt->{                                                       // setPredicate definisce il filtro da applicare agli elementi della lista
                 if(newValue == null || newValue.isEmpty())
                     return true;
-                String filtro = newValue.toLowerCase();                            // testo inserito nella barra di ricerca
-                if(cnt.getNome().toLowerCase().contains(filtro))
+                String filtro = newValue.toLowerCase();                                     // testo inserito nella barra di ricerca
+                if(cnt.getNome().toLowerCase().contains(filtro))    
                     return true;
-                else if(cnt.getCognome().toLowerCase().contains(filtro))           // toLowerCase() utilizzata per convertire tutte le lettere di una stringa in caratteri minuscoli
+                else if(cnt.getCognome().toLowerCase().contains(filtro))                    // toLowerCase() utilizzata per convertire tutte le lettere di una stringa in caratteri minuscoli
                     return true;
                 return false;
             });
         });
         
         barraDiRicerca.setOnKeyPressed(e->{
-        cntTable.getSelectionModel().clearSelection();                      // ogni volta che l'utente preme un tasto nella casella di ricerca la selezione della tablewiew viene cancellata
+        cntTable.getSelectionModel().clearSelection();                                       // ogni volta che l'utente preme un tasto nella casella di ricerca la selezione della tablewiew viene cancellata
+        switchPane(event);
         });
             
         SortedList<Contatto> ordina = new SortedList<>(cerca);
@@ -213,6 +214,47 @@ public class RubricaMainController implements Initializable {
         alert.setHeaderText(header);
         alert.showAndWait();
     }
+    
+    
+    /**
+     * @brief Imposta i dati del contatto nell'interfaccia
+     * 
+     * @param[in] cnt contatto da visualizzare 
+     */
+    private void showDetails(Contatto cnt) {
+        pulisciContatto();
+        
+        //problema Exception showdetails, forse da eccezione perchè accede a getnome e getcognome e 1 dei due non esiste
+        datilbl.setText(cnt.getCognome() + " " + cnt.getNome());
+        
+        for(int i=0;i<cnt.getSizeNumTel();i++){
+            if(i == 0){
+                numeroUnoLbl.setText(cnt.getNumTel(0));
+            } else if(i == 1){
+                numeroDueLbl.setText(cnt.getNumTel(1));
+            } else if(i == 2){
+                numeroTreLbl.setText(cnt.getNumTel(2));
+            }
+        }
+        
+        for(int i=0;i<cnt.getSizeEmail();i++){
+            if(i == 0){
+                emailUnoLbl.setText(cnt.getEmail(0));
+            } else if(i == 1){
+                emailDueLbl.setText(cnt.getEmail(1));
+            } else if(i == 2){
+                emailTreLbl.setText(cnt.getEmail(2));
+            }
+        }
+
+        //per visualizzare il pane del contatto e disattivare quello della home
+        // da implementare nello switchPane ??
+        addcontattopane.setVisible(false); 
+        homePane.setVisible(false);
+        modificaContattoPane.setVisible(false);
+        contattoPane.setVisible(true);
+    }
+    
     
 
     /**
@@ -387,45 +429,7 @@ public class RubricaMainController implements Initializable {
         modEmailDue.clear();
         modEmailTre.clear();
     }
-
-    /**
-     * @brief Imposta i dati del contatto nell'interfaccia
-     * 
-     * @param[in] cnt contatto da visualizzare 
-     */
-    private void showDetails(Contatto cnt) {
-        pulisciContatto();
-        
-        //problema Exception showdetails, forse da eccezione perchè accede a getnome e getcognome e 1 dei due non esiste
-        datilbl.setText(cnt.getCognome() + " " + cnt.getNome());
-        
-        for(int i=0;i<cnt.getSizeNumTel();i++){
-            if(i == 0){
-                numeroUnoLbl.setText(cnt.getNumTel(0));
-            } else if(i == 1){
-                numeroDueLbl.setText(cnt.getNumTel(1));
-            } else if(i == 2){
-                numeroTreLbl.setText(cnt.getNumTel(2));
-            }
-        }
-        
-        for(int i=0;i<cnt.getSizeEmail();i++){
-            if(i == 0){
-                emailUnoLbl.setText(cnt.getEmail(0));
-            } else if(i == 1){
-                emailDueLbl.setText(cnt.getEmail(1));
-            } else if(i == 2){
-                emailTreLbl.setText(cnt.getEmail(2));
-            }
-        }
-
-        //per visualizzare il pane del contatto e disattivare quello della home
-        // da implementare nello switchPane ??
-        addcontattopane.setVisible(false); 
-        homePane.setVisible(false);
-        modificaContattoPane.setVisible(false);
-        contattoPane.setVisible(true);
-    }
+    
 
     /**
      * @brief Rimuove un contatto dall'elenco
