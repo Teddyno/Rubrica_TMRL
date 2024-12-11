@@ -207,6 +207,13 @@ public class RubricaMainController implements Initializable {
         cntTable.setItems(ordina);                                              // .setItems() per impostare gli elementi di ordina in cntTable
     }
     
+    private void Alert(String title, String header){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.showAndWait();
+    }
+    
 
     /**
      * @brief Switch tra le varie interfacce
@@ -261,57 +268,36 @@ public class RubricaMainController implements Initializable {
         String numTelPattern = "^\\+?\\d{10,15}$";
         
         if((contatto.getNome().isEmpty()) && (contatto.getCognome().isEmpty())){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Dati non validi");
-            alert.setHeaderText("Inserisci almeno uno tra Nome e Cognome!");
-            alert.showAndWait();
+            Alert("Dati non validi", "Inserisci almeno uno tra Nome e Cognome!");
             return false;
         }
         
         for(int i=0;i<contatto.getSizeNumTel();i++){
             if(i == 0 && !Pattern.matches(numTelPattern, contatto.getNumTel(0))){
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Dati non validi");
-                alert.setHeaderText("Numero di Telefono non valido!");
-                alert.showAndWait();
+                Alert("Dati non validi", "Numero di Telefono non Valido!");
                 return false;
             } 
             else if(i == 1 && !Pattern.matches(numTelPattern, contatto.getNumTel(1))) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Dati non validi");
-                alert.setHeaderText("Numero di Telefono non valido!");
-                alert.showAndWait();
+                Alert("Dati non validi", "Numero di Telefono non Valido!");
                 return false;
             } 
             else if(i == 2 && !Pattern.matches(numTelPattern, contatto.getNumTel(2))) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Dati non validi");
-                alert.setHeaderText("Numero di Telefono non valido!");
-                alert.showAndWait();
+                Alert("Dati non validi", "Numero di Telefono non Valido!");
                 return false;
             }
         }
         
         for(int i=0;i<contatto.getSizeEmail();i++){
             if(i == 0 && !Pattern.matches(emailPattern, contatto.getEmail(0))) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Dati non validi");
-                alert.setHeaderText("Email non valida!");
-                alert.showAndWait();
+                Alert("Dati non validi", "Email non Valida!");
                 return false;
             }
             else if(i == 1 && !Pattern.matches(emailPattern, contatto.getEmail(1))) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Dati non validi");
-                alert.setHeaderText("Email non valida!");
-                alert.showAndWait();
+                Alert("Dati non validi", "Email non Valida!");
                 return false;
             }
             else if(i == 2 && !Pattern.matches(emailPattern, contatto.getEmail(2))) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Dati non validi");
-                alert.setHeaderText("Email non valida!");
-                alert.showAndWait();
+                Alert("Dati non validi", "Email non Valida!");
                 return false;
             }
         }
