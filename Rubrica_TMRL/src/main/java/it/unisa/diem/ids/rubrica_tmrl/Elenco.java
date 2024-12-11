@@ -73,8 +73,8 @@ public class Elenco {
     
     public void sort(){
         Collections.sort(contatti, (c1, c2)->{
-            String nomeCompleto1 = (c1.getCognome() + " " + c1.getNome());
-            String nomeCompleto2 = (c2.getCognome() + " " + c2.getNome());
+            String nomeCompleto1 = (c1.getCognome() + " " + c1.getNome()).trim();
+            String nomeCompleto2 = (c2.getCognome() + " " + c2.getNome()).trim();
             return nomeCompleto1.compareToIgnoreCase(nomeCompleto2);
         });
     }
