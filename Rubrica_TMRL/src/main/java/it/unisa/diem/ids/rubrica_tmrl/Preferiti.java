@@ -37,7 +37,16 @@ public class Preferiti {
                 if(contattiPreferiti.contains(c) && !c.isPreferiti()){
                     contattiPreferiti.remove(c);
                 }
+                
+                if(contattiPreferiti.contains(c) && !elenco.getContatti().contains(c)){
+                    contattiPreferiti.remove(c);    
+                }
+                
             }
+    }
+    
+    public void removePreferiti(Contatto contatto){
+        contattiPreferiti.remove(contatto);
     }
     
     public ObservableList<Contatto> getContattiPreferiti() {

@@ -486,6 +486,7 @@ public class RubricaMainController implements Initializable {
         alert.showAndWait().ifPresent(response -> {
             if(response == ButtonType.OK){
                 elenco.removeContatto(contattoSel);
+                preferiti.removePreferiti(contattoSel);
             }
             if(elenco.getContatti().isEmpty()){
                 switchPane(event);
@@ -535,7 +536,6 @@ public class RubricaMainController implements Initializable {
                 modEmailTre.setText(contattoSel.getEmail(2));
             }
         }
-        
         
     }
 

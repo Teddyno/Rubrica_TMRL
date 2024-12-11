@@ -19,10 +19,6 @@
                      <font>
                         <Font size="17.0" />
                      </font></TextField>
-                  <Button fx:id="gruppiBtn" layoutX="895.0" layoutY="18.0" mnemonicParsing="false" onAction="#switchPane" prefHeight="40.0" prefWidth="100.0" text="Gruppi">
-                     <font>
-                        <Font size="17.0" />
-                     </font></Button>
                   <Button fx:id="btnHome" layoutX="61.0" layoutY="18.0" mnemonicParsing="false" onAction="#switchPane" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #8597F9; -fx-background-radius: 12px;" text="Home">
                      <font>
                         <Font size="17.0" />
@@ -349,7 +345,7 @@
          <children>
             <AnchorPane prefHeight="525.0" prefWidth="210.0">
                <children>
-                  <TableView fx:id="prefTable" prefHeight="525.0" style="-fx-text-fill: black;" prefWidth="210.0">
+                  <TableView fx:id="prefTable" prefHeight="525.0" prefWidth="210.0" style="-fx-text-fill: black;">
                     <columns>
                         <TableColumn fx:id="prefClm" prefWidth="210.0" style="-fx-font-size: 16px; fx-background-color: #2B3A8C;" text="Preferiti" />
                     </columns>
