@@ -48,7 +48,7 @@ public class RubricaMainController implements Initializable {
         @FXML
         private TableColumn<Contatto, String> cntClmNome;                           // Tabella contatti (colonna)
     
-    private Elenco e;
+    private Elenco elenco;
         
     /**********  AnchorPane HOMEPAGE  ***********/
     @FXML
@@ -150,7 +150,7 @@ public class RubricaMainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        e = new Elenco();
+        elenco = new Elenco();
 
         cntClmNome.setCellValueFactory(s -> { 
             return new SimpleStringProperty((s.getValue().getCognome().isEmpty() ? "" : s.getValue().getCognome() + " ") + s.getValue().getNome()) ;
@@ -161,9 +161,9 @@ public class RubricaMainController implements Initializable {
                     showDetails(newValue);
                 });
 
-        GestioneIO.importaVCF(Rubrica.fileDefault,e.getContatti());
+        GestioneIO.caricaVCF(Rubrica.fileDefault,elenco.getContatti());
         
-        cntTable.setItems(e.getContatti());
+        cntTable.setItems(elenco.getContatti());
     }    
 
     
@@ -184,7 +184,7 @@ public class RubricaMainController implements Initializable {
         
         //DA SISTEMARE (LA PRIMA VOLTA CHE SI CERCA IL CONTATTO NON FUNZIONA)
         
-        FilteredList<Contatto> cerca = new FilteredList<>(e.getContatti(), e->true);   // e->true ti manda tutti i contatti, e->false non ti manda nulla
+        FilteredList<Contatto> cerca = new FilteredList<>(elenco.getContatti(), e->true);   // e->true ti manda tutti i contatti, e->false non ti manda nulla
         
         barraDiRicerca.textProperty().addListener((observable, oldValue, newValue) ->{
             cerca.setPredicate(cnt->{                                           // setPredicate definisce il filtro da applicare agli elementi della lista
@@ -278,52 +278,14 @@ public class RubricaMainController implements Initializable {
         
         return true;  
     }
-    
-     /**
-     * @brief Controlla validità Input Email
-     * 
-     * Verifica l'email con il pattern
-     * 
-     * @return True se l'email passata è valida
-     */
-    private static boolean isValidEmail(String email) {
-
-        String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
-
-
-        if (email == null) {
-            return false;
-        }
-
-        // 
-        return Pattern.compile(emailRegex).matcher(email).matches();
-    }
-    /**
-     * @brief Controlla validità Input Email
-     * 
-     * Controllo di null o stringa vuota
-     * Verifica se il numero rispetta il pattern
-     * 
-     * @return True se il numero passato è valido
-     */
-    private static boolean isValidNumTel(String NumTel) {
-  
-        if (NumTel == null || NumTel.isEmpty()) {
-            return false;
-        }
-
-        String phoneRegex = "^\\+?\\d{10,15}$";
-
-        return NumTel.matches(phoneRegex);
-    }
-    
+ 
     /**
      * @brief Ordina l'elenco
      * 
      * Imposta l'elenco in ordine alfabetico 
      */
     private void ordinamento(){
-        Collections.sort(e.getContatti(), (c1, c2)->{
+        Collections.sort(elenco.getContatti(), (c1, c2)->{
             String nomeCompleto1 = (c1.getCognome() + " " + c1.getNome());
             String nomeCompleto2 = (c2.getCognome() + " "  + c2.getNome());
             return nomeCompleto1.trim().compareToIgnoreCase(nomeCompleto2.trim());
@@ -376,7 +338,7 @@ public class RubricaMainController implements Initializable {
             return;
         }
         
-        e.addContatto(nuovoContatto);
+        elenco.addContatto(nuovoContatto);
         
         switchPane(event); //ritorno in home
         cntTable.getSelectionModel().select(nuovoContatto);
@@ -479,9 +441,9 @@ public class RubricaMainController implements Initializable {
         
         alert.showAndWait().ifPresent(response -> {
             if(response == ButtonType.OK){
-                e.removeContatto(contattoSel);
+                elenco.removeContatto(contattoSel);
             }
-            if(e.getContatti().isEmpty()){
+            if(elenco.getContatti().isEmpty()){
                 switchPane(event);
             }
         });
@@ -498,6 +460,7 @@ public class RubricaMainController implements Initializable {
      */
     @FXML
     private void modificaPane(ActionEvent event) { 
+        
         switchPane(event);
 
         pulisciMod();
@@ -545,7 +508,8 @@ public class RubricaMainController implements Initializable {
      */
     @FXML
     private void modificaContatto(ActionEvent event) {
-        int contattoSelID = cntTable.getSelectionModel().getSelectedIndex();
+        
+        int contattoSelID = cntTable.getSelectionModel().getSelectedIndex();    // recupera l'indice del contatto selezionato
         
         Contatto modContatto = new Contatto(modNomeField.getText(), modCognomeField.getText());
  
@@ -581,12 +545,12 @@ public class RubricaMainController implements Initializable {
         alert.setHeaderText("Stai per modificare un contatto");
         alert.setContentText("Sei sicuro di voler modificare questo contatto?");
         
-        alert.showAndWait().ifPresent(response -> {
-            if(response == ButtonType.OK){                                      // se l'utente conferma le modifiche
-                e.getContatti().set(contattoSelID, modContatto);
+        alert.showAndWait().ifPresent(response -> {                             //Alert per la conferma della modifica
+            if(response == ButtonType.OK){    
+                elenco.modifyContatto(contattoSelID, modContatto);
                 cntTable.getSelectionModel().select(modContatto);
                 ordinamento();
-                GestioneIO.salvaVCF(Rubrica.fileDefault,e.getContatti());
+                GestioneIO.salvaVCF(Rubrica.fileDefault,elenco.getContatti());
             }
             else{
                 addcontattopane.setVisible(false); 
@@ -608,9 +572,9 @@ public class RubricaMainController implements Initializable {
         fileChooser.setTitle("Scegli file Vcard");
         File file = fileChooser.showOpenDialog(new Stage());
         
-        GestioneIO.importaVCF(file.getPath(), e.getContatti());
+        GestioneIO.caricaVCF(file.getPath(), elenco.getContatti());
         ordinamento();
-        GestioneIO.salvaVCF(Rubrica.fileDefault,e.getContatti());   
+        GestioneIO.salvaVCF(Rubrica.fileDefault,elenco.getContatti());   
     }
     
     @FXML
@@ -621,7 +585,7 @@ public class RubricaMainController implements Initializable {
         fileChooser.setTitle("Scegli file Vcard");
         File file = fileChooser.showSaveDialog(new Stage());
         
-        GestioneIO.salvaVCF(file.getPath(),e.getContatti());
+        GestioneIO.salvaVCF(file.getPath(),elenco.getContatti());
   
     }
     
