@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -12,17 +13,17 @@
    <top>
       <HBox prefHeight="75.0" prefWidth="1050.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="75.0" prefWidth="1050.0" style="-fx-background-color: #1d84ef;">
+            <AnchorPane prefHeight="75.0" prefWidth="1050.0" style="-fx-background-color: #031CA6;">
                <children>
-                  <TextField fx:id="barraDiRicerca" layoutX="221.0" layoutY="16.0" onAction="#cerca" prefHeight="45.0" prefWidth="609.0" promptText="Cerca" style="-fx-border-radius:10px ;">
+                  <TextField fx:id="barraDiRicerca" layoutX="221.0" layoutY="18.0" onAction="#cerca" prefHeight="40.0" prefWidth="609.0" promptText="Cerca" style="-fx-border-radius:10px ;">
                      <font>
                         <Font size="17.0" />
                      </font></TextField>
-                  <Button fx:id="gruppiBtn" layoutX="895.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchPane" prefHeight="50.0" prefWidth="100.0" text="Gruppi">
+                  <Button fx:id="gruppiBtn" layoutX="895.0" layoutY="18.0" mnemonicParsing="false" onAction="#switchPane" prefHeight="40.0" prefWidth="100.0" text="Gruppi">
                      <font>
                         <Font size="17.0" />
                      </font></Button>
-                  <Button fx:id="btnHome" layoutX="61.0" layoutY="13.0" mnemonicParsing="false" onAction="#switchPane" prefHeight="50.0" prefWidth="100.0" text="Home">
+                  <Button fx:id="btnHome" layoutX="61.0" layoutY="18.0" mnemonicParsing="false" onAction="#switchPane" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #8597F9; -fx-background-radius: 12px;" text="Home">
                      <font>
                         <Font size="17.0" />
                      </font></Button>
@@ -38,7 +39,7 @@
                <children>
                   <TableView fx:id="cntTable" fixedCellSize="0.0" layoutY="-1.0" prefHeight="500.0" prefWidth="210.0" style="-fx-text-fill: black;" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
                     <columns>
-                        <TableColumn fx:id="cntClmNome" prefWidth="210.0" style="-fx-font-size: 16px; fx-background-color: #1d84ef;" text="Contatti" />
+                        <TableColumn fx:id="cntClmNome" prefWidth="210.0" style="-fx-font-size: 16px; fx-background-color: #2B3A8C;" text="Contatti" />
                     </columns>
                   </TableView>
                </children>
@@ -49,28 +50,28 @@
    <center>
       <AnchorPane fx:id="pane" prefHeight="525.0" prefWidth="630.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="homePane" prefHeight="525.0" prefWidth="630.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="homePane" prefHeight="525.0" prefWidth="630.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label layoutX="181.0" layoutY="116.0" text="Rubrica TMRL">
                      <font>
                         <Font size="45.0" />
                      </font>
                   </Label>
-                  <Button fx:id="importBtn" layoutX="143.0" layoutY="311.0" mnemonicParsing="false" onAction="#handleImport" prefHeight="40.0" prefWidth="150.0" text="Importa Dati" textAlignment="CENTER">
+                  <Button fx:id="importBtn" layoutX="143.0" layoutY="311.0" mnemonicParsing="false" onAction="#handleImport" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #8597F9; -fx-background-radius: 12px;" text="Importa Dati" textAlignment="CENTER">
                      <font>
                         <Font size="17.0" />
                      </font></Button>
-                  <Button fx:id="exportBtn" layoutX="340.0" layoutY="310.0" mnemonicParsing="false" onAction="#handleExport" prefHeight="40.0" prefWidth="150.0" text="Esporta Dati" textAlignment="CENTER">
+                  <Button fx:id="exportBtn" layoutX="340.0" layoutY="310.0" mnemonicParsing="false" onAction="#handleExport" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #8597F9; -fx-background-radius: 12px;" text="Esporta Dati" textAlignment="CENTER">
                      <font>
                         <Font size="17.0" />
                      </font></Button>
-                  <Button fx:id="btnaddcontatto" layoutX="143.0" layoutY="252.0" mnemonicParsing="false" onAction="#switchPane" prefHeight="40.0" prefWidth="350.0" text="Aggiungi Contatto">
+                  <Button fx:id="btnaddcontatto" layoutX="143.0" layoutY="252.0" mnemonicParsing="false" onAction="#switchPane" prefHeight="40.0" prefWidth="350.0" style="-fx-background-color: #8597F9; -fx-background-radius: 12px;" text="Aggiungi Contatto">
                      <font>
                         <Font size="17.0" />
                      </font></Button>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="addcontattopane" prefHeight="525.0" prefWidth="630.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="addcontattopane" prefHeight="525.0" prefWidth="630.0" style="-fx-background-color: white;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label layoutX="157.0" layoutY="51.0" text="Nuovo Contatto">
                      <font>
@@ -149,61 +150,76 @@
                      <font>
                         <Font size="17.0" />
                      </font></Label>
-                  <Button fx:id="submitBtn" layoutX="189.0" layoutY="418.0" mnemonicParsing="false" onAction="#aggiungiContatto" prefHeight="47.0" prefWidth="271.0" text="Aggiungi">
+                  <Button fx:id="submitBtn" layoutX="189.0" layoutY="418.0" mnemonicParsing="false" onAction="#aggiungiContatto" prefHeight="47.0" prefWidth="271.0" style="-fx-background-color: #8597F9; -fx-background-radius: 12px;" text="Aggiungi">
                      <font>
                         <Font size="28.0" />
                      </font></Button>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="contattoPane" prefHeight="525.0" prefWidth="630.0" style="-fx-background-color: BCBCBC;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="contattoPane" prefHeight="525.0" prefWidth="630.0" style="-fx-background-color: white;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label fx:id="datilbl" alignment="TOP_CENTER" layoutX="105.0" layoutY="173.0" prefHeight="37.0" prefWidth="420.0" text="Nome Contatto">
+                  <Label fx:id="datilbl" alignment="TOP_CENTER" layoutX="-51.0" layoutY="254.0" prefHeight="37.0" prefWidth="420.0" text="Nome Contatto">
                      <font>
-                        <Font size="45.0" />
+                        <Font size="36.0" />
                      </font>
                   </Label>
-                  <Label fx:id="numeroUnoLbl" layoutX="73.0" layoutY="256.0" text="Numero Telefonico 1">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="numeroDueLbl" layoutX="73.0" layoutY="288.0" text="Numero Telefonico 2">
+                  <Label fx:id="numeroUnoLbl" layoutX="339.0" layoutY="108.0" text="Numero Telefonico 1">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="numeroTreLbl" layoutX="73.0" layoutY="320.0" text="Numero Telefonico 3">
+                  <Label fx:id="numeroDueLbl" layoutX="339.0" layoutY="140.0" text="Numero Telefonico 2">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <AnchorPane layoutX="262.0" layoutY="37.0" prefHeight="128.0" prefWidth="106.0" style="-fx-background-color: white;" />
-                  <Label fx:id="emailUnoLbl" layoutX="303.0" layoutY="256.0" text="nome.cognome@example.it">
+                  <Label fx:id="numeroTreLbl" layoutX="339.0" layoutY="172.0" text="Numero Telefonico 3">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="emailDueLbl" layoutX="303.0" layoutY="288.0" text="nome.cognome@example.it">
+                  <AnchorPane layoutX="105.0" layoutY="107.0" prefHeight="128.0" prefWidth="106.0" style="-fx-background-color: #8597F9;" />
+                  <Label fx:id="emailUnoLbl" layoutX="339.0" layoutY="269.0" text="nome.cognome@example.it">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="emailTreLbl" layoutX="303.0" layoutY="320.0" text="nome.cognome@example.it">
+                  <Label fx:id="emailDueLbl" layoutX="339.0" layoutY="301.0" text="nome.cognome@example.it">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Button fx:id="rimuovibtn" layoutX="132.0" layoutY="415.0" mnemonicParsing="false" onAction="#rimuoviContatto" prefHeight="45.0" prefWidth="130.0" text="Rimuovi" textFill="RED">
+                  <Label fx:id="emailTreLbl" layoutX="339.0" layoutY="333.0" text="nome.cognome@example.it">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="rimuovibtn" layoutX="146.0" layoutY="410.0" mnemonicParsing="false" onAction="#rimuoviContatto" prefHeight="45.0" prefWidth="130.0" style="-fx-background-color: #FC9494; -fx-background-radius: 12px;" text="Rimuovi" textFill="BLACK">
                      <font>
                         <Font size="17.0" />
                      </font></Button>
-                  <Button fx:id="modificaBtn" layoutX="368.0" layoutY="415.0" mnemonicParsing="false" onAction="#modificaPane" prefHeight="45.0" prefWidth="130.0" text="Modifica">
+                  <Button fx:id="modificaBtn" layoutX="361.0" layoutY="410.0" mnemonicParsing="false" onAction="#modificaPane" prefHeight="45.0" prefWidth="130.0" style="-fx-background-color: #8597F9; -fx-background-radius: 12px;" text="Modifica">
                      <font>
                         <Font size="17.0" />
                      </font></Button>
+                  <Label fx:id="infoNumLbl" layoutX="339.0" layoutY="60.0" style="-fx-font-family:'Arial'; -fx-font-weight: bold" text="Numeri Telefonici:">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="infoEmailLbl" layoutX="339.0" layoutY="229.0" style="-fx-font-family:'Arial'; -fx-font-weight: bold" text="Email:">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Line endX="100.0" layoutX="490.0" layoutY="216.0" startX="-150.0" stroke="#616060" />
+                  <Line endX="100.0" layoutX="459.0" layoutY="139.0" startX="-120.0" stroke="#9a9999" />
+                  <Line endX="100.0" layoutX="459.0" layoutY="171.0" startX="-120.0" stroke="#9a9999" />
+                  <Line endX="100.0" layoutX="459.0" layoutY="302.0" startX="-120.0" stroke="#9a9999" />
+                  <Line endX="100.0" layoutX="459.0" layoutY="335.0" startX="-120.0" stroke="#9a9999" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="modificaContattoPane" prefHeight="525.0" prefWidth="630.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="modificaContattoPane" prefHeight="525.0" prefWidth="630.0" style="-fx-background-color: white;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label layoutX="136.0" layoutY="43.0" text="Modifica Contatto">
                      <font>
@@ -300,14 +316,14 @@
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <Button fx:id="submitModifiche" layoutX="165.0" layoutY="404.0" mnemonicParsing="false" onAction="#modificaContatto" prefHeight="54.0" prefWidth="301.0" text="Conferma Modifiche">
+                  <Button fx:id="submitModifiche" layoutX="165.0" layoutY="404.0" mnemonicParsing="false" onAction="#modificaContatto" prefHeight="54.0" prefWidth="301.0" style="-fx-background-color: #8597F9; -fx-background-radius: 12px;" text="Conferma Modifiche">
                      <font>
                         <Font size="28.0" />
                      </font>
                   </Button>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="525.0" prefWidth="630.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane prefHeight="525.0" prefWidth="630.0" style="-fx-background-color: #FFF3D0;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label layoutX="249.0" layoutY="86.0" prefHeight="56.0" prefWidth="142.0" text="Gruppi">
                      <font>

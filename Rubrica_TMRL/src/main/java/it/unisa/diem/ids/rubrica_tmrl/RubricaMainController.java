@@ -132,6 +132,10 @@ public class RubricaMainController implements Initializable {
     private Button importBtn;
     @FXML
     private Button exportBtn;
+    @FXML
+    private Label infoNumLbl;
+    @FXML
+    private Label infoEmailLbl;
 
     /**********  ***************************  ***********/
     
@@ -149,7 +153,7 @@ public class RubricaMainController implements Initializable {
         e = new Elenco();
 
         cntClmNome.setCellValueFactory(s -> { 
-            return new SimpleStringProperty(s.getValue().getCognome() + " " + s.getValue().getNome());
+            return new SimpleStringProperty((s.getValue().getCognome().isEmpty() ? "" : s.getValue().getCognome() + " ") + s.getValue().getNome()) ;
         });
         
         cntTable.getSelectionModel().selectedItemProperty().addListener(
@@ -275,6 +279,58 @@ public class RubricaMainController implements Initializable {
         return true;  
     }
     
+     /**
+     * @brief Controlla validità Input Email
+     * 
+     * Verifica l'email con il pattern
+     * 
+     * @return True se l'email passata è valida
+     */
+    private static boolean isValidEmail(String email) {
+
+        String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+
+
+        if (email == null) {
+            return false;
+        }
+
+        // 
+        return Pattern.compile(emailRegex).matcher(email).matches();
+    }
+    /**
+     * @brief Controlla validità Input Email
+     * 
+     * Controllo di null o stringa vuota
+     * Verifica se il numero rispetta il pattern
+     * 
+     * @return True se il numero passato è valido
+     */
+    private static boolean isValidNumTel(String NumTel) {
+  
+        if (NumTel == null || NumTel.isEmpty()) {
+            return false;
+        }
+
+        String phoneRegex = "^\\+?\\d{10,15}$";
+
+        return NumTel.matches(phoneRegex);
+    }
+    
+    /**
+     * @brief Ordina l'elenco
+     * 
+     * Imposta l'elenco in ordine alfabetico 
+     */
+    private void ordinamento(){
+        Collections.sort(e.getContatti(), (c1, c2)->{
+            String nomeCompleto1 = (c1.getCognome() + " " + c1.getNome());
+            String nomeCompleto2 = (c2.getCognome() + " "  + c2.getNome());
+            return nomeCompleto1.trim().compareToIgnoreCase(nomeCompleto2.trim());
+        });
+    }
+
+
     /**
      * @brief Aggiungi contatto all'elenco
      * 
@@ -315,7 +371,7 @@ public class RubricaMainController implements Initializable {
         if(!isValido(nuovoContatto)){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Dati non validi");
-            alert.setHeaderText("Ricontrolla i dati inseriti");
+            alert.setHeaderText("Inserisci almeno uno tra Nome e Cognome");
             alert.showAndWait();
             return;
         }
@@ -515,7 +571,7 @@ public class RubricaMainController implements Initializable {
         if(!isValido(modContatto)){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Dati non validi");
-            alert.setHeaderText("Ricontrolla i dati inseriti");
+            alert.setHeaderText("Numero di Telefono o Email non validi");
             alert.showAndWait();
             return;
         }
@@ -523,7 +579,7 @@ public class RubricaMainController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Conferma Modifiche");
         alert.setHeaderText("Stai per modificare un contatto");
-        alert.setContentText("Sei sicuro di voler modificare in: " + modContatto.getCognome() + " " + modContatto.getNome() + "?");
+        alert.setContentText("Sei sicuro di voler modificare questo contatto?");
         
         alert.showAndWait().ifPresent(response -> {
             if(response == ButtonType.OK){                                      // se l'utente conferma le modifiche
@@ -543,18 +599,6 @@ public class RubricaMainController implements Initializable {
         
     }
     
-    /**
-     * @brief Ordina l'elenco
-     * 
-     * Imposta l'elenco in ordine alfabetico 
-     */
-    private void ordinamento(){
-        Collections.sort(e.getContatti(), (c1, c2)->{
-            String nomeCompleto1 = (c1.getCognome() + " " + c1.getNome());
-            String nomeCompleto2 = (c2.getCognome() + " " + c2.getNome());
-            return nomeCompleto1.compareToIgnoreCase(nomeCompleto2);
-        });
-    }
     
     @FXML
     private void handleImport(ActionEvent event){ //da spostare in GestioneIO
