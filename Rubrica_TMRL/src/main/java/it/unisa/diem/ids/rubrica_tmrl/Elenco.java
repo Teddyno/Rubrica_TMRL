@@ -16,15 +16,26 @@ import javafx.collections.ObservableList;
  */
 public class Elenco {
     
+    private GestioneIO io;
     private ObservableList<Contatto> contatti;
 
     /**
      * @brief costruttore Elenco
      * 
      * Inizializza la collezione contenente i contatti
+     * 
+     * @param filePath indirizzo file di default, persistenza dei dati
      */
-    public Elenco() {
+    public Elenco(String filePath) {
+        
         contatti = FXCollections.observableArrayList();
+        io = new GestioneIO(this);
+        
+        initElenco(filePath);
+    }
+    
+    public void initElenco(String filePath){
+        io.caricaVCF(filePath,contatti);
     }
     
     /**
@@ -48,6 +59,13 @@ public class Elenco {
     public void removeContatto(Contatto contatto){
         
         contatti.remove(contatto);
+        
+        GestioneIO.salvaVCF(Rubrica.fileDefault,contatti);
+    }
+    
+    public void modifyContatto(int id,Contatto contatto){
+        
+        contatti.set(id,contatto);
         
         GestioneIO.salvaVCF(Rubrica.fileDefault,contatti);
     }
