@@ -21,6 +21,8 @@ public class Contatto {
     List<String> email;
     List<String> numTel;
     
+    private boolean Preferiti;
+    
     public Contatto() {
         email = new ArrayList<>();
         numTel = new ArrayList<>();
