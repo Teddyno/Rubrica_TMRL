@@ -48,6 +48,7 @@ public class GestioneIO {
         String email1= null;
         String email2= null;
         String email3= null;
+        String preferiti = null;
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -79,6 +80,8 @@ public class GestioneIO {
                     } else if (numTel3 == null){
                         numTel3 = line.substring(14).trim();
                     }  
+                } else if (line.startsWith("NOTE;")) {
+                    preferiti = line.substring(29).trim();
                 } else if (line.startsWith("END:VCARD")) {
                     
                     contatto.setNome(nome);
@@ -107,10 +110,11 @@ public class GestioneIO {
                         contatto.addNumTel(numTel3);
                         numTel3 = null;
                     }
+                    if("true".equals(preferiti)){
+                        contatto.setPreferiti(true);
+                    }
                     contatti.add(contatto);
                 }
-                
-                
             }
         } catch (IOException e) {
             System.err.println("Errore durante il caricamento dei contatti" );
@@ -146,6 +150,11 @@ public class GestioneIO {
                 }
                 for(int j=0;j<c.getSizeNumTel();j++){
                     pw.println("TEL;TYPE=CELL:"+c.getNumTel(j));; 
+                }
+                if(c.isPreferiti()){
+                    pw.println("NOTE;CHARSET=UTF-8:Preferiti=true");
+                } else {
+                    pw.println("NOTE;CHARSET=UTF-8:Preferiti=false");
                 }
                 pw.println("END:VCARD");
 

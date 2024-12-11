@@ -21,9 +21,10 @@ public class Contatto {
     List<String> email;
     List<String> numTel;
     
-    private boolean Preferiti;
+    private boolean preferiti;
     
     public Contatto() {
+        this.preferiti = false;
         email = new ArrayList<>();
         numTel = new ArrayList<>();
     }
@@ -37,6 +38,7 @@ public class Contatto {
      * @param email email del contatto
      */
     public Contatto(String nome, String cognome) {
+        this.preferiti = false;
         this.nome = nome;
         this.cognome = cognome;
         email = new ArrayList<>();
@@ -104,5 +106,12 @@ public class Contatto {
         return numTel.get(index);
     }
 
+    public boolean isPreferiti() {
+        return preferiti;
+    }
+
+    public void setPreferiti(boolean preferiti) {
+        this.preferiti = preferiti;
+    }
     
 }
