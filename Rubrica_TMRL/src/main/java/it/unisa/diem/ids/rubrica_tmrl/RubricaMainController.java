@@ -129,8 +129,6 @@ public class RubricaMainController implements Initializable {
     @FXML
     private Button submitBtn;                                                   // Button "Aggiungi" dell'anchorPane "Nuovo Contatto" 
     @FXML
-    private Button gruppiBtn;
-    @FXML
     private Button submitModifiche;
     @FXML
     private Button importBtn;

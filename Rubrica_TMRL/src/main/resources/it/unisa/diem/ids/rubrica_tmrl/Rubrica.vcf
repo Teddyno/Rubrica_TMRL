@@ -1,7 +1,7 @@
 BEGIN:VCARD
 VERSION:3.0
-FN;CHARSET=UTF-8:mario Manganiello
-N;CHARSET=UTF-8:Manganiello;mario
+FN;CHARSET=UTF-8:Mario Manganiello
+N;CHARSET=UTF-8:Manganiello;Mario
 EMAIL;CHARSET=UTF-8;type=HOME,INTERNET:mario@gmia.comec
 TEL;TYPE=CELL:4567476567
 NOTE;CHARSET=UTF-8:Preferiti=true

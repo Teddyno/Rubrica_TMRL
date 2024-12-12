@@ -154,27 +154,26 @@
             </AnchorPane>
             <AnchorPane fx:id="contattoPane" prefHeight="525.0" prefWidth="630.0" style="-fx-background-color: white;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label fx:id="datilbl" alignment="TOP_CENTER" layoutX="-51.0" layoutY="254.0" prefHeight="37.0" prefWidth="420.0" text="Nome Contatto">
+                  <Label fx:id="datilbl" alignment="TOP_CENTER" layoutX="158.0" layoutY="117.0" prefHeight="52.0" prefWidth="315.0" style="-fx-font-family:'Arial'; -fx-font-weight: bold" text="Nome Contatto" textAlignment="CENTER">
                      <font>
-                        <Font size="36.0" />
+                        <Font size="41.0" />
                      </font>
                   </Label>
-                  <Label fx:id="numeroUnoLbl" layoutX="339.0" layoutY="108.0" text="Numero Telefonico 1">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="numeroDueLbl" layoutX="339.0" layoutY="140.0" text="Numero Telefonico 2">
+                  <Label fx:id="numeroUnoLbl" layoutX="73.0" layoutY="277.0" text="Numero Telefonico 1">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="numeroTreLbl" layoutX="339.0" layoutY="172.0" text="Numero Telefonico 3">
+                  <Label fx:id="numeroDueLbl" layoutX="73.0" layoutY="309.0" text="Numero Telefonico 2">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <AnchorPane layoutX="105.0" layoutY="107.0" prefHeight="128.0" prefWidth="106.0" style="-fx-background-color: #8597F9;" />
+                  <Label fx:id="numeroTreLbl" layoutX="73.0" layoutY="341.0" text="Numero Telefonico 3">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
                   <Label fx:id="emailUnoLbl" layoutX="339.0" layoutY="269.0" text="nome.cognome@example.it">
                      <font>
                         <Font size="22.0" />
@@ -198,7 +197,7 @@
                      <font>
                         <Font size="17.0" />
                      </font></Button>
-                  <Label fx:id="infoNumLbl" layoutX="339.0" layoutY="60.0" style="-fx-font-family:'Arial'; -fx-font-weight: bold" text="Numeri Telefonici:">
+                  <Label fx:id="infoNumLbl" layoutX="73.0" layoutY="229.0" style="-fx-font-family:'Arial'; -fx-font-weight: bold" text="Numeri Telefonici:">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -208,12 +207,15 @@
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <Line endX="100.0" layoutX="490.0" layoutY="216.0" startX="-150.0" stroke="#616060" />
-                  <Line endX="100.0" layoutX="459.0" layoutY="139.0" startX="-120.0" stroke="#9a9999" />
-                  <Line endX="100.0" layoutX="459.0" layoutY="171.0" startX="-120.0" stroke="#9a9999" />
+                  <Line endX="100.0" layoutX="193.0" layoutY="308.0" startX="-120.0" stroke="#9a9999" />
+                  <Line endX="100.0" layoutX="193.0" layoutY="340.0" startX="-120.0" stroke="#9a9999" />
                   <Line endX="100.0" layoutX="459.0" layoutY="302.0" startX="-120.0" stroke="#9a9999" />
                   <Line endX="100.0" layoutX="459.0" layoutY="335.0" startX="-120.0" stroke="#9a9999" />
-                  <CheckBox fx:id="preferitiCb" layoutX="130.0" layoutY="355.0" mnemonicParsing="false" onAction="#handlePreferiti" text="Preferiti" />
+                  <CheckBox fx:id="preferitiCb" layoutX="425.0" layoutY="15.0" mnemonicParsing="false" onAction="#handlePreferiti" text="Aggiungi ai Preferiti">
+                     <font>
+                        <Font size="19.0" />
+                     </font></CheckBox>
+                  <Line endX="100.0" layoutX="270.0" layoutY="307.0" rotate="90.0" startX="-12.0" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="modificaContattoPane" prefHeight="525.0" prefWidth="630.0" style="-fx-background-color: white;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
