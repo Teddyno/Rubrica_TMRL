@@ -33,7 +33,7 @@ public class PreferitiTest {
         contatto.setPreferiti(true);
         elenco.getContatti().add(contatto);
        
-        instance.setPreferiti();
+        instance.updatePreferiti();
         
         Contatto result = instance.getContattiPreferiti().get(0);
         

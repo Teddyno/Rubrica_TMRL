@@ -25,16 +25,18 @@ public class Preferiti {
     /**
      * @brief Costruttore contatti preferiti
      * 
+     * Inizializza la collezione "contattiPreferiti"
+     * e inizializza la lista dei preferiti
+     * 
      * @param[in] elenco elenco dei contatti
      * 
-     * @see setPreferiti()
+     * @see updatePreferiti()
      */
     public Preferiti(Elenco elenco) {
         this.contattiPreferiti = FXCollections.observableArrayList();
         this.elenco = elenco;
         
-        setPreferiti();
-        
+        updatePreferiti();
     }
     
     /**
@@ -42,7 +44,7 @@ public class Preferiti {
      * 
      * @see sort()
      */
-    public void setPreferiti(){
+    public void updatePreferiti(){
        
         
         Iterator<Contatto> i =  elenco.getContatti().iterator();

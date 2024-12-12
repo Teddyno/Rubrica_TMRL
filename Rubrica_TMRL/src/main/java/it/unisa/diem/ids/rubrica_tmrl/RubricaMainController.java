@@ -287,10 +287,12 @@ public class RubricaMainController implements Initializable {
             preferitiCb.setSelected(true);
         }
         
+        switchPane(new ActionEvent(submitBtn,null));
+        /*
         addcontattopane.setVisible(false); 
         homePane.setVisible(false);
         modificaContattoPane.setVisible(false);
-        contattoPane.setVisible(true);
+        contattoPane.setVisible(true);*/
     }
     
     
@@ -669,10 +671,12 @@ public class RubricaMainController implements Initializable {
                 GestioneIO.salvaVCF(Rubrica.filePathDefault,elenco.getContatti());
             }
             else{
+                switchPane(new ActionEvent(modificaBtn,null));
+                /*
                 addcontattopane.setVisible(false); 
                 homePane.setVisible(false);
                 modificaContattoPane.setVisible(true);
-                contattoPane.setVisible(false);
+                contattoPane.setVisible(false);*/
             }
             
         });
@@ -691,7 +695,7 @@ public class RubricaMainController implements Initializable {
     @FXML
     private void handleImport(ActionEvent event) {
         GestioneIO.handleImport(Rubrica.filePathDefault, elenco);
-        preferiti.setPreferiti();
+        preferiti.updatePreferiti();
     }
     
     /**
@@ -730,7 +734,7 @@ public class RubricaMainController implements Initializable {
         }
         GestioneIO.salvaVCF(Rubrica.filePathDefault,elenco.getContatti());
         
-        preferiti.setPreferiti();
+        preferiti.updatePreferiti();
     }
     
 }
