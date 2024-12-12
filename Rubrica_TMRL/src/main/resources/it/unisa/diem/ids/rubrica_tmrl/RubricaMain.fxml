@@ -154,7 +154,7 @@
             </AnchorPane>
             <AnchorPane fx:id="contattoPane" prefHeight="525.0" prefWidth="630.0" style="-fx-background-color: white;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label fx:id="datilbl" alignment="TOP_CENTER" layoutX="158.0" layoutY="117.0" prefHeight="52.0" prefWidth="315.0" style="-fx-font-family:'Arial'; -fx-font-weight: bold" text="Nome Contatto" textAlignment="CENTER">
+                  <Label fx:id="datilbl" alignment="TOP_CENTER" layoutX="51.0" layoutY="117.0" prefHeight="52.0" prefWidth="529.0" style="-fx-font-family:'Arial'; -fx-font-weight: bold" text="Nome Contatto" textAlignment="CENTER" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
                      <font>
                         <Font size="41.0" />
                      </font>
