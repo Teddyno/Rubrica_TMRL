@@ -58,23 +58,4 @@ public class Rubrica extends Application {
         launch(args);
     }
     
-    /**
-     * @brief Restituisce l'indirizzo di default
-     * 
-     * @return Indirizzo di default
-     */
-    public static String getFileDefault() {
-        return filePathDefault;
-    }
-
-    /**
-     * @brief Imposta l'indirizzo di default
-     * 
-     * @param[in] Indirizzo di default
-     * 
-     */
-    public static void setFileDefault(String filePathDefault) {
-        Rubrica.filePathDefault = filePathDefault;
-    }
-    
 }
