@@ -20,18 +20,6 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class RubricaMainControllerTest {
 
-    /**
-     * Test of initialize method, of class RubricaMainController.
-     */
-    @Test
-    public void testInitialize() {
-        System.out.println("initialize");
-        URL url = null;
-        ResourceBundle rb = null;
-        RubricaMainController instance = new RubricaMainController();
-        instance.initialize(url, rb);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
+
 }
+    
