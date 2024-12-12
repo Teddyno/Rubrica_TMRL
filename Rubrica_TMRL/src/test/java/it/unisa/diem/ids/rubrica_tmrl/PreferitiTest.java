@@ -47,11 +47,14 @@ public class PreferitiTest {
     @Test
     public void testRemovePreferiti() {
         System.out.println("removePreferiti");
-        Contatto contatto = null;
-        Preferiti instance = null;
+        Contatto contatto = new Contatto("Giovanni","Todisco");
+        Preferiti instance = new Preferiti(new Elenco(""));
+        instance.getContattiPreferiti().add(contatto);
+        
         instance.removePreferiti(contatto);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        assertFalse(instance.getContattiPreferiti().contains(contatto));
+ 
     }
 
     /**

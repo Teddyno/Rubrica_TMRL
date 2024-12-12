@@ -5,6 +5,7 @@
  */
 package it.unisa.diem.ids.rubrica_tmrl;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -25,12 +26,13 @@ public class ElencoTest {
     @Test
     public void testGetContatti() {
         System.out.println("getContatti");
-        Elenco instance = null;
-        ObservableList<Contatto> expResult = null;
+
+        Elenco instance = new Elenco("");
+        ObservableList<Contatto> expResult = FXCollections.observableArrayList();
+
         ObservableList<Contatto> result = instance.getContatti();
+        
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -39,11 +41,11 @@ public class ElencoTest {
     @Test
     public void testAddContatto() {
         System.out.println("addContatto");
-        Contatto contatto = null;
-        Elenco instance = null;
-        instance.addContatto(contatto);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Contatto expContatto = new Contatto("Piero","voli");
+        Elenco instance = new Elenco("");
+        instance.addContatto(expContatto);
+        
+        assertTrue(instance.getContatti().contains(expContatto));
     }
 
     /**
@@ -52,11 +54,14 @@ public class ElencoTest {
     @Test
     public void testRemoveContatto() {
         System.out.println("removeContatto");
-        Contatto contatto = null;
-        Elenco instance = null;
-        instance.removeContatto(contatto);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Contatto expContatto = new Contatto("Piero","Pierino");
+        Elenco instance = new Elenco("");
+        
+        instance.addContatto(expContatto);
+        
+        instance.removeContatto(expContatto);
+        
+        assertFalse(instance.getContatti().contains(expContatto));
     }
 
     /**
@@ -65,12 +70,18 @@ public class ElencoTest {
     @Test
     public void testModifyContatto() {
         System.out.println("modifyContatto");
-        int id = 0;
-        Contatto contatto = null;
-        Elenco instance = null;
-        instance.modifyContatto(id, contatto);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        Contatto contattoOld = new Contatto("Giovanni","Todisco");
+        Contatto contattoNew = new Contatto("Giovanni","Ruocco");
+        Elenco instance = new Elenco("");
+        
+        instance.getContatti().add(contattoOld);
+        int index = instance.getContatti().indexOf(contattoOld);
+        
+        instance.modifyContatto(index, contattoNew);
+        
+        Contatto result = instance.getContatti().get(0);
+        assertEquals(contattoNew, result);
     }
 
     /**
@@ -79,10 +90,24 @@ public class ElencoTest {
     @Test
     public void testSort() {
         System.out.println("sort");
-        Elenco instance = null;
+        
+        Contatto contatto1 = new Contatto("Giovanni","Todisco");
+        Contatto contatto2 = new Contatto("Giovanni","Ruocco");
+        Contatto contatto3 = new Contatto("Giovanni","Alemanno");
+        Elenco instance = new Elenco("");
+        instance.getContatti().add(contatto1);
+        instance.getContatti().add(contatto2);
+        instance.getContatti().add(contatto3);
+        
         instance.sort();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        Contatto result1 = instance.getContatti().get(0);
+        Contatto result2 = instance.getContatti().get(1);
+        Contatto result3 = instance.getContatti().get(2);
+        
+        assertEquals(contatto3, result1);
+        assertEquals(contatto2, result2);
+        assertEquals(contatto1, result3);
     }
     
 }

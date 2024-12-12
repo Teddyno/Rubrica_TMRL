@@ -159,7 +159,7 @@ public class RubricaMainController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         elenco = new Elenco(Rubrica.filePathDefault);
-
+        
         cntClmNome.setCellValueFactory(s -> { 
             return new SimpleStringProperty((s.getValue().getCognome().isEmpty() ? "" : s.getValue().getCognome() + " ") + s.getValue().getNome()) ;
         });

@@ -132,6 +132,7 @@ public class GestioneIO {
      * @param[in] contatti ObservableList contenente i contatti dell'elenco
      */
     public static void salvaVCF(String filePath,ObservableList<Contatto> contatti) {
+        
         try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(filePath)))){
 
             Iterator<Contatto> i = contatti.iterator();
