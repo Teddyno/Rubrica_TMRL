@@ -75,11 +75,12 @@ public class ContattoTest {
     @Test
     public void testAddEmail() {
         System.out.println("addEmail");
-        String email = "";
+        String email = "piero.nivo@gmail.com";
         Contatto instance = new Contatto();
         instance.addEmail(email);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int index = 0;
+        String emailResult = instance.getEmail(index);
+        assertEquals(email, emailResult);
     }
 
     /**
@@ -88,11 +89,12 @@ public class ContattoTest {
     @Test
     public void testAddNumTel() {
         System.out.println("addNumTel");
-        String numTel = "";
+        String numTel = "3336754690";
         Contatto instance = new Contatto();
         instance.addNumTel(numTel);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int index = 0;
+        String numTelresult = instance.getNumTel(index);
+        assertEquals(numTel, numTelresult);
     }
 
     /**
@@ -126,13 +128,12 @@ public class ContattoTest {
     @Test
     public void testGetEmail() {
         System.out.println("getEmail");
-        int index = 0;
         Contatto instance = new Contatto();
-        String expResult = "";
+        String email = "piero.nivo@gmail.com";
+        instance.addEmail(email);
+        int index = 0;
         String result = instance.getEmail(index);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(email, result);
     }
 
     /**
@@ -141,13 +142,13 @@ public class ContattoTest {
     @Test
     public void testGetNumTel() {
         System.out.println("getNumTel");
-        int index = 0;
         Contatto instance = new Contatto();
-        String expResult = "";
+        String expResult = "3336754690";
+        instance.addNumTel(expResult);
+        int index = 0;
         String result = instance.getNumTel(index);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
     
 }

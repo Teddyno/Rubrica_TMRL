@@ -50,6 +50,12 @@ public class Preferiti {
         contattiPreferiti.remove(contatto);
     }
     
+    public void modifyPreferiti(Contatto contattoOld,Contatto contattoNew){
+        
+        contattiPreferiti.remove(contattoOld);
+        contattiPreferiti.add(contattoNew);
+    }
+    
     public ObservableList<Contatto> getContattiPreferiti() {
         return contattiPreferiti;
     }

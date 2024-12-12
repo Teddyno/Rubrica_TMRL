@@ -511,7 +511,7 @@ public class RubricaMainController implements Initializable {
         pulisciMod();
         
         Contatto contattoSel = cntTable.getSelectionModel().getSelectedItem();
-        Contatto contattoSelPreferiti = prefTable.getSelectionModel().getSelectedItem();
+        //Contatto contattoSelPreferiti = prefTable.getSelectionModel().getSelectedItem();
         
         //problema Exception showdetails
         modNomeField.setText(contattoSel.getNome());
@@ -524,27 +524,27 @@ public class RubricaMainController implements Initializable {
         for(int i=0;i<contattoSel.getSizeNumTel();i++){
             if(i == 0){
                 modNumeroUno.setText(contattoSel.getNumTel(0));
-                modNumeroUno.setText(contattoSelPreferiti.getNumTel(0));
+                //modNumeroUno.setText(contattoSelPreferiti.getNumTel(0));
                 
             } else if(i == 1){
                 modNumeroDue.setText(contattoSel.getNumTel(1));
-                modNumeroDue.setText(contattoSelPreferiti.getNumTel(1));
+                //modNumeroDue.setText(contattoSelPreferiti.getNumTel(1));
             } else if(i == 2){
                 modNumeroTre.setText(contattoSel.getNumTel(2));
-                modNumeroTre.setText(contattoSelPreferiti.getNumTel(2));
+                //modNumeroTre.setText(contattoSelPreferiti.getNumTel(2));
             }
         }
         
         for(int i=0;i<contattoSel.getSizeEmail();i++){
             if(i == 0){
                 modEmailUno.setText(contattoSel.getEmail(0));
-                modEmailUno.setText(contattoSelPreferiti.getEmail(0));
+                //modEmailUno.setText(contattoSelPreferiti.getEmail(0));
             } else if(i == 1){
                 modEmailDue.setText(contattoSel.getEmail(1));
-                modEmailDue.setText(contattoSelPreferiti.getEmail(1));
+                //modEmailDue.setText(contattoSelPreferiti.getEmail(1));
             } else if(i == 2){
                 modEmailTre.setText(contattoSel.getEmail(2));
-                modEmailTre.setText(contattoSelPreferiti.getEmail(2));
+                //modEmailTre.setText(contattoSelPreferiti.getEmail(2));
             }
         }
         
@@ -564,35 +564,32 @@ public class RubricaMainController implements Initializable {
     @FXML
     private void modificaContatto(ActionEvent event) {
         
+        Contatto contattoSel = cntTable.getSelectionModel().getSelectedItem();
         int contattoSelID = cntTable.getSelectionModel().getSelectedIndex();    // recupera l'indice del contatto selezionato
-        int contattoSelPreferitiID = prefTable.getSelectionModel().getSelectedIndex();    // recupera l'indice del contatto selezionato
         
         Contatto modContatto = new Contatto(modNomeField.getText(), modCognomeField.getText());
-        Contatto modContattoPreferiti = new Contatto(modNomeField.getText(), modCognomeField.getText());
  
         if(!modEmailUno.getText().equals("")){
             modContatto.addEmail(modEmailUno.getText());
-            modContattoPreferiti.addEmail(modEmailUno.getText());
         }
         if(!modEmailDue.getText().equals("")){
             modContatto.addEmail(modEmailDue.getText());
-            modContattoPreferiti.addEmail(modEmailDue.getText());
         }
         if(!modEmailTre.getText().equals("")){
             modContatto.addEmail(modEmailTre.getText());
-            modContattoPreferiti.addEmail(modEmailTre.getText());
         }
         if(!modNumeroUno.getText().equals("")){
             modContatto.addNumTel(modNumeroUno.getText());
-            modContattoPreferiti.addNumTel(modNumeroUno.getText());
         }
         if(!modNumeroDue.getText().equals("")){
             modContatto.addNumTel(modNumeroDue.getText());
-            modContattoPreferiti.addNumTel(modNumeroDue.getText());
         }
         if(!modNumeroTre.getText().equals("")){
             modContatto.addNumTel(modNumeroTre.getText());
-            modContattoPreferiti.addNumTel(modNumeroDue.getText());
+        }
+        
+        if(contattoSel.isPreferiti()){
+            modContatto.setPreferiti(true);
         }
         
         if(!isValido(modContatto)){
@@ -607,6 +604,7 @@ public class RubricaMainController implements Initializable {
         alert.showAndWait().ifPresent(response -> {                             //Alert per la conferma della modifica
             if(response == ButtonType.OK){    
                 elenco.modifyContatto(contattoSelID, modContatto);
+                preferiti.modifyPreferiti(contattoSel, modContatto);
                 cntTable.getSelectionModel().select(modContatto);
                 ordinamento();
                 GestioneIO.salvaVCF(Rubrica.filePathDefault,elenco.getContatti());
