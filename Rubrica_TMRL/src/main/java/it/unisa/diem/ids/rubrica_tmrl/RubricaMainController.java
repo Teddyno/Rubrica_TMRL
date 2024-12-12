@@ -605,28 +605,14 @@ public class RubricaMainController implements Initializable {
     
     
     @FXML
-    private void handleImport(ActionEvent event){ //da spostare in GestioneIO
-        
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new ExtensionFilter("VCF", "*.vcf"));
-        fileChooser.setTitle("Scegli file Vcard");
-        File file = fileChooser.showOpenDialog(new Stage());
-        
-        GestioneIO.caricaVCF(file.getPath(), elenco.getContatti());
-        ordinamento();
-        GestioneIO.salvaVCF(Rubrica.filePathDefault,elenco.getContatti());   
+    private void handleImport(ActionEvent event) {
+        GestioneIO.handleImport(Rubrica.filePathDefault, elenco);
+        preferiti.setPreferiti();
     }
     
     @FXML
-    private void handleExport(ActionEvent event){ //da spostare in GestioneIO
-        
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new ExtensionFilter("VCF", "*.vcf"));
-        fileChooser.setTitle("Scegli file Vcard");
-        File file = fileChooser.showSaveDialog(new Stage());
-        
-        GestioneIO.salvaVCF(file.getPath(),elenco.getContatti());
-  
+    private void handleExport(ActionEvent event) {
+        GestioneIO.handleExport(Rubrica.filePathDefault, elenco);
     }
 
     @FXML

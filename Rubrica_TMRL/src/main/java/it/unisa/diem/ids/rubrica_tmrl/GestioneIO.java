@@ -9,6 +9,7 @@ package it.unisa.diem.ids.rubrica_tmrl;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,6 +17,9 @@ import java.io.PrintWriter;
 import java.util.Iterator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
 
 /**
  * @brief Classe Gestione Import/Output
@@ -162,6 +166,32 @@ public class GestioneIO {
         
         } catch(IOException e){
         }
+    }
+    
+    public static void handleImport(String filePathDefault, Elenco elenco){ 
+        
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new ExtensionFilter("VCF", "*.vcf"));
+        fileChooser.setTitle("Scegli file Vcard");
+        File file = fileChooser.showOpenDialog(new Stage());
+        
+        if(file != null){
+            GestioneIO.caricaVCF(file.getPath(), elenco.getContatti());
+            elenco.sort();
+            salvaVCF(Rubrica.filePathDefault,elenco.getContatti());
+        }
+        
+    }
+
+    public static void handleExport(String filePathDefault, Elenco elenco){
+        
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new ExtensionFilter("VCF", "*.vcf"));
+        fileChooser.setTitle("Scegli file Vcard");
+        File file = fileChooser.showSaveDialog(new Stage());
+        
+        salvaVCF(file.getPath(),elenco.getContatti());
+  
     }
 
 }
