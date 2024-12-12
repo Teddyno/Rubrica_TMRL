@@ -32,8 +32,9 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
 /**
- * @brief Classe RubricaController
+ * @brief Classe Controller
  */
+
 public class RubricaMainController implements Initializable {
     @FXML
     private AnchorPane pane;                                                    // AnchorPane " Principale"
@@ -195,12 +196,11 @@ public class RubricaMainController implements Initializable {
     /**
      * @brief Gestione barra di ricerca
      * 
-     * Questo metodo va a collegare l'input della barra di ricerca
-     * con la tabella dei contatti, andando a far visualizzare in essa 
-     * i contatti che corrispondono all'input dell'utente
+     * @pre 
+     * Numero di contatti maggiore di 0
      * 
-     * @pre numero di contatti maggiore di 0
-     * @post tabella dei contatti aggiornata con i contatti richiesti
+     * @post 
+     * Tabella dei contatti aggiornata con i contatti richiesti
      * 
      * @param[in] event evento scaturito dal click di un pulsante 
      */
@@ -233,7 +233,19 @@ public class RubricaMainController implements Initializable {
         cntTable.setItems(ordina);                                              // .setItems() per impostare gli elementi di ordina in cntTable
     }
     
-    private void Alert(String title, String header){
+    /**
+     * @brief Mostra gli Alert a schermo
+     * 
+     * @pre 
+     * I dati inseriti devono essere errati 
+     * 
+     * @post 
+     * Viene mostrato l'alert che avverte che i dati inseriti non sono corretti
+     * 
+     * @param[in] title Titolo dell'alert
+     * @param[in] header Header dell'alert mostrato
+     */
+    private void showAlert(String title, String header){
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle(title);
         alert.setHeaderText(header);
@@ -242,9 +254,23 @@ public class RubricaMainController implements Initializable {
     
     
     /**
-     * @brief Imposta i dati del contatto nell'interfaccia
+     * @brief Visualizzazione Contatto
+     * 
+     * @pre 
+     * Numero di contatti maggiore di 0
+     * 
+     * @post
+     * Imposta i dati del contatto nell'interfaccia e li rende visualizzabili
+     * 
      * 
      * @param[in] cnt contatto da visualizzare 
+     * 
+     * @see cnt.getSizeNumTel()
+     * @see cnt.getSizeEmail()
+     * @see cnt.isPreferiti()
+     * @see pulisciContatto()
+     * @see cnt.getCognome()
+     * @see cnt.getNome()
      */
     private void showDetails(Contatto cnt) {
         pulisciContatto();
@@ -285,9 +311,13 @@ public class RubricaMainController implements Initializable {
     
 
     /**
-     * @brief Switch tra le varie interfacce
+     * @brief Switch tra le interfacce
      * 
-     * In seguito al click di un pulsante, si cambia l'interfaccia visiva 
+     * @pre
+     * Numero di interfacce maggiore di 1
+     * 
+     * @post
+     * In seguito al click di un pulsante, cambia l'interfaccia visualizzata 
      * in base al pulsante cliccato
      * 
      * @param[in] event evento scaturito dal click di un pulsante 
@@ -325,10 +355,23 @@ public class RubricaMainController implements Initializable {
         }
     }
     
+    
     /**
      * @brief Controlla validità Input
      * 
-     * @return True se gli input dell'utente sono validi
+     * @pre
+     * I dati del contatto devono essere stati inseriti e successivamente 
+     * bisogna cliccare sul bottone di conferma
+     * 
+     * @post
+     * Viene verificata la correttezza dei dati inseriti
+     * 
+     * @param[in] cnt Contatto Inserito
+     * 
+     * @see showAlert(title, header)
+     * 
+     * @return False se gli input dell'utente non sono validi, 
+     * altrimenti ritorna True
      */
     private boolean isValido(Contatto contatto){
         
@@ -336,20 +379,20 @@ public class RubricaMainController implements Initializable {
         String numTelPattern = "^\\+?\\d{10,15}$";
         
         if((contatto.getNome().isEmpty()) && (contatto.getCognome().isEmpty())){
-            Alert("Dati non validi", "Inserisci almeno uno tra Nome e Cognome!");
+            showAlert("Dati non validi", "Inserisci almeno uno tra Nome e Cognome!");
             return false;
         }
         
         for (int i = 0; i < contatto.getSizeNumTel(); i++) {
             if (!Pattern.matches(numTelPattern, contatto.getNumTel(i))) {
-                Alert("Dati non validi", "Numero di Telefono non Valido!");
+                showAlert("Dati non validi", "Numero di Telefono non Valido!");
                 return false;
             }
         }
         
         for (int i = 0; i < contatto.getSizeEmail(); i++) {
             if (!Pattern.matches(emailPattern, contatto.getEmail(i))) {
-                Alert("Dati non validi", "Email non Valida!");
+                showAlert("Dati non validi", "Email non Valida!");
                 return false;
             }
         }
@@ -360,7 +403,12 @@ public class RubricaMainController implements Initializable {
     /**
      * @brief Ordina l'elenco
      * 
+     * @pre
+     * Numero di contatti maggiore di 1
+     * 
+     * @post
      * Imposta l'elenco in ordine alfabetico 
+     * 
      */
     private void ordinamento(){
         Collections.sort(elenco.getContatti(), (c1, c2)->{
@@ -374,15 +422,19 @@ public class RubricaMainController implements Initializable {
     /**
      * @brief Aggiungi contatto all'elenco
      * 
-     * @pre il contatto da aggiungere è valido
+     * @pre 
+     * Il contatto da aggiunto è valido
      * 
-     * Aggiunge il contatto all'elenco, richiama i metodi : ordinamento e pulisci 
-     * e salva il nuovo contatto nel file VCF
+     * @post
+     * Aggiunge il contatto all'elenco, e salva il nuovo 
+     * contatto nel file VCF
      * 
      * @param[in] event evento scaturito dal click di un pulsante 
      * 
      * @see pulisci()
      * @see ordinamento()
+     * @see elenco.addcontatto()
+     * @see switchPane(event)
      */
     @FXML
     private void aggiungiContatto(ActionEvent event) {      
@@ -423,6 +475,11 @@ public class RubricaMainController implements Initializable {
     /**
      * @brief Pulisce i TextField
      * 
+     * @pre
+     * Deve essere stato inserito un contatto precedentemente
+     * 
+     * @post
+     * I textField con i dati del contatto precedente vengono puliti
      */
     private void pulisci(){
         nomeField.clear();
@@ -435,6 +492,15 @@ public class RubricaMainController implements Initializable {
         emailTre.clear();
     }
     
+    /**
+     * @brief Pulisce i Label
+     * 
+     * @pre
+     * Deve essere stato selezionato un contatto precedentemente
+     * 
+     * @post
+     * I Label con i dati del contatto precedente vengono puliti
+     */
     private void pulisciContatto(){
         datilbl.setText("");
         numeroUnoLbl.setText("");
@@ -446,6 +512,16 @@ public class RubricaMainController implements Initializable {
         preferitiCb.setSelected(false);
     }
     
+    
+    /**
+     * @brief Pulisce i TextField in modificaPane
+     * 
+     * @pre
+     * Deve essere stato modificato un contatto precedentemente
+     * 
+     * @post
+     * I textField in modificaPane con i dati del contatto precedente vengono puliti
+     */
     private void pulisciMod(){
         modNomeField.clear();
         modCognomeField.clear();
@@ -461,9 +537,18 @@ public class RubricaMainController implements Initializable {
     /**
      * @brief Rimuove un contatto dall'elenco
      * 
-     * Preleva il contatto selezionato, richiede la conferma della rimozione
+     * 
+     * @pre
+     * Numero di contatti maggiore di 0
+     * 
+     * @post
+     * Preleva il contatto selezionato, richiede la conferma della rimozione,
      * in caso affermativo rimuove il contatto dall'elenco e salva l'elenco
      * aggiornato nel file
+     * 
+     * @see elenco.removeContatto(contattoSel)
+     * @see preferiti.removePreferiti(contattoSel)
+     * @see switchPane(event)
      * 
      * @param[in] event evento scaturito dal click di un pulsante 
      */
