@@ -410,7 +410,7 @@ public class RubricaMainController implements Initializable {
      * @brief Aggiungi contatto all'elenco
      * 
      * @pre 
-     * Il contatto da aggiunto è valido
+     * Il contatto da aggiungere è valido
      * 
      * @post
      * Aggiunge il contatto all'elenco, e salva il nuovo 
@@ -420,7 +420,6 @@ public class RubricaMainController implements Initializable {
      * 
      * @see pulisci()
      * @see ordinamento()
-     * @see elenco.addcontatto()
      * @see switchPane(event)
      */
     @FXML
@@ -533,8 +532,6 @@ public class RubricaMainController implements Initializable {
      * in caso affermativo rimuove il contatto dall'elenco e salva l'elenco
      * aggiornato nel file
      * 
-     * @see elenco.removeContatto(contattoSel)
-     * @see preferiti.removePreferiti(contattoSel)
      * @see switchPane(event)
      * 
      * @param[in] event evento scaturito dal click di un pulsante 
@@ -562,12 +559,19 @@ public class RubricaMainController implements Initializable {
     }
     
     /**
-     * @brief Imposta Interfaccia modifica
+     * @brief Cambia l'interfaccia in quella per la modifica e 
+     * imposta i textField con i dati modificabili
      * 
-     * Cambia l'interfaccia in quella per la modifica e 
-     * imposta i textfield con i dati modificabili
+     * @pre 
+     * Numero di contatti maggiore di 0
+     * 
+     * @post
+     * Cambio interfaccia
      * 
      * @param[in] event evento scaturito dal click di un pulsante 
+     * 
+     * @see pulisciMod()
+     * @see switchPane(event)
      */
     @FXML
     private void modificaPane(ActionEvent event) { 
@@ -606,11 +610,13 @@ public class RubricaMainController implements Initializable {
     }
 
     /**
-     * @brief modifica del contatto
+     * @brief Modifica i contatti nell'elenco
      * 
-     * preleva contatto da modificare, richiede conferma modifica
-     * cambia i dati modificati nell'elenco e salva i dati aggiornati nel file
-     * richiama infine metodo ordinamento
+     * @pre
+     * Numero di contatti maggiore di 0
+     * 
+     * @post
+     * Modifica il contatto selezionato
      * 
      * @param[in] event evento scaturito dal click di un pulsante 
      * 
@@ -675,18 +681,45 @@ public class RubricaMainController implements Initializable {
         
     }
     
-    
+    /**
+     * @brief Richiama handleImport da GestioneIO
+     * 
+     * @post
+     * I contatti vengono importati nell'elenco e i preferiti
+     * verranno aggiunti anche alla lista preferiti
+     * 
+     * @param[in] event evento scaturito dal click di un pulsante 
+     */
     @FXML
     private void handleImport(ActionEvent event) {
         GestioneIO.handleImport(Rubrica.filePathDefault, elenco);
         preferiti.setPreferiti();
     }
     
+    /**
+     * @brief Richiama handleExport da GestioneIO
+     * 
+     * @post
+     * I contatti vengono esportati in un file .vcf
+     * 
+     * @param[in] event evento scaturito dal click di un pulsante 
+     */
     @FXML
     private void handleExport(ActionEvent event) {
         GestioneIO.handleExport(Rubrica.filePathDefault, elenco);
     }
 
+    /**
+     * @brief Aggiunge un contatto alla lista dei preferiti
+     * 
+     * @pre
+     * Numero di contatti maggiore di 0
+     * 
+     * @post
+     * Il contatto viene aggiunto alla lista dei preferiti
+     * 
+     * @param[in] event evento scaturito dal click di un pulsante 
+     */
     @FXML
     private void handlePreferiti(ActionEvent event) {
         
