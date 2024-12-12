@@ -5,6 +5,7 @@
  */
 package it.unisa.diem.ids.rubrica_tmrl;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -25,11 +26,18 @@ public class GestioneIOTest {
     @Test
     public void testCaricaVCF() {
         System.out.println("caricaVCF");
-        String filePath = "";
-        ObservableList<Contatto> contatti = null;
-        GestioneIO.caricaVCF(filePath, contatti);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String filePath = "src/main/resources/it/unisa/diem/ids/rubrica_tmrl/vcfProva.vcf";
+        ObservableList<Contatto> contatti = FXCollections.observableArrayList();
+        Contatto contatto = new Contatto("Piero","paolini");
+        contatti.add(contatto);
+        
+        GestioneIO.salvaVCF(filePath, contatti);
+        
+        ObservableList<Contatto> contattiResult = FXCollections.observableArrayList();
+        GestioneIO.caricaVCF(filePath, contattiResult);
+        
+        assertEquals(contatto.getNome(),contattiResult.get(0).getNome());
+
     }
 
     /**
@@ -38,11 +46,18 @@ public class GestioneIOTest {
     @Test
     public void testSalvaVCF() {
         System.out.println("salvaVCF");
-        String filePath = "";
-        ObservableList<Contatto> contatti = null;
+        String filePath = "src/main/resources/it/unisa/diem/ids/rubrica_tmrl/vcfProva.vcf";
+        ObservableList<Contatto> contatti = FXCollections.observableArrayList();
+        Contatto contatto = new Contatto("Piero","paolini");
+        contatti.add(contatto);
+        
         GestioneIO.salvaVCF(filePath, contatti);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        ObservableList<Contatto> contattiResult = FXCollections.observableArrayList();
+        GestioneIO.caricaVCF(filePath, contattiResult);
+        
+        assertEquals(contatto.getNome(),contattiResult.get(0).getNome());
+
     }
     
 }
