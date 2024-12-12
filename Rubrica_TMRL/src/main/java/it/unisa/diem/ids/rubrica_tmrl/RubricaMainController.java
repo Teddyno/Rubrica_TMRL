@@ -150,9 +150,7 @@ public class RubricaMainController implements Initializable {
     /**********  ***************************  ***********/
     
     /**
-     * @brief Inizializza il programma
-     * 
-     * Inizializza l'elenco, carica i contatti dal file e crea/setta la tabella dei contatti
+     * @brief Inizializza l'elenco, carica i contatti dal file e crea/setta la tabella dei contatti
      * 
      * @param[in] url 
      * @param[in] rb 
@@ -175,9 +173,6 @@ public class RubricaMainController implements Initializable {
         
         preferiti = new Preferiti(elenco);
         
-        
-            
-        
         prefClm.setCellValueFactory(s -> { 
             return new SimpleStringProperty((s.getValue().getCognome().isEmpty() ? "" : s.getValue().getCognome() + " ") + s.getValue().getNome()) ;
         });
@@ -188,10 +183,7 @@ public class RubricaMainController implements Initializable {
                 });
         
         prefTable.setItems(preferiti.getContattiPreferiti());
- 
-        
-    }    
-
+    }
     
     /**
      * @brief Gestione barra di ricerca
@@ -207,30 +199,30 @@ public class RubricaMainController implements Initializable {
     @FXML
     private void cerca(ActionEvent event) {
         
-        FilteredList<Contatto> cerca = new FilteredList<>(elenco.getContatti(), e->true);   // e->true ti manda tutti i contatti, e->false non ti manda nulla
+        FilteredList<Contatto> cerca = new FilteredList<>(elenco.getContatti(), e->true);   
         
         barraDiRicerca.textProperty().addListener((observable, oldValue, newValue) ->{
-            cerca.setPredicate(cnt->{                                                       // setPredicate definisce il filtro da applicare agli elementi della lista
+            cerca.setPredicate(cnt->{                                                      
                 if(newValue == null || newValue.isEmpty())
                     return true;
-                String filtro = newValue.toLowerCase();                                     // testo inserito nella barra di ricerca
+                String filtro = newValue.toLowerCase();                                     
                 if(cnt.getNome().toLowerCase().contains(filtro))    
                     return true;
-                else if(cnt.getCognome().toLowerCase().contains(filtro))                    // toLowerCase() utilizzata per convertire tutte le lettere di una stringa in caratteri minuscoli
+                else if(cnt.getCognome().toLowerCase().contains(filtro))                    
                     return true;
                 return false;
             });
         });
         
         barraDiRicerca.setOnKeyPressed(e->{
-        cntTable.getSelectionModel().clearSelection();                                       // ogni volta che l'utente preme un tasto nella casella di ricerca la selezione della tablewiew viene cancellata
+        cntTable.getSelectionModel().clearSelection();                                       
         switchPane(event);
         });
             
         SortedList<Contatto> ordina = new SortedList<>(cerca);
-        ordina.comparatorProperty().bind(cntTable.comparatorProperty());        // comparatorProperty() è utilizzato nelle SortedList per determinare l'ordine di ordinamento degli elementi
-                                                                                // .bind() è usato per creare una nuova funzione con un contesto (this) specificato.
-        cntTable.setItems(ordina);                                              // .setItems() per impostare gli elementi di ordina in cntTable
+        ordina.comparatorProperty().bind(cntTable.comparatorProperty());        
+                                                                                
+        cntTable.setItems(ordina);                                              
     }
     
     /**
@@ -265,12 +257,7 @@ public class RubricaMainController implements Initializable {
      * 
      * @param[in] cnt contatto da visualizzare 
      * 
-     * @see cnt.getSizeNumTel()
-     * @see cnt.getSizeEmail()
-     * @see cnt.isPreferiti()
      * @see pulisciContatto()
-     * @see cnt.getCognome()
-     * @see cnt.getNome()
      */
     private void showDetails(Contatto cnt) {
         pulisciContatto();
