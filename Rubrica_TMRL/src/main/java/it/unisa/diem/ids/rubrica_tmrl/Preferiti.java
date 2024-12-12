@@ -52,8 +52,9 @@ public class Preferiti {
     
     public void modifyPreferiti(Contatto contattoOld,Contatto contattoNew){
         
-        contattiPreferiti.remove(contattoOld);
-        contattiPreferiti.add(contattoNew);
+        int index = contattiPreferiti.indexOf(contattoOld);
+        
+        contattiPreferiti.set(index,contattoNew);
     }
     
     public ObservableList<Contatto> getContattiPreferiti() {
