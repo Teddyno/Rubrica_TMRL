@@ -127,7 +127,6 @@ public class GestioneIO {
                 }
             }
         } catch (IOException e) {
-            System.err.println("Errore durante il caricamento dei contatti" );
         }
     }
     
