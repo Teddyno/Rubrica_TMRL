@@ -7,9 +7,7 @@
  */
 package it.unisa.diem.ids.rubrica_tmrl;
 
-import java.io.File;
 import java.net.URL;
-import java.util.Collections;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 import javafx.beans.property.SimpleStringProperty;
@@ -27,9 +25,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
-import javafx.stage.Stage;
 
 /**
  * @brief Classe Controller
@@ -165,7 +160,7 @@ public class RubricaMainController implements Initializable {
         cntTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
                     if(newValue != null){
-                                               showDetails(newValue);
+                        showDetails(newValue);
                     }
 
                 });
@@ -206,18 +201,15 @@ public class RubricaMainController implements Initializable {
         barraDiRicerca.textProperty().addListener((observable, oldValue, newValue) ->{
             cerca.setPredicate(cnt->{   
                 String nomeCompleto = (cnt.getCognome() + " " + cnt.getNome());
-                if(newValue == null || newValue.isEmpty())
-                    return true;
+                if(newValue == null || newValue.isEmpty()) return true;
                 String filtro = newValue.toLowerCase();                                     
-                if(nomeCompleto.toLowerCase().contains(filtro))
-                    return true;
-                return false;
+                return nomeCompleto.toLowerCase().contains(filtro);
             });
         });
         
         barraDiRicerca.setOnKeyPressed(e->{
-        cntTable.getSelectionModel().clearSelection();                                       
-        switchPane(event);
+            cntTable.getSelectionModel().clearSelection();                                       
+            switchPane(event);
         });
             
         SortedList<Contatto> ordina = new SortedList<>(cerca);
@@ -263,7 +255,6 @@ public class RubricaMainController implements Initializable {
     private void showDetails(Contatto cnt) {
         pulisciContatto();
         
-        //problema Exception showdetails, forse da eccezione perchè accede a getnome e getcognome e 1 dei due non esiste
         datilbl.setText(cnt.getCognome() + " " + cnt.getNome());
         
         for(int i=0;i<cnt.getSizeNumTel();i++){
@@ -384,24 +375,6 @@ public class RubricaMainController implements Initializable {
         
         return true;  
     }
- 
-    /**
-     * @brief Ordina l'elenco
-     * 
-     * @pre
-     * Numero di contatti maggiore di 1
-     * 
-     * @post
-     * Imposta l'elenco in ordine alfabetico 
-     * 
-     */
-    private void ordinamento(){
-        Collections.sort(elenco.getContatti(), (c1, c2)->{
-            String nomeCompleto1 = (c1.getCognome() + " " + c1.getNome());
-            String nomeCompleto2 = (c2.getCognome() + " "  + c2.getNome());
-            return nomeCompleto1.trim().compareToIgnoreCase(nomeCompleto2.trim());
-        });
-    }
 
 
     /**
@@ -417,7 +390,6 @@ public class RubricaMainController implements Initializable {
      * @param[in] event evento scaturito dal click di un pulsante 
      * 
      * @see pulisci()
-     * @see ordinamento()
      * @see switchPane(event)
      */
     @FXML
@@ -617,11 +589,9 @@ public class RubricaMainController implements Initializable {
      * Modifica il contatto selezionato
      * 
      * @param[in] event evento scaturito dal click di un pulsante 
-     * 
-     * @see ordinamento()
      */
     @FXML
-    private void modificaContatto(ActionEvent event) {
+    private void modificaContatto() {
         
         Contatto contattoSel = cntTable.getSelectionModel().getSelectedItem();
         int contattoSelID = cntTable.getSelectionModel().getSelectedIndex();    // recupera l'indice del contatto selezionato
@@ -681,11 +651,9 @@ public class RubricaMainController implements Initializable {
      * @post
      * I contatti vengono importati nell'elenco e i preferiti
      * verranno aggiunti anche alla lista preferiti
-     * 
-     * @param[in] event evento scaturito dal click di un pulsante 
      */
     @FXML
-    private void handleImport(ActionEvent event) {
+    private void handleImport() {
         GestioneIO.handleImport(Rubrica.filePathDefault, elenco);
         preferiti.updatePreferiti();
     }
@@ -695,11 +663,9 @@ public class RubricaMainController implements Initializable {
      * 
      * @post
      * I contatti vengono esportati in un file .vcf
-     * 
-     * @param[in] event evento scaturito dal click di un pulsante 
      */
     @FXML
-    private void handleExport(ActionEvent event) {
+    private void handleExport() {
         GestioneIO.handleExport(Rubrica.filePathDefault, elenco);
     }
 
@@ -711,13 +677,11 @@ public class RubricaMainController implements Initializable {
      * 
      * @post
      * Il contatto viene aggiunto alla lista dei preferiti
-     * 
-     * @param[in] event evento scaturito dal click di un pulsante 
      */
     @FXML
-    private void handlePreferiti(ActionEvent event) {
+    private void handlePreferiti() {
         
-    Contatto contattoSel = cntTable.getSelectionModel().getSelectedItem();
+        Contatto contattoSel = cntTable.getSelectionModel().getSelectedItem();
         
         if (preferitiCb.isSelected()) {
             contattoSel.setPreferiti(true);

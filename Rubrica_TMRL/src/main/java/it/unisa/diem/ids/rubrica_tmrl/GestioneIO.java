@@ -15,7 +15,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Iterator;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -184,7 +183,7 @@ public class GestioneIO {
         File file = fileChooser.showOpenDialog(new Stage());
         
         if(file != null){
-            GestioneIO.caricaVCF(file.getPath(), elenco.getContatti());
+            caricaVCF(file.getPath(), elenco.getContatti());
             elenco.sort();
             salvaVCF(Rubrica.filePathDefault,elenco.getContatti());
         }
