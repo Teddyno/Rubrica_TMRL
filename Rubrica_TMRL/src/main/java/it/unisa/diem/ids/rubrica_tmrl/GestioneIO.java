@@ -202,6 +202,7 @@ public class GestioneIO {
         fileChooser.getExtensionFilters().add(new ExtensionFilter("VCF", "*.vcf"));
         fileChooser.setTitle("Scegli file Vcard");
         File file = fileChooser.showSaveDialog(new Stage());
+        if(file == null) return;
         
         salvaVCF(file.getPath(),elenco.getContatti());
   
