@@ -164,7 +164,10 @@ public class RubricaMainController implements Initializable {
         
         cntTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
-                    showDetails(newValue);
+                    if(newValue != null){
+                                               showDetails(newValue);
+                    }
+
                 });
         
         cntTable.setItems(elenco.getContatti());

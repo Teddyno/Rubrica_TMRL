@@ -86,8 +86,9 @@ public class Preferiti {
     public void modifyPreferiti(Contatto contattoOld,Contatto contattoNew){
         
         int index = contattiPreferiti.indexOf(contattoOld);
-        
-        contattiPreferiti.set(index,contattoNew);
+        if(index >= 0){
+            contattiPreferiti.set(index,contattoNew);
+        }
     }
     
     /**
