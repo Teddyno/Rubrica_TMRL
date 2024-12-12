@@ -26,6 +26,7 @@ import javafx.stage.Stage;
  */
 public class GestioneIO {
     
+    
     private Elenco elenco;
     
     public GestioneIO(Elenco elenco){
@@ -33,13 +34,11 @@ public class GestioneIO {
     }
    
     /**
-     * @brief Importa contatti
+     * @brief Inizializza l'elenco dei contatti andando a leggere i dati 
+     * dei contatti dal file default .vcf 
      * 
-     * Inizializza l'elenco dei contatti andando a leggere i dati 
-     * di essi dal file default .vcf 
-     * 
-     * @param[in] fileDefault indirizzo del file di default della rubrica
-     * @param[in] contatti collezione contenente i contatti dell'elenco
+     * @param[in] fileDefault Indirizzo del file di default della rubrica
+     * @param[in] contatti ObservableList contenente i contatti dell'elenco
      */
     public static void caricaVCF(String filePath,ObservableList<Contatto> contatti) {
        
@@ -126,17 +125,13 @@ public class GestioneIO {
     }
     
     /**
-     * @brief Salva elenco nel file
-     * 
-     * Scrive l'elenco dei contatti all'interno del file di default,
+     * @brief Scrive l'elenco dei contatti all'interno del file di default,
      * seguendo il formato .vcf
      * 
-     * @param fileDefault indirizzo del file di default della rubrica
-     * @param contatti collezione contenente i contatti dell'elenco
+     * @param[in] fileDefault Indirizzo del file di default della rubrica
+     * @param[in] contatti ObservableList contenente i contatti dell'elenco
      */
     public static void salvaVCF(String filePath,ObservableList<Contatto> contatti) {
-       
-        //il blocco try con le risorse, se c'è un eccezione fa di base il close del pw
         try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(filePath)))){
 
             Iterator<Contatto> i = contatti.iterator();
@@ -168,6 +163,12 @@ public class GestioneIO {
         }
     }
     
+    /**
+     * @brief Gestisce l'import dei dati da un file .vcf
+     * 
+     * @param[in] fileDefault Indirizzo del file di default della rubrica
+     * @param[in] elenco Elenco dei contatti
+     */
     public static void handleImport(String filePathDefault, Elenco elenco){ 
         
         FileChooser fileChooser = new FileChooser();
@@ -183,6 +184,12 @@ public class GestioneIO {
         
     }
 
+    /**
+     * @brief Gestisce l'export dei dati in un file .vcf
+     * 
+     * @param[in] fileDefault Indirizzo del file di default della rubrica
+     * @param[in] elenco Elenco dei contatti
+     */
     public static void handleExport(String filePathDefault, Elenco elenco){
         
         FileChooser fileChooser = new FileChooser();
