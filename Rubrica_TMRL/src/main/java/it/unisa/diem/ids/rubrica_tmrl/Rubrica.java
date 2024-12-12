@@ -20,12 +20,16 @@ import javafx.stage.Stage;
  */
 public class Rubrica extends Application {
     
-    public static String filePathDefault; ///< l'indirizzo di default del file .vcf
+    /**
+     * @brief Indirizzo di default del file .vcf
+     */
+    public static String filePathDefault;
     
     /**
-     * @brief start della scena
+     * @brief Start della scena
      * 
-     * @param stage scena principale
+     * @param stage Scena principale
+     * 
      * @throws Exception 
      */
     @Override
@@ -46,25 +50,27 @@ public class Rubrica extends Application {
     }
 
     /**
-     * @brief classe main
+     * @brief Classe main
      * 
-     * @param args 
+     * @param[in] args 
      */
     public static void main(String[] args) {
         launch(args);
     }
     
     /**
-     * @brief get Indirizzo file default
+     * @brief Restituisce l'indirizzo di default
      * 
-     * @return L'indirizzo del file di default per la persistenza dei dati
+     * @return Indirizzo di default
      */
     public static String getFileDefault() {
         return filePathDefault;
     }
 
     /**
-     * @brief Set Indirizzo file default
+     * @brief Imposta l'indirizzo di default
+     * 
+     * @param[in] Indirizzo di default
      * 
      */
     public static void setFileDefault(String filePathDefault) {
