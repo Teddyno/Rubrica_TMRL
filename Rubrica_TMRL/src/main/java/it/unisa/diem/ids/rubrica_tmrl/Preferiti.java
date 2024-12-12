@@ -7,13 +7,28 @@ import java.util.Iterator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-
+/**
+ * @brief Classe per la gestione dei preferiti
+ */
 public class Preferiti {
     
+    /**
+     * @brief Collegamento all'elenco dei contatti
+     */
     private Elenco elenco;
+    
+    /**
+     * @brief Lista Osservabile dei contatti preferiti
+     */
     private ObservableList<Contatto> contattiPreferiti;
 
-
+    /**
+     * @brief Costruttore contatti preferiti
+     * 
+     * @param[in] elenco elenco dei contatti
+     * 
+     * @see setPreferiti()
+     */
     public Preferiti(Elenco elenco) {
         this.contattiPreferiti = FXCollections.observableArrayList();
         this.elenco = elenco;
@@ -22,6 +37,11 @@ public class Preferiti {
         
     }
     
+    /**
+     * @brief Imposta la lista di preferiti
+     * 
+     * @see sort()
+     */
     public void setPreferiti(){
        
         
@@ -46,10 +66,21 @@ public class Preferiti {
             sort();
     }
     
+    /**
+     * @brief Rimuove un contatto alla lista dei preferiti
+     * 
+     * @param[in] contatto Contatto con i suoi dati
+     */
     public void removePreferiti(Contatto contatto){
         contattiPreferiti.remove(contatto);
     }
     
+    /**
+     * @brief Modifica un contatto nella lista
+     * 
+     * @param[in] contattoOld Contatto da modificare
+     * @param[in] contattoOld Contatto modificato
+     */
     public void modifyPreferiti(Contatto contattoOld,Contatto contattoNew){
         
         int index = contattiPreferiti.indexOf(contattoOld);
@@ -57,10 +88,20 @@ public class Preferiti {
         contattiPreferiti.set(index,contattoNew);
     }
     
+    /**
+     * @brief Ritorna la ObservableList dei contatti preferiti
+     * 
+     * @return ObservableList dei contatti preferiti
+     */
     public ObservableList<Contatto> getContattiPreferiti() {
         return contattiPreferiti;
     }
     
+    /**
+     * @brief Ordinamento della lista
+     * 
+     * @return ordinamento dei contatti
+     */
     public void sort(){
         Collections.sort(contattiPreferiti, (c1, c2)->{
             String nomeCompleto1 = (c1.getCognome() + " " + c1.getNome()).trim();
