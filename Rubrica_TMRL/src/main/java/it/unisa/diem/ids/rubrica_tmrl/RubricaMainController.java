@@ -664,13 +664,10 @@ public class RubricaMainController implements Initializable {
                 
                 elenco.modifyContatto(contattoSelID, modContatto);
                 preferiti.modifyPreferiti(contattoSel, modContatto);
-
             }
             else{
                 switchPane(new ActionEvent(modificaBtn,null));
-
             }
-            
         });
         
     }

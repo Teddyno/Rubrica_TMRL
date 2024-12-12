@@ -40,6 +40,9 @@ public class Rubrica extends Application {
         
         Parent root = FXMLLoader.load(getClass().getResource("RubricaMain.fxml"));
         
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("icona.png")));
+
+        
         /*Image icona = new Image("src/main/resources/it/unisa/diem/ids/rubrica_tmrl/icona.png");
         stage.getIcons().add(icona);*/
         
