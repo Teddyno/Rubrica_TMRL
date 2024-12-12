@@ -201,14 +201,14 @@ public class RubricaMainController implements Initializable {
         
         FilteredList<Contatto> cerca = new FilteredList<>(elenco.getContatti(), e->true);   
         
+        
         barraDiRicerca.textProperty().addListener((observable, oldValue, newValue) ->{
-            cerca.setPredicate(cnt->{                                                      
+            cerca.setPredicate(cnt->{   
+                String nomeCompleto = (cnt.getCognome() + " " + cnt.getNome());
                 if(newValue == null || newValue.isEmpty())
                     return true;
                 String filtro = newValue.toLowerCase();                                     
-                if(cnt.getNome().toLowerCase().contains(filtro))    
-                    return true;
-                else if(cnt.getCognome().toLowerCase().contains(filtro))                    
+                if(nomeCompleto.toLowerCase().contains(filtro))
                     return true;
                 return false;
             });
