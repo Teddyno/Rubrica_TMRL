@@ -26,9 +26,16 @@ import javafx.stage.Stage;
  */
 public class GestioneIO {
     
+    /**
+     * @brief collegamento ad Elenco
+     */
+    private Elenco elenco;  
     
-    private Elenco elenco;
-    
+    /**
+     * @brief Costruttore GestioneIO
+     * 
+     * @param[in] elenco riferimento alla classe elenco
+     */
     public GestioneIO(Elenco elenco){
         this.elenco = elenco;
     }
@@ -37,7 +44,7 @@ public class GestioneIO {
      * @brief Inizializza l'elenco dei contatti andando a leggere i dati 
      * dei contatti dal file default .vcf 
      * 
-     * @param[in] fileDefault Indirizzo del file di default della rubrica
+     * @param[in] filePath Indirizzo del file di default della rubrica
      * @param[in] contatti ObservableList contenente i contatti dell'elenco
      */
     public static void caricaVCF(String filePath,ObservableList<Contatto> contatti) {
@@ -128,7 +135,7 @@ public class GestioneIO {
      * @brief Scrive l'elenco dei contatti all'interno del file di default,
      * seguendo il formato .vcf
      * 
-     * @param[in] fileDefault Indirizzo del file di default della rubrica
+     * @param[in] filePath Indirizzo del file di default della rubrica
      * @param[in] contatti ObservableList contenente i contatti dell'elenco
      */
     public static void salvaVCF(String filePath,ObservableList<Contatto> contatti) {
@@ -167,7 +174,7 @@ public class GestioneIO {
     /**
      * @brief Gestisce l'import dei dati da un file .vcf
      * 
-     * @param[in] fileDefault Indirizzo del file di default della rubrica
+     * @param[in] filePathDefault Indirizzo del file di default della rubrica
      * @param[in] elenco Elenco dei contatti
      */
     public static void handleImport(String filePathDefault, Elenco elenco){ 
@@ -188,7 +195,7 @@ public class GestioneIO {
     /**
      * @brief Gestisce l'export dei dati in un file .vcf
      * 
-     * @param[in] fileDefault Indirizzo del file di default della rubrica
+     * @param[in] filePathDefault Indirizzo del file di default della rubrica
      * @param[in] elenco Elenco dei contatti
      */
     public static void handleExport(String filePathDefault, Elenco elenco){

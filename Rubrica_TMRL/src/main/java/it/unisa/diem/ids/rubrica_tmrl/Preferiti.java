@@ -81,7 +81,7 @@ public class Preferiti {
      * @brief Modifica un contatto nella lista
      * 
      * @param[in] contattoOld Contatto da modificare
-     * @param[in] contattoOld Contatto modificato
+     * @param[in] contattoNew Contatto modificato
      */
     public void modifyPreferiti(Contatto contattoOld,Contatto contattoNew){
         
@@ -101,8 +101,6 @@ public class Preferiti {
     
     /**
      * @brief Ordinamento della lista
-     * 
-     * @return ordinamento dei contatti
      */
     public void sort(){
         Collections.sort(contattiPreferiti, (c1, c2)->{

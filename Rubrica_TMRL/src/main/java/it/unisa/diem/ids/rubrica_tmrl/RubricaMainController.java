@@ -288,11 +288,6 @@ public class RubricaMainController implements Initializable {
         }
         
         switchPane(new ActionEvent(submitBtn,null));
-        /*
-        addcontattopane.setVisible(false); 
-        homePane.setVisible(false);
-        modificaContattoPane.setVisible(false);
-        contattoPane.setVisible(true);*/
     }
     
     
@@ -663,20 +658,17 @@ public class RubricaMainController implements Initializable {
         alert.setContentText("Sei sicuro di voler modificare questo contatto?");
         
         alert.showAndWait().ifPresent(response -> {                             //Alert per la conferma della modifica
-            if(response == ButtonType.OK){    
+            if(response == ButtonType.OK){
+                switchPane(new ActionEvent(btnHome,null));
+                cntTable.getSelectionModel().select(modContatto);
+                
                 elenco.modifyContatto(contattoSelID, modContatto);
                 preferiti.modifyPreferiti(contattoSel, modContatto);
-                cntTable.getSelectionModel().select(modContatto);
-                ordinamento();
-                GestioneIO.salvaVCF(Rubrica.filePathDefault,elenco.getContatti());
+
             }
             else{
                 switchPane(new ActionEvent(modificaBtn,null));
-                /*
-                addcontattopane.setVisible(false); 
-                homePane.setVisible(false);
-                modificaContattoPane.setVisible(true);
-                contattoPane.setVisible(false);*/
+
             }
             
         });

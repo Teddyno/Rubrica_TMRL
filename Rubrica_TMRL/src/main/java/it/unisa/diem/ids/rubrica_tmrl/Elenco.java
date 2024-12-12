@@ -101,13 +101,12 @@ public class Elenco {
         
         contatti.set(id,contatto);
         
+        sort();
         io.salvaVCF(filePathDefault,contatti);
     }
     
     /**
      * @brief Ordinamento della lista
-     * 
-     * @return ordinamento dei contatti
      */
     public void sort(){
         Collections.sort(contatti, (c1, c2)->{
