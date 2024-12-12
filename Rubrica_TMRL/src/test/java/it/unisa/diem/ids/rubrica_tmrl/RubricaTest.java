@@ -50,11 +50,9 @@ public class RubricaTest {
     @Test
     public void testGetFileDefault() {
         System.out.println("getFileDefault");
-        String expResult = "";
+        String expResult = "src/main/resources/it/unisa/diem/ids/rubrica_tmrl/Rubrica.vcf";
         String result = Rubrica.getFileDefault();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**

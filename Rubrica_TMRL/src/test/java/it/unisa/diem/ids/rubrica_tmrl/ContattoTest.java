@@ -24,12 +24,10 @@ public class ContattoTest {
     @Test
     public void testGetNome() {
         System.out.println("getNome");
-        Contatto instance = new Contatto();
-        String expResult = "";
+        Contatto instance = new Contatto("Giovanni","Todisco");
+        String expResult = "Giovanni";
         String result = instance.getNome();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -39,11 +37,9 @@ public class ContattoTest {
     public void testGetCognome() {
         System.out.println("getCognome");
         Contatto instance = new Contatto();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getCognome();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -52,11 +48,11 @@ public class ContattoTest {
     @Test
     public void testSetNome() {
         System.out.println("setNome");
-        String nome = "";
+        String nome = "Piero";
         Contatto instance = new Contatto();
         instance.setNome(nome);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String result = instance.getNome();
+        assertEquals(nome, result);
     }
 
     /**
@@ -65,11 +61,12 @@ public class ContattoTest {
     @Test
     public void testSetCognome() {
         System.out.println("setCognome");
-        String cognome = "";
+        String cognome = "Paolini";
         Contatto instance = new Contatto();
         instance.setCognome(cognome);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String result = instance.getCognome();
+        assertEquals(cognome, result);
+
     }
 
     /**
@@ -108,8 +105,6 @@ public class ContattoTest {
         int expResult = 0;
         int result = instance.getSizeEmail();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -119,11 +114,10 @@ public class ContattoTest {
     public void testGetSizeNumTel() {
         System.out.println("getSizeNumTel");
         Contatto instance = new Contatto();
-        int expResult = 0;
+        instance.addNumTel("3336754690");
+        int expResult = 1;
         int result = instance.getSizeNumTel();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
