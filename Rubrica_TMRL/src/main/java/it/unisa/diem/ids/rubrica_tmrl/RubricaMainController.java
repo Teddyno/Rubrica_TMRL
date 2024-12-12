@@ -616,7 +616,7 @@ public class RubricaMainController implements Initializable {
     }
 
     @FXML
-    private void handlepreferiti(ActionEvent event) {
+    private void handlePreferiti(ActionEvent event) {
         
     Contatto contattoSel = cntTable.getSelectionModel().getSelectedItem();
         

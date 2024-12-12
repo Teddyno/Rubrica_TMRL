@@ -213,7 +213,7 @@
                   <Line endX="100.0" layoutX="459.0" layoutY="171.0" startX="-120.0" stroke="#9a9999" />
                   <Line endX="100.0" layoutX="459.0" layoutY="302.0" startX="-120.0" stroke="#9a9999" />
                   <Line endX="100.0" layoutX="459.0" layoutY="335.0" startX="-120.0" stroke="#9a9999" />
-                  <CheckBox fx:id="preferitiCb" layoutX="130.0" layoutY="355.0" mnemonicParsing="false" onAction="#handlepreferiti" text="Preferiti" />
+                  <CheckBox fx:id="preferitiCb" layoutX="130.0" layoutY="355.0" mnemonicParsing="false" onAction="#handlePreferiti" text="Preferiti" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="modificaContattoPane" prefHeight="525.0" prefWidth="630.0" style="-fx-background-color: white;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

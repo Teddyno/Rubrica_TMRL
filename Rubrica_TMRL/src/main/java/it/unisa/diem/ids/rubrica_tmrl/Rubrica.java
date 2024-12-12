@@ -1,4 +1,4 @@
-/**
+ /**
  * @file Rubrica.java
  * @brief Classe iniziale per la rubrica, carica la scena
  * 
