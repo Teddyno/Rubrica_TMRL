@@ -207,8 +207,6 @@ public class RubricaMainController implements Initializable {
     @FXML
     private void cerca(ActionEvent event) {
         
-        //DA SISTEMARE (LA PRIMA VOLTA CHE SI CERCA IL CONTATTO NON FUNZIONA)
-        
         FilteredList<Contatto> cerca = new FilteredList<>(elenco.getContatti(), e->true);   // e->true ti manda tutti i contatti, e->false non ti manda nulla
         
         barraDiRicerca.textProperty().addListener((observable, oldValue, newValue) ->{
@@ -278,8 +276,6 @@ public class RubricaMainController implements Initializable {
             preferitiCb.setSelected(true);
         }
         
-        //per visualizzare il pane del contatto e disattivare quello della home
-        // da implementare nello switchPane ??
         addcontattopane.setVisible(false); 
         homePane.setVisible(false);
         modificaContattoPane.setVisible(false);
@@ -324,8 +320,6 @@ public class RubricaMainController implements Initializable {
             homePane.setVisible(true);
             modificaContattoPane.setVisible(false);
             contattoPane.setVisible(false);
-            //per eliminare il problema della selezione della tabella(se aggiungi contatto, poi home e poi di nuovo il contatto, dovrebbe restare home)
-            //però non mi piace come posizionamento, commenta per notare il problema
             cntTable.getSelectionModel().clearSelection();
             prefTable.getSelectionModel().clearSelection();
         }
@@ -511,40 +505,29 @@ public class RubricaMainController implements Initializable {
         pulisciMod();
         
         Contatto contattoSel = cntTable.getSelectionModel().getSelectedItem();
-        //Contatto contattoSelPreferiti = prefTable.getSelectionModel().getSelectedItem();
         
-        //problema Exception showdetails
         modNomeField.setText(contattoSel.getNome());
-  //      modNomeField.setText(contattoSelPreferiti.getNome());
-        modCognomeField.setText(contattoSel.getCognome());
-//         modCognomeField.setText(contattoSelPreferiti.getCognome());
         
+        modCognomeField.setText(contattoSel.getCognome());        
         
         
         for(int i=0;i<contattoSel.getSizeNumTel();i++){
             if(i == 0){
-                modNumeroUno.setText(contattoSel.getNumTel(0));
-                //modNumeroUno.setText(contattoSelPreferiti.getNumTel(0));
-                
+                modNumeroUno.setText(contattoSel.getNumTel(0));                
             } else if(i == 1){
                 modNumeroDue.setText(contattoSel.getNumTel(1));
-                //modNumeroDue.setText(contattoSelPreferiti.getNumTel(1));
             } else if(i == 2){
                 modNumeroTre.setText(contattoSel.getNumTel(2));
-                //modNumeroTre.setText(contattoSelPreferiti.getNumTel(2));
             }
         }
         
         for(int i=0;i<contattoSel.getSizeEmail();i++){
             if(i == 0){
                 modEmailUno.setText(contattoSel.getEmail(0));
-                //modEmailUno.setText(contattoSelPreferiti.getEmail(0));
             } else if(i == 1){
                 modEmailDue.setText(contattoSel.getEmail(1));
-                //modEmailDue.setText(contattoSelPreferiti.getEmail(1));
             } else if(i == 2){
                 modEmailTre.setText(contattoSel.getEmail(2));
-                //modEmailTre.setText(contattoSelPreferiti.getEmail(2));
             }
         }
         
