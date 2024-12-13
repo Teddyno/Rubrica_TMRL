@@ -179,6 +179,8 @@ public class RubricaMainController implements Initializable {
                 });
         
         prefTable.setItems(preferiti.getContattiPreferiti());
+        
+        cerca();
     }
     
     /**
@@ -193,7 +195,7 @@ public class RubricaMainController implements Initializable {
      * @param[in] event evento scaturito dal click di un pulsante 
      */
     @FXML
-    private void cerca(ActionEvent event) {
+    private void cerca() {
         
         FilteredList<Contatto> cerca = new FilteredList<>(elenco.getContatti(), e->true);   
         
@@ -209,7 +211,7 @@ public class RubricaMainController implements Initializable {
         
         barraDiRicerca.setOnKeyPressed(e->{
             cntTable.getSelectionModel().clearSelection();                                       
-            switchPane(event);
+            switchPane(new ActionEvent(btnHome,null));
         });
             
         SortedList<Contatto> ordina = new SortedList<>(cerca);

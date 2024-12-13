@@ -48,7 +48,7 @@ public class GestioneIO {
      */
     public static void caricaVCF(String filePath,ObservableList<Contatto> contatti) {
        
-        String nomeCompleto= null;
+        String nomeCompleto;
         String nome= null;
         String cognome= null;
         String numTel1= null;
